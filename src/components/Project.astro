@@ -1,10 +1,14 @@
 ---
-const { imageUrl, title, type, link } = Astro.props;
+const { imageUrl, title, type, link, image } = Astro.props;
+const images = import.meta.glob('../assets/*.jpg');
+const imageSrc = image && images[`../assets/${image}.jpg`]
+    ? (await images[`../assets/${image}.jpg`]()).default.src
+    : null;
 ---
 
 <a href={link} target="_blank" rel="noopener noreferrer">
     <div class="overflow-hidden bg-cover rounded-lg cursor-pointer h-64 group"
-        style={`background-image:url('${imageUrl}')`}>
+        style={`background-image:url('${imageUrl ? imageUrl : imageSrc}')`}>
         <div
             class="flex flex-col justify-center w-full h-full px-8 py-4 transition-opacity duration-700
                 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">
