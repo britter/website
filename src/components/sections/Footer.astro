@@ -1,5 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
+import { basic } from "../../config/cv.json";
+
+const currentYear = new Date().getFullYear();
 ---
 
 <section class="py-10 mt-4">
@@ -7,7 +10,7 @@ import { Icon } from "astro-icon/components";
         <div class="text-center xl:flex xl:items-center xl:justify-between xl:text-left">
             <div class="xl:flex xl:items-center xl:justify-start">
                 <p class="mt-5 text-sm xl:ml-6 xl:mt-0">
-                    © 2024 Paul Smith. All Rights Reserved.
+					© {currentYear} {basic.name}. All Rights Reserved.
                 </p>
             </div>
 
