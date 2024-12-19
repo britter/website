@@ -1,9 +1,12 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Greeting from '../components/Greeting';
-const pageTitle = "Home Page";
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/sections/Hero.astro';
+import Resume from '../components/sections/Resume.astro';
+import Portfolio from '../components/sections/Portfolio.astro';
 ---
-<BaseLayout pageTitle={pageTitle}>
-  <h2>My awesome blog subtitle</h2>
-  <Greeting client:load messages={["Hi", "Hello", "Howdy", "Hey there"]} />
-</BaseLayout>
+
+<Layout title="Astro Resume Theme">
+	<Hero />
+	<Resume />
+	<Portfolio />
+</Layout>

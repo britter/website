@@ -1,0 +1,68 @@
+{
+    "basic": {
+        "name": "Benedikt Ritter",
+        "job": "Developer Productivity Consultant",
+        "summary": "I’m passionate about helping development teams achieve their best work by streamlining workflows and reducing friction. With deep technical expertise in development tools, infrastructure, and automation, I deliver tailored solutions that drive efficiency and innovation.",
+        "cv_file_name": "paul_cv.pdf"
+    },
+    "experiences": [
+        {
+            "title": "Developer Productivity Consultant",
+            "sub_title": "Self employed",
+            "years": "2024 - present",
+            "details": "As an independent Developer Productivity consultant, I specialize in optimizing development processes to enhance team efficiency, collaboration, and overall performance. With extensive experience working on the Java platform, Gradle, and NixOS, I have a proven track record of implementing streamlined workflows, automating complex tasks, and improving build and deployment pipelines. I use a data-driven approach to assess key productivity metrics, identify areas for improvement, and implement tailored solutions that align development efforts with business goals. My deep technical knowledge allows me to deliver scalable solutions that reduce friction and foster a more productive development environment."
+        },
+        {
+            "title": "Lead Software Engineer",
+            "sub_title": "Gradle, Inc.",
+            "years": "2019 - 2024",
+            "details": "Started as a product engineer working on a product to drastically improve build times for Apache Maven™ by implementing a build cache as well as test distribution. Lateron I led the developer productivity team and delivered numerous productivity improvements for an engineering team of 70 people."
+        },
+        {
+            "title": "IT Consultant",
+            "sub_title": "codecentric AG",
+            "years": "2013 - 2018",
+            "details": "Consulting customers from different sectors in agile software development and clean coding practices. Delivered multiple projects end to end."
+        },
+        {
+            "title": "Software Engineer",
+            "sub_title": "GBTEC Software + Consulting AG",
+            "years": "2011 - 2013",
+            "details": "Worked as a product engineer on an Eclipse RCP-based tool for modeling business processes."
+        }
+    ],
+    "education": [
+        {
+            "title": "Bachelor of Science in Computer Science",
+            "sub_title": "University of Modern Tech",
+            "years": "2015 - 2019",
+            "details": "Graduated with honors. Specialized in software development, data structures, and algorithms. Worked on various open-source projects and completed internships in tech companies."
+        },
+        {
+            "title": "Master of Science in Software Engineering",
+            "sub_title": "Global Tech Institute",
+            "years": "2019 - 2021",
+            "details": "Focused on advanced algorithms, cloud computing, and full-stack development. Published research papers on scalable microservices architecture."
+        }
+    ],
+    "projects": [
+        {
+            "imageUrl": "https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?q=80&w=764&auto=format&fit=crop",
+            "title": "hello.com",
+            "type": "Website",
+            "link": "https://github.com/wasutz/astro-resume-theme"
+        },
+        {
+            "imageUrl": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=764&auto=format&fit=crop",
+            "title": "Paul UI kit collections",
+            "type": "UI Kit",
+            "link": "https://github.com/wasutz/astro-resume-theme"
+        },
+        {
+            "imageUrl": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=764&auto=format&fit=crop",
+            "title": "paul.com",
+            "type": "Website",
+            "link": "https://github.com/wasutz/astro-resume-theme"
+        }
+    ]
+}

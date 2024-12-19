@@ -1,47 +1,66 @@
-# Astro Starter Kit: Minimal
+# Astro Resume Theme
 
-```sh
-npm create astro@latest -- --template minimal
+Astro Resume Theme is a fully customizable and responsive template, built to help you create a beautiful online resume or portfolio with ease. It is powered by Astro and styled using Tailwind CSS, making it fast, modern, and easy to work with.
+
+## Usage
+
+You can bootstrap a new Astro project using the following command:
+
+```bash
+# Bun
+bun create astro@latest --template wasutz/astro-resume-theme
+
+# npm 7+
+npm create astro@latest -- --template wasutz/astro-resume-theme
+
+# pnpm
+pnpm dlx create-astro --template wasutz/astro-resume-theme
+
+# yarn
+yarn create astro --template wasutz/astro-resume-theme
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+## 🚀 Features
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
+- Tailwind CSS: Utilizes utility-first styling for rapid UI development.
+- Dark Mode: Built-in dark mode toggle for better UX.
+- Theme Customization: Easily adjustable in src/styles/theme.css.
+- Responsive Design: Optimized for mobile, tablet, and desktop devices.
+- MDX Support: Allows blog posts written in Markdown with JSX components.
 
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
+(Could be use 'npm' instead of bun)
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `bun install`             | Installs dependencies                            |
+| `bun run dev`             | Starts local dev server at `localhost:4321`      |
+| `bun run build`           | Build your production site to `./dist/`          |
+| `bun run preview`         | Preview your build locally, before deploying     |
+| `bun run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `bun run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+# Getting Started
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+1) Initialize the project
+Run one of the commands listed in the Quick Start section.
+
+2) Customize your resume data
+Edit your resume data in `src/config/cv.json`
+
+3) Customize theme colors
+Modify the color scheme by editing `src/styles/theme.ts` to match your personal branding.
+
+4) Replace your CV file
+Put your cv file in `src/public/cv` and then replace the file name in `src/config/cv.json` (basic.cv_file_name)
+
+5) Run the project locally
+Once you’ve made your customizations, run the development server:
+
+```
+bun run dev
+```
+
+Open http://localhost:4321 in your browser to view the result 🚀
