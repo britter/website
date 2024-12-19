@@ -33,16 +33,16 @@
     ],
     "education": [
         {
-            "title": "Bachelor of Science in Computer Science",
-            "sub_title": "University of Modern Tech",
-            "years": "2015 - 2019",
-            "details": "Graduated with honors. Specialized in software development, data structures, and algorithms. Worked on various open-source projects and completed internships in tech companies."
+            "title": "Information Systems Research, M.Sc.",
+            "sub_title": "University Duisburg-Essen",
+            "years": "2009 - 2011",
+            "details": "Focused on software engineering and business process modeling. Wrote master thesis about modeling of business process variants."
         },
         {
-            "title": "Master of Science in Software Engineering",
-            "sub_title": "Global Tech Institute",
+            "title": "Information Systems Research, B.Sc.",
+            "sub_title": "University Duisburg-Essen",
             "years": "2019 - 2021",
-            "details": "Focused on advanced algorithms, cloud computing, and full-stack development. Published research papers on scalable microservices architecture."
+            "details": "Attended classes about software engineering as well as economics. Wrote bachelor thesis about business process model transformations."
         }
     ],
     "projects": [
