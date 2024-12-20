@@ -1,0 +1,14 @@
+---
+const { pageTitle } = Astro.props
+---
+<section class="bg-background">
+    <div class="container px-6 py-8 mx-auto">
+        <h1 class="text-3xl font-semibold text-center capitalize lg:text-4xl">
+            {pageTitle}
+        </h1>
+
+        <div class="mt-4 text-offset">
+            <slot />
+        </div>
+    </div>
+</section>
