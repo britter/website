@@ -8,7 +8,7 @@ const imageSrc = image && images[`../assets/${image}.jpg`]
     : null;
 ---
 
-<a href={link} target="_blank" rel="noopener noreferrer">
+<a href={link} rel="noopener noreferrer">
     <div class="overflow-hidden bg-cover rounded-lg cursor-pointer h-64 group"
         style={`background-image:url('${imageUrl ? imageUrl : imageSrc}')`}>
         <div
