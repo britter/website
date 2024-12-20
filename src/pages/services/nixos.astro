@@ -1,8 +1,48 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ServiceDetail from '../../layouts/ServiceDetail.astro';
 ---
 
 <Layout title="Benedikt Ritter - Developer Productivity Consulting">
-    <h1>NixOS consulting</h1>
+    <ServiceDetail pageTitle="NixOS consulting">
+        <p class="mb-8">
+            NixOS is a cutting-edge Linux distribution built on the principles of declarative configuration and reproducibility.
+            Its package manager, Nix, enables precise control over dependencies and environments, ensuring that systems are consistent and predictable across different machines and teams.
+            NixOS is an excellent choice for those looking to manage servers, development environments, and deployment pipelines with unparalleled reliability.
+        </p>
+
+        <p class="mb-8">
+            As an active member of the NixOS community and a contributor to the widely-used nixpkgs repository, I bring deep expertise in leveraging the full power of NixOS and Nix tooling.
+            Whether you're adopting NixOS for the first time or seeking advanced customizations, I have the experience to help you streamline your workflows and infrastructure.
+        </p>
+
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">
+            My NixOS consulting services include:
+        </h2>
+
+        <ul class="list-disc list-inside space-y-2 mb-8">
+            <li>
+                <strong>Nix packaging:</strong> Build, maintain, and optimize Nix packages for your projects, ensuring consistent and reproducible software builds.
+            </li>
+            <li>
+                <strong>NixOS module implementations:</strong> Create or enhance NixOS modules to configure systems declaratively and efficiently.
+            </li>
+            <li>
+                <strong>Server management with Nix tooling:</strong> Manage and deploy servers with Nix tooling for precise, repeatable configurations and reduced downtime.
+            </li>
+            <li>
+                <strong>Reproducible development environments:</strong> Set up development shells tailored to your needs, ensuring developers have identical, reproducible environments for maximum productivity.
+            </li>
+            <li>
+                <strong>Custom NixOS trainings:</strong> Deliver customized training sessions to help your team adopt and master NixOS, with content tailored to their specific use cases and challenges.
+            </li>
+        </ul>
+
+        <p class="mb-8">
+            With NixOS, you can achieve a new level of reliability and efficiency in your infrastructure.
+            Whether you're improving your current setup or starting fresh, I’m here to help you unlock the full potential of NixOS.
+            Let’s work together to make your systems more robust, scalable, and maintainable.
+        </p>
+    </ServiceDetail>
 </Layout>
 
