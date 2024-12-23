@@ -44,20 +44,20 @@ All commands are run from the root of the project, from a terminal:
 
 # Getting Started
 
-1) Initialize the project
-Run one of the commands listed in the Quick Start section.
+1. Initialize the project
+   Run one of the commands listed in the Quick Start section.
 
-2) Customize your resume data
-Edit your resume data in `src/config/cv.json`
+2. Customize your resume data
+   Edit your resume data in `src/config/cv.json`
 
-3) Customize theme colors
-Modify the color scheme by editing `src/styles/theme.ts` to match your personal branding.
+3. Customize theme colors
+   Modify the color scheme by editing `src/styles/theme.ts` to match your personal branding.
 
-4) Replace your CV file
-Put your cv file in `src/public/cv` and then replace the file name in `src/config/cv.json` (basic.cv_file_name)
+4. Replace your CV file
+   Put your cv file in `src/public/cv` and then replace the file name in `src/config/cv.json` (basic.cv_file_name)
 
-5) Run the project locally
-Once you’ve made your customizations, run the development server:
+5. Run the project locally
+   Once you’ve made your customizations, run the development server:
 
 ```
 bun run dev

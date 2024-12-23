@@ -1,74 +1,74 @@
 {
-    "basic": {
-        "name": "Benedikt Ritter",
-        "job": "Developer Productivity Consultant",
-        "summary": "I’m passionate about helping development teams achieve their best work by streamlining workflows and reducing friction. With deep technical expertise in development tools, infrastructure, and automation, I deliver tailored solutions that drive efficiency and innovation.",
-        "cv_file_name": "benedikt_ritter_cv.pdf"
+  "basic": {
+    "name": "Benedikt Ritter",
+    "job": "Developer Productivity Consultant",
+    "summary": "I’m passionate about helping development teams achieve their best work by streamlining workflows and reducing friction. With deep technical expertise in development tools, infrastructure, and automation, I deliver tailored solutions that drive efficiency and innovation.",
+    "cv_file_name": "benedikt_ritter_cv.pdf"
+  },
+  "experiences": [
+    {
+      "title": "Developer Productivity Consultant",
+      "sub_title": "Self employed",
+      "years": "2024 - present",
+      "details": "As an independent Developer Productivity consultant, I specialize in optimizing development processes to enhance team efficiency, collaboration, and overall performance. With extensive experience working on the Java platform, Gradle, and NixOS, I have a proven track record of implementing streamlined workflows, automating complex tasks, and improving build and deployment pipelines. I use a data-driven approach to assess key productivity metrics, identify areas for improvement, and implement tailored solutions that align development efforts with business goals. My deep technical knowledge allows me to deliver scalable solutions that reduce friction and foster a more productive development environment."
     },
-    "experiences": [
-        {
-            "title": "Developer Productivity Consultant",
-            "sub_title": "Self employed",
-            "years": "2024 - present",
-            "details": "As an independent Developer Productivity consultant, I specialize in optimizing development processes to enhance team efficiency, collaboration, and overall performance. With extensive experience working on the Java platform, Gradle, and NixOS, I have a proven track record of implementing streamlined workflows, automating complex tasks, and improving build and deployment pipelines. I use a data-driven approach to assess key productivity metrics, identify areas for improvement, and implement tailored solutions that align development efforts with business goals. My deep technical knowledge allows me to deliver scalable solutions that reduce friction and foster a more productive development environment."
-        },
-        {
-            "title": "Lead Software Engineer",
-            "sub_title": "Gradle, Inc.",
-            "years": "2019 - 2024",
-            "details": "Started as a product engineer working on a product to drastically improve build times for Apache Maven™ by implementing a build cache as well as test distribution. Lateron I led the developer productivity team and delivered numerous productivity improvements for an engineering team of 70 people."
-        },
-        {
-            "title": "IT Consultant",
-            "sub_title": "codecentric AG",
-            "years": "2013 - 2018",
-            "details": "Consulting customers from different sectors in agile software development and clean coding practices. Delivered multiple projects end to end."
-        },
-        {
-            "title": "Software Engineer",
-            "sub_title": "GBTEC Software + Consulting AG",
-            "years": "2011 - 2013",
-            "details": "Worked as a product engineer on an Eclipse RCP-based tool for modeling business processes."
-        }
-    ],
-    "education": [
-        {
-            "title": "Information Systems Research, M.Sc.",
-            "sub_title": "University Duisburg-Essen",
-            "years": "2009 - 2011",
-            "details": "Focused on software engineering and business process modeling. Wrote master thesis about modeling of business process variants."
-        },
-        {
-            "title": "Information Systems Research, B.Sc.",
-            "sub_title": "University Duisburg-Essen",
-            "years": "2019 - 2021",
-            "details": "Attended classes about software engineering as well as economics. Wrote bachelor thesis about business process model transformations."
-        }
-    ],
-    "services": [
-        {
-            "imageUrl": "https://images.unsplash.com/photo-1617529497471-9218633199c0?q=80&w=764&auto=format&fit=crop",
-            "title": "Developer Productivity Engineering",
-            "type": "Process",
-            "link": "services/dpe"
-        },
-        {
-            "imageUrl": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=764&auto=format&fit=crop",
-            "title": "Engineering Growth",
-            "type": "Process",
-            "link": "services/engineering-growth"
-        },
-        {
-            "image": "gradle",
-            "title": "Gradle consulting",
-            "type": "Technical",
-            "link": "services/gradle"
-        },
-        {
-            "imageUrl": "https://images.unsplash.com/photo-1714846201575-4f06e069dc6f?q=80&w=764&auto=format&fit=crop",
-            "title": "NixOS consulting",
-            "type": "Technical",
-            "link": "services/nixos"
-        }
-    ]
+    {
+      "title": "Lead Software Engineer",
+      "sub_title": "Gradle, Inc.",
+      "years": "2019 - 2024",
+      "details": "Started as a product engineer working on a product to drastically improve build times for Apache Maven™ by implementing a build cache as well as test distribution. Lateron I led the developer productivity team and delivered numerous productivity improvements for an engineering team of 70 people."
+    },
+    {
+      "title": "IT Consultant",
+      "sub_title": "codecentric AG",
+      "years": "2013 - 2018",
+      "details": "Consulting customers from different sectors in agile software development and clean coding practices. Delivered multiple projects end to end."
+    },
+    {
+      "title": "Software Engineer",
+      "sub_title": "GBTEC Software + Consulting AG",
+      "years": "2011 - 2013",
+      "details": "Worked as a product engineer on an Eclipse RCP-based tool for modeling business processes."
+    }
+  ],
+  "education": [
+    {
+      "title": "Information Systems Research, M.Sc.",
+      "sub_title": "University Duisburg-Essen",
+      "years": "2009 - 2011",
+      "details": "Focused on software engineering and business process modeling. Wrote master thesis about modeling of business process variants."
+    },
+    {
+      "title": "Information Systems Research, B.Sc.",
+      "sub_title": "University Duisburg-Essen",
+      "years": "2019 - 2021",
+      "details": "Attended classes about software engineering as well as economics. Wrote bachelor thesis about business process model transformations."
+    }
+  ],
+  "services": [
+    {
+      "imageUrl": "https://images.unsplash.com/photo-1617529497471-9218633199c0?q=80&w=764&auto=format&fit=crop",
+      "title": "Developer Productivity Engineering",
+      "type": "Process",
+      "link": "services/dpe"
+    },
+    {
+      "imageUrl": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=764&auto=format&fit=crop",
+      "title": "Engineering Growth",
+      "type": "Process",
+      "link": "services/engineering-growth"
+    },
+    {
+      "image": "gradle",
+      "title": "Gradle consulting",
+      "type": "Technical",
+      "link": "services/gradle"
+    },
+    {
+      "imageUrl": "https://images.unsplash.com/photo-1714846201575-4f06e069dc6f?q=80&w=764&auto=format&fit=crop",
+      "title": "NixOS consulting",
+      "type": "Technical",
+      "link": "services/nixos"
+    }
+  ]
 }
