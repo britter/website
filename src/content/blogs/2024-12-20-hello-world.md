@@ -98,4 +98,4 @@ If you’re looking to optimize your build systems, scale your engineering teams
 
 Feel free to reach out to discuss how I can assist you and your team in 2025 and beyond!
 Currently the best way to get in touch with me is to message me at [LinkedIn](https://www.linkedin.com/in/benedikt-ritter-83847b84/).
-> 
+ 
