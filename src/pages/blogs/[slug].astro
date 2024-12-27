@@ -38,7 +38,8 @@ const { Content } = await blog.render();
   <script>
     import { toggleMarkdownTheme } from "../../scripts/theme";
 
-    const theme = localStorage.getItem("theme") || "dark";
+    // initialized in Layout.astro
+    const theme = document.documentElement.dataset.theme;
 
     toggleMarkdownTheme(theme);
   </script>
