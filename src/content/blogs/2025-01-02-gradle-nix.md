@@ -55,7 +55,7 @@ This approach not only eliminates the need for fixed-output derivations but also
 With the dependency lock file, only the dependencies that change are downloaded again, significantly improving build efficiency and reducing unnecessary rebuilds.
 Of course this comes at the cost of having to manually update the dependency lock file when dependencies in the Gradle build change.
 
-## Getting Started
+## Example
 To start using this new infrastructure, refer to the detailed instructions in the [Nixpkgs Manual](https://nixos.org/manual/nixpkgs/stable/#gradle).
 The manual provides guidance on how to configure your Gradle projects for seamless integration with Nix, including generating the dependency lock file and leveraging the mitm-cache.
 
