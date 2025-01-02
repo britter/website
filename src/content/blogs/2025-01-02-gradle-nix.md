@@ -7,6 +7,7 @@ image: "https://images.unsplash.com/photo-1714846201575-4f06e069dc6f?q=80&w=640&
 
 # Wrapping Elephants in Snowflakes
 
+## Introduction
 [Gradle build tool](https://gradle.org) is known for its flexibility and powerful dependency management, and has become the cornerstone of many JVM-based projects.
 Meanwhile, the [Nix package manager](https://nixos.org) is celebrated for its reproducibility and sandboxed builds, ensuring complete isolation from the host system.
 
@@ -14,7 +15,6 @@ While both tools excel individually, combining them presents a unique challenge.
 Gradle's dynamic dependency resolution conflicts with Nix's strict sandboxing, creating hurdles for developers attempting to wrap Gradle projects in Nix.
 
 ## Problem Statement
-
 Gradle dynamically retrieves dependencies from remote repositories like [Maven Central](https://search.maven.org) during build time.
 This approach conflicts with Nix's sandboxing philosophy, which prohibits network access during builds unless explicitly allowed.
 
@@ -22,7 +22,6 @@ When wrapping a Gradle project in Nix, this incompatibility becomes evident: Gra
 Nix demands explicit declaration of all build inputs, whereas Gradle relies on dynamic resolution—a clear mismatch that has long made this integration challenging.
 
 ## Prior Art  
-
 Developers have historically addressed this issue with a workaround described by Brian McGee in his [blog post](https://bmcgee.ie/posts/2023/02/nix-what-are-fixed-output-derivations-and-why-use-them/).
 The process involves splitting the build into two stages:
 
@@ -39,7 +38,6 @@ This results in coarse-grained Nix cache eviction—even if a single dependency 
 This inefficiency can slow development and increase resource consumption, particularly for large projects with many dependencies.
 
 ## The 2025 Solution
-
 A new approach introduced in at the end of 2024 in [nixpkgs](https://github.com/NixOS/nixpkgs) simplifies the process by using updated Gradle build backed by [mitm-cache](https://github.com/chayleaf/mitm-cache).
 
 This solution introduces a dependency lock file in JSON format, explicitly maintained by the developer. The process works as follows:
@@ -58,7 +56,6 @@ With the dependency lock file, only the dependencies that change are downloaded 
 Of course this comes at the cost of having to manually update the dependency lock file when dependencies in the Gradle build change.
 
 ## Example
-
 To start using this new infrastructure, refer to the detailed instructions in the [Nixpkgs Manual](https://nixos.org/manual/nixpkgs/stable/#gradle).
 The manual provides guidance on how to configure your Gradle projects for seamless integration with Nix, including generating the dependency lock file and leveraging the mitm-cache.
 
@@ -122,7 +119,6 @@ If you have security concerns, you can omit the `$(...)` wrapping to build the s
 This allows you to inspect the script’s contents to verify its behavior before manually executing it.
 
 ## Conclusion
-
 The new Gradle build support in Nixpkgs standardizes how developers approach wrapping Gradle projects in Nix.
 By introducing the dependency lock file and leveraging the mitm-cache, this solution bridges the gap between Gradle's dynamic dependency resolution and Nix's strict reproducibility.
 
