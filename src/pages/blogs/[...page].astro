@@ -2,12 +2,22 @@
 import { getCollection } from "astro:content";
 import type { Page } from "astro";
 import type { CollectionEntry } from "astro:content";
+import type { Blog } from "../../types/Blog";
 import Layout from "../../layouts/Layout.astro";
 import BlogList from "../../components/BlogList.astro";
 import Pagination from "../../components/Pagination.astro";
 
-export async function getStaticPaths({ paginate }) {
-  const blogs = await getCollection("blogs");
+export async function getStaticPaths({ paginate }: any) {
+  const sourceBlogs = await getCollection("blogs");
+
+  const byDate = (a: any, b: any) => {
+    const aDate = new Date((a as Blog).data.datetime);
+    const bDate = new Date((b as Blog).data.datetime);
+
+    return bDate.getTime() - aDate.getTime();
+  };
+
+  const blogs = sourceBlogs.sort(byDate);
 
   return paginate(blogs, {
     pageSize: 5,
