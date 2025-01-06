@@ -2,15 +2,14 @@
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
-import Layout from "../../layouts/Layout.astro";
+import Layout from "../../../../../layouts/Layout.astro";
+import { getBlogParams } from "../../../../../utils/params";
 
 export const getStaticPaths = async () => {
   const blogs = await getCollection("blogs");
   const paths = blogs.map((blog) => {
     return {
-      params: {
-        slug: blog.slug,
-      },
+      params: getBlogParams(blog),
       props: {
         blog,
       },
@@ -36,7 +35,7 @@ const { Content } = await blog.render();
   </section>
 
   <script>
-    import { toggleMarkdownTheme } from "../../scripts/theme";
+    import { toggleMarkdownTheme } from "../../../../../scripts/theme";
 
     // initialized in Layout.astro
     const theme = document.documentElement.dataset.theme;
