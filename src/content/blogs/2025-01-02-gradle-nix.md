@@ -38,12 +38,12 @@ This results in coarse-grained Nix cache eviction—even if a single dependency 
 This inefficiency can slow development and increase resource consumption, particularly for large projects with many dependencies.
 
 ## The 2025 Solution
-A new approach introduced in at the end of 2024 in [nixpkgs](https://github.com/NixOS/nixpkgs) simplifies the process by using updated Gradle build backed by [mitm-cache](https://github.com/chayleaf/mitm-cache).
+A new approach added to [nixpkgs](https://github.com/NixOS/nixpkgs) at the end of 2024 simplifies the process with enhanced Gradle build support backed by [mitm-cache](https://github.com/chayleaf/mitm-cache).
 
 This solution introduces a dependency lock file in JSON format, explicitly maintained by the developer. The process works as follows:
 
 1. **Generate a Dependency Lock File**:
-   Developers run a Gradle task outside the sandbox to generate a dependency lock file. This file explicitly lists all dependencies and their sources in a reproducible JSON format.
+   Developers run a Nix build that generates a dependency lock file. This file explicitly lists all dependencies of the Gradle build and their sources in a reproducible JSON format.
 
 2. **Populate the MITM Cache**:
    The dependency lock file is read by the mitm-cache, which downloads the listed dependencies and stores them locally.
@@ -59,7 +59,7 @@ Of course this comes at the cost of having to manually update the dependency loc
 To start using this new infrastructure, refer to the detailed instructions in the [Nixpkgs Manual](https://nixos.org/manual/nixpkgs/stable/#gradle).
 The manual provides guidance on how to configure your Gradle projects for seamless integration with Nix, including generating the dependency lock file and leveraging the mitm-cache.
 
-As en example, let's create a Nix derivation that [build groovy-language-server](https://github.com/GroovyLanguageServer/groovy-language-server):
+As an example, let's create a Nix derivation that [build groovy-language-server](https://github.com/GroovyLanguageServer/groovy-language-server):
 
 ```nix
 {
@@ -108,7 +108,7 @@ in
 ```
 
 What's important here is the let-in binding that assigns the derivation to a variable called `self`.
-Without this it's not possible to generate the dependencies lock file for package that are not local to nixpkgs.
+Without this it's not possible to generate the dependencies lock file for package that are not locale to nixpkgs.
 Refer to the manual section linked above for more details about this.
 
 In order to generate or update the `deps.json` dependency lock file, run `$(nix build .#groovy-language-server.mitmCache.updateScript --print-out-paths)`.
