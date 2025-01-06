@@ -11,8 +11,8 @@ export async function getStaticPaths({ paginate }: any) {
   const sourceBlogs = await getCollection("blogs");
 
   const byDate = (a: any, b: any) => {
-    const aDate = new Date((a as Blog).data.datetime);
-    const bDate = new Date((b as Blog).data.datetime);
+    const aDate = new Date((a as Blog).data.pubDate);
+    const bDate = new Date((b as Blog).data.pubDate);
 
     return bDate.getTime() - aDate.getTime();
   };

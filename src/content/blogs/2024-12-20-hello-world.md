@@ -1,7 +1,7 @@
 ---
 title: "Hello World!"
 description: "Exciting News: I’m Going Freelance in 2025! Read more about the services I will be offering."
-datetime: "2024-12-20"
+pubDate: "2024-12-20"
 image: "https://images.unsplash.com/photo-1660616246653-e2c57d1077b9?q=80&w=640&auto=format&fit=crop"
 ---
 

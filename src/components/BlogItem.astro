@@ -15,7 +15,7 @@ const { blog } = Astro.props;
       </h3>
       <time datetime={blog.datetime} class="block mt-3 text-sm text-offset">
         {
-          new Date(blog.data.datetime).toLocaleDateString("en-US", {
+          new Date(blog.data.pubDate).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
             day: "numeric",
