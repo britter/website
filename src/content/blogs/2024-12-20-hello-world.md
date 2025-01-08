@@ -8,7 +8,7 @@ image: "https://images.unsplash.com/photo-1660616246653-e2c57d1077b9?q=80&w=640&
 # Exciting News: I’m Going Freelance in 2025!
 
 I’m thrilled to share with you that starting in **January 2025**, I will be embarking on a new chapter in my professional journey as a **freelancer**.
-After years of working at **Gradle, Inc.**, I’ve decided to take the leap and use my experience and expertise to help businesses, teams, and individuals thrive in the ever-evolving world of software development and infrastructure.
+After years of working at **Gradle Inc.**, I’ve decided to take the leap and use my experience and expertise to help businesses, teams, and individuals thrive in the ever-evolving world of software development and infrastructure.
 
 Throughout my career, I’ve had the opportunity to lead and contribute to exciting projects, work with brilliant teams, and drive innovations that have shaped the way software is built, deployed, and maintained.
 As I take this next step, I’m excited to offer a range of services that will help companies scale their engineering practices, optimize their build systems, and grow more efficiently.
@@ -24,7 +24,7 @@ Here’s a summary of the services I’ll be providing:
 ### 1. **Developer Productivity Engineering (DPE)**
 
 Developer Productivity Engineering is the next frontier after DevOps, focusing on optimizing the developer experience to remove bottlenecks and improve efficiency.
-As a former leader of the Developer Productivity team at **Gradle, Inc.**, I bring unparalleled experience in optimizing workflows, toolchains, and CI/CD pipelines.
+As a former leader of the Developer Productivity team at **Gradle Inc.**, I bring unparalleled experience in optimizing workflows, toolchains, and CI/CD pipelines.
 Services include:
 
 - Developer workflow optimization
@@ -41,7 +41,7 @@ Read more about my DPE services [here](/services/dpe).
 
 Every business is a software business, and as companies grow, so must their engineering teams.
 I’ve seen firsthand how an engineering team can scale effectively.
-At **Gradle, Inc.**, I helped grow the team from 30 to over 100 engineers, all working remotely and efficiently delivering impactful features.
+At **Gradle Inc.**, I helped grow the team from 30 to over 100 engineers, all working remotely and efficiently delivering impactful features.
 I can help your organization scale its engineering efforts to meet the demands of growth.
 Services include:
 
@@ -58,7 +58,7 @@ Read more about my engineering growth services [here](/services/engineering-grow
 ### 3. **Gradle Build Tool Consulting**
 
 Gradle is an incredibly powerful and flexible build system that enables teams to streamline their workflows, increase productivity, and ensure consistent builds.
-With over **5 years of experience at Gradle, Inc.**, I have the knowledge and skills to help you optimize your Gradle builds. Services include:
+With over **5 years of experience at Gradle Inc.**, I have the knowledge and skills to help you optimize your Gradle builds. Services include:
 
 - Build performance optimizations
 - Build migrations (Groovy DSL to Kotlin DSL)
@@ -87,7 +87,7 @@ Read more about my NixOS consulting services [here](/services/nixos).
 
 ## Why I Made the Leap
 
-Having had the privilege of being a part of **Gradle, Inc.**, I’ve learned invaluable lessons on scaling engineering practices, optimizing developer productivity, and building strong, high-performing teams.
+Having had the privilege of being a part of **Gradle Inc.**, I’ve learned invaluable lessons on scaling engineering practices, optimizing developer productivity, and building strong, high-performing teams.
 I want to bring this experience to you, helping organizations and teams unlock their full potential by providing tailored, expert advice and solutions.
 
 I believe there’s a huge opportunity for businesses to improve how they build software, manage infrastructure, and develop their teams, and I’m excited to help you on that journey.
