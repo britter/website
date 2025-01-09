@@ -1,6 +1,22 @@
 ---
 import { getBlogParams } from "../utils/params";
 const { blog } = Astro.props;
+
+type ImageModule = { default: { src: string } };
+const images = import.meta.glob("/src/assets/**") as Record<
+  string,
+  () => Promise<ImageModule>
+>;
+
+let imageSrc = "";
+if (blog.data.image) {
+  const imagePath = `/src/assets/${blog.data.image}`;
+  if (imagePath in images) {
+    imageSrc = (await images[imagePath]()).default.src;
+  } else {
+    imageSrc = blog.data.image;
+  }
+}
 ---
 
 <a href={`/blog/${getBlogParams(blog).path}`} class="block">
@@ -29,7 +45,7 @@ const { blog } = Astro.props;
       blog.data.image && (
         <div class="block w-full md:w-1/4 rounded-lg mt-4 lg:mt-1">
           <img
-            src={blog.data.image}
+            src={imageSrc}
             alt={blog.data.title}
             class="w-full lg:h-auto object-cover object-center rounded-lg
                     md:group-hover:scale-105 transition-transform duration-300"
