@@ -92,9 +92,6 @@ In this example, we define several options:
 * `port`: An integer option specifying the port for the service, defaulting to 8080.
 * `package`: A package option, defaulting to the python3 package, allowing users to customize the package used by the module.
 
-The NixOS module system provides several helper functions such as `mkPackageOption` that make it easier to define options.
-All the types you would expect are available to de
-
 The module system provides several helper functions, such as mkPackageOption, which simplify the process of defining options.
 Additionally, `lib.types` offers all the standard types you might expect for configuration.
 For more details, refer to the [NixOS Manual on Option Types](https://nixos.org/manual/nixos/stable/#sec-option-types).
