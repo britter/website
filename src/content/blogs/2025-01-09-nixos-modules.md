@@ -162,14 +162,14 @@ config = lib.mkIf cfg.enable {
 };
 ```
 
-In this example we're using the a builder function called `writeText` that writes a text file to the Nix store and returns a reference to it.
+In this example we're using a builder function called `writeText` that writes a text file to the Nix store and returns a reference to it.
 It takes as arguments the name of the file to write and the contents of the file.
 nixpkgs offers several [useful builder functions](https://nixos.org/manual/nixpkgs/stable/#trivial-builder-writeText) like this.
 The file is later used to define a [systemd service](https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=systemd.services.%3Cname%3E) that takes care of starting the server.
 After applying this configuration to your system, `systemctl status demo-service` should report that the demo service is running.
 When pointing your browser to http://localhost:8080 you should see the message that you have configured.
 
-Note: If you want to write more sophisticated Python programs that may require additional dependencies, have a look at the [`writePython3Bin` function](https://github.com/NixOS/nixpkgs/blob/515a7562c8e11176638d4c4920948afefdf27207/pkgs/build-support/writers/scripts.nix#L1236-L1257).
+Hint: If you want to write more sophisticated Python programs that may require additional dependencies, have a look at the [`writePython3Bin` function](https://github.com/NixOS/nixpkgs/blob/515a7562c8e11176638d4c4920948afefdf27207/pkgs/build-support/writers/scripts.nix#L1236-L1257).
 
 ## Next level: Complex Option Types
 
@@ -195,7 +195,7 @@ my.modules.demo = {
 ```
 
 In the config block of our module we could map over the greetings and write conditions to the python file.
-Unfortunately due to Python being indentation sensitive the code get's a little bit messy:
+Unfortunately due to Python being indentation sensitive the code gets a little bit messy:
 
 ```nix
 server = pkgs.writeText "demo-server.py" (''
@@ -245,10 +245,12 @@ For the two greetings that we configured for Jane and joe, the resulting Python 
             response = 'Howdy, Joe!'
 ```
 
+After activating the new configuration on your system, when pointing the browser to http://localhost:8080/jane we will be greeted with "Hi, Jane!", and when navigating to http://localhost:8080/joe you will see the greeting "Howdy, Joe!".
+
 ## Boss Level: Using Submodules to define Option types
 
 Using lists of attribute sets is a great way of defining complex option types.
-However there's one problem with our current solution.
+However, there's one problem with our current solution.
 There's nothing stopping a user from defining an abitrary atrribute set that doesn't have the right key-value pairs.
 This makes it harder for users to understand how they can configure the module.
 What we need is a way of defining the shape of the attribute sets that can be put into the `greetings` list.
@@ -282,10 +284,10 @@ You can either directly pass an attribute set defining `options`, and `config`.
 Or - if you need to self-reference the module like we do in the default for the message option - `submodule` takes a module defintion function.
 As with top level module function, this function provides access to `config`, but in this case it's not the system config, but the config of the submodule.
 
-Note: It's also possible to define a config block inside the submodule.
+Hint: It's also possible to define a config block inside the submodule.
 This makes it possible apply configuration specific to the submodule, like writing submodule specific files to the nix store.
 
-With this option definition in place for greeting, users immediately get the following error if they define have a typo in their configuration:
+With this option definition in place for `greetings`, users immediately get the following error if they define have a typo in their configuration:
 
 ```
 error: The option `my.modules.demo.greetings."[definition 1-entry 1]".messgae' does not exist. Definition values:
