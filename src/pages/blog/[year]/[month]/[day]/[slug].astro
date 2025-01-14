@@ -31,7 +31,7 @@ const { Content } = await render(blog);
   <section class="lg:flex justify-center mt-12">
     <div id="markdown" class="prose prose-lg overflow-visible relative mb-5">
       <h1>{blog.data.title}</h1>
-      <time datetime={blog.datetime} class="text-sm">
+      <time datetime={blog.data.pubDate.toLocaleDateString()} class="text-sm">
         {
           new Date(blog.data.pubDate).toLocaleDateString("en-US", {
             year: "numeric",

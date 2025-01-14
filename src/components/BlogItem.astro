@@ -30,7 +30,10 @@ if (blog.data.image) {
       >
         {blog.data.title}
       </h3>
-      <time datetime={blog.datetime} class="block mt-3 text-sm text-offset">
+      <time
+        datetime={blog.data.pubDate.toLocaleDateString()}
+        class="block mt-3 text-sm text-offset"
+      >
         {
           new Date(blog.data.pubDate).toLocaleDateString("en-US", {
             year: "numeric",
