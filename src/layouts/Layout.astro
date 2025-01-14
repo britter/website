@@ -6,20 +6,33 @@ import "../styles/index.css";
 
 interface Props {
   title: string;
+  description?: string;
+  image?: string;
+  type?: string;
 }
 
-const { title } = Astro.props;
+const { title, description, image, type = "website" } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" class="h-full" data-theme="light">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={title} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- social preview -->
+    <meta property="og:title" content={title} />
+    <meta
+      property="og:description"
+      content={description ? description : title}
+    />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:type" content={type} />
 
     <!-- initialize theme -->
     <script is:inline>
@@ -48,7 +61,7 @@ const { title } = Astro.props;
   </head>
   <body
     class="h-full flex flex-col overflow-x-hidden bg-default
-		text-default text-base selection:bg-secondary"
+      text-default text-base selection:bg-secondary"
   >
     <Header />
     <section class="flex-grow">

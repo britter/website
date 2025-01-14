@@ -1,6 +1,9 @@
 // originally copied from https://www.tomspencer.dev/blog/2023/12/05/date-based-urls-with-astro/
 import type { CollectionEntry } from 'astro:content';
 
+type ImageModule = { default: {src: string}};
+const images = import.meta.glob("../assets/**", {eager: true}) as ImageModule;
+
 export function getBlogParams(post: CollectionEntry<'blog'>) {
   // Grab the `pubDate` from the blog post's frontmatter.
   // This will be of type `Date`, since the `CollectionEntry` of type 'blog'
@@ -22,6 +25,16 @@ export function getBlogParams(post: CollectionEntry<'blog'>) {
   // Build our desired date-based path from the relevant parts.
   const path = `${pubYear}/${pubMonth}/${pubDay}/${slug}`;
 
+  let image = "";
+  if (post.data.image) {
+    const imagePath = `../assets/${post.data.image}`;
+    if (imagePath in images) {
+      image = images[imagePath].default.src;
+    } else {
+      image = post.data.image;
+    }
+  }
+
   // Return each token so it can be used by calling code.
   return {
     year: pubYear,
@@ -29,5 +42,6 @@ export function getBlogParams(post: CollectionEntry<'blog'>) {
     day: pubDay,
     path,
     slug,
+    image,
   };
 }

@@ -2,24 +2,11 @@
 import { getBlogParams } from "../utils/params";
 const { blog } = Astro.props;
 
-type ImageModule = { default: { src: string } };
-const images = import.meta.glob("/src/assets/**") as Record<
-  string,
-  () => Promise<ImageModule>
->;
-
-let imageSrc = "";
-if (blog.data.image) {
-  const imagePath = `/src/assets/${blog.data.image}`;
-  if (imagePath in images) {
-    imageSrc = (await images[imagePath]()).default.src;
-  } else {
-    imageSrc = blog.data.image;
-  }
-}
+const blogParams = getBlogParams(blog);
+const url = `/blog/${blogParams.path}`;
 ---
 
-<a href={`/blog/${getBlogParams(blog).path}`} class="block">
+<a href={url} class="block">
   <li
     class="group flex flex-col md:flex-row items-start bg-background p-5 rounded-lg shadow-md
         border border-default hover:shadow-lg transition-shadow"
@@ -48,7 +35,7 @@ if (blog.data.image) {
       blog.data.image && (
         <div class="block w-full md:w-1/4 rounded-lg mt-4 lg:mt-1">
           <img
-            src={imageSrc}
+            src={blogParams.image}
             alt={blog.data.title}
             class="w-full lg:h-auto object-cover object-center rounded-lg
                     md:group-hover:scale-105 transition-transform duration-300"

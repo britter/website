@@ -60,13 +60,13 @@
     },
     {
       "image": "gradle",
-      "title": "Gradle consulting",
+      "title": "Gradle Build Tool Consulting",
       "type": "Technical",
       "link": "/services/gradle"
     },
     {
       "imageUrl": "https://images.unsplash.com/photo-1714846201575-4f06e069dc6f?q=80&w=764&auto=format&fit=crop",
-      "title": "NixOS consulting",
+      "title": "NixOS Consulting",
       "type": "Technical",
       "link": "/services/nixos"
     }

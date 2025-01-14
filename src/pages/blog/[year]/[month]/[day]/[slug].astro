@@ -25,9 +25,15 @@ type Props = {
 
 const { blog } = Astro.props;
 const { Content } = await render(blog);
+const blogParams = getBlogParams(blog);
 ---
 
-<Layout title={blog.data.title}>
+<Layout
+  title={blog.data.title}
+  description={blog.data.description}
+  image={blogParams.image}
+  type="article"
+>
   <section class="lg:flex justify-center mt-12">
     <div id="markdown" class="prose prose-lg overflow-visible relative mb-5">
       <h1>{blog.data.title}</h1>
