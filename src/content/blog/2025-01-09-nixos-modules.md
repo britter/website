@@ -52,9 +52,11 @@ This function provides defaults for the more general `lib.mkOption` function tha
 The result of this is a boolean option with a descriptive explanation, defaulting to false.
 Finally, the configuration of the module is applied if the enable option is true.
 
-Note: While we've used `my.module.demo` as the namespace for our module here, it's perfectly valid to add new options to existing modules.
+:::note
+While we've used `my.module.demo` as the namespace for our module here, it's perfectly valid to add new options to existing modules.
 For we could have defined `options.services.nginx.custom` as a new sub-option for the nginx module.
 Depending on the use case it might make sense to enable our custom module when `config.services.nginx.enable` is `true` instead of having our own enable option.
+:::
 
 ## Declaring Simple Options with Basic Types
 
@@ -167,7 +169,9 @@ The file is later used to define a [systemd service](https://search.nixos.org/op
 After applying this configuration to your system, `systemctl status demo-service` should report that the demo service is running.
 When pointing your browser to http://localhost:8080 you should see the message that you have configured.
 
-Hint: If you want to write more sophisticated Python programs that may require additional dependencies, have a look at the [`writePython3Bin` function](https://github.com/NixOS/nixpkgs/blob/515a7562c8e11176638d4c4920948afefdf27207/pkgs/build-support/writers/scripts.nix#L1236-L1257).
+:::tip
+If you want to write more sophisticated Python programs that may require additional dependencies, have a look at the [`writePython3Bin` function](https://github.com/NixOS/nixpkgs/blob/515a7562c8e11176638d4c4920948afefdf27207/pkgs/build-support/writers/scripts.nix#L1236-L1257).
+:::
 
 ## Next level: Complex Option Types
 
@@ -282,8 +286,10 @@ You can either directly pass an attribute set defining `options`, and `config`.
 Or - if you need to self-reference the module like we do in the default for the message option - `submodule` takes a module defintion function.
 As with top level module function, this function provides access to `config`, but in this case it's not the system config, but the config of the submodule.
 
-Hint: It's also possible to define a config block inside the submodule.
+:::tip
+It's also possible to define a config block inside the submodule.
 This makes it possible apply configuration specific to the submodule, like writing submodule specific files to the nix store.
+:::
 
 With this option definition in place for `greetings`, users immediately get the following error if they define have a typo in their configuration:
 

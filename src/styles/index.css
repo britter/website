@@ -1,1 +1,6 @@
 @import "theme.css";
+@import "@microflash/remark-callout-directives/theme/github";
+/* Fix for https://github.com/Microflash/remark-callout-directives/pull/2 */
+.callout-hint > svg {
+  fill: none;
+}
