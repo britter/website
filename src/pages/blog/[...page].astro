@@ -8,7 +8,7 @@ import BlogList from "../../components/BlogList.astro";
 import Pagination from "../../components/Pagination.astro";
 
 export async function getStaticPaths({ paginate }: any) {
-  const sourceBlogs = await getCollection("blogs");
+  const sourceBlogs = await getCollection("blog");
 
   const byDate = (a: any, b: any) => {
     const aDate = new Date((a as Blog).data.pubDate);
@@ -25,7 +25,7 @@ export async function getStaticPaths({ paginate }: any) {
 }
 
 export interface Props {
-  page: Page<CollectionEntry<"blogs">>;
+  page: Page<CollectionEntry<"blog">>;
 }
 
 const { page } = Astro.props;

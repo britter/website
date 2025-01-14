@@ -1,7 +1,7 @@
 // originally copied from https://www.tomspencer.dev/blog/2023/12/05/date-based-urls-with-astro/
 import type { CollectionEntry } from 'astro:content';
 
-export function getBlogParams(post: CollectionEntry<'blogs'>) {
+export function getBlogParams(post: CollectionEntry<'blog'>) {
   // Grab the `pubDate` from the blog post's frontmatter.
   // This will be of type `Date`, since the `CollectionEntry` of type 'blog'
   // defines the `pubDate` field as type 'Date'.
