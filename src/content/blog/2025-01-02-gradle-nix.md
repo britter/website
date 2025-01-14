@@ -5,9 +5,6 @@ pubDate: "2025-01-02"
 image: "https://images.unsplash.com/photo-1714846201575-4f06e069dc6f?q=80&w=640&auto=format&fit=crop"
 ---
 
-# Wrapping Elephants in Snowflakes
-
-## Introduction
 [Gradle build tool](https://gradle.org) is known for its flexibility and powerful dependency management, and has become the cornerstone of many JVM-based projects.
 Meanwhile, the [Nix package manager](https://nixos.org) is celebrated for its reproducibility and sandboxed builds, ensuring complete isolation from the host system.
 

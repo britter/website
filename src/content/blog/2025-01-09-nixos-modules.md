@@ -5,8 +5,6 @@ pubDate: "2025-01-09"
 image: "nixos-modules.png"
 ---
 
-# Understanding NixOS Modules and Declaring Options
-
 NixOS is a unique Linux distribution that uses a declarative approach to system configuration.
 Instead of scattered and imperatively modified files, NixOS organizes everything into a unified, reproducible specification written in the Nix language.
 At the heart of this system is the NixOS module system, a framework for defining and customizing system behavior.

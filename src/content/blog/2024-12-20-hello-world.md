@@ -5,8 +5,6 @@ pubDate: "2024-12-20"
 image: "https://images.unsplash.com/photo-1660616246653-e2c57d1077b9?q=80&w=640&auto=format&fit=crop"
 ---
 
-# Exciting News: I’m Going Freelance in 2025!
-
 I’m thrilled to share with you that starting in **January 2025**, I will be embarking on a new chapter in my professional journey as a **freelancer**.
 After years of working at **Gradle Inc.**, I’ve decided to take the leap and use my experience and expertise to help businesses, teams, and individuals thrive in the ever-evolving world of software development and infrastructure.
 
