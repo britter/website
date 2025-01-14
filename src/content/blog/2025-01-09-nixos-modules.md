@@ -41,9 +41,9 @@ in {
 
 A NixOS module is a function that takes as a parameter an attribute set containing:
 
-* `config`: The current system configuration.
-* `lib`: A reference to the nixpkgs library.
-* `pkgs`: A reference to the nixpkgs for the current system.
+- `config`: The current system configuration.
+- `lib`: A reference to the nixpkgs library.
+- `pkgs`: A reference to the nixpkgs for the current system.
 
 Most modules define a binding for their configuration namespace to a variable called cfg, which will later be useful.
 Next, the configuration namespace is defined using the options attribute of the module.
@@ -87,10 +87,10 @@ options.my.modules.demo = {
 
 In this example, we define several options:
 
-* `enable`: A boolean option using mkEnableOption to toggle the module on or off.
-* `message`: A string option with a default value of "Hello, world!".
-* `port`: An integer option specifying the port for the service, defaulting to 8080.
-* `package`: A package option, defaulting to the python3 package, allowing users to customize the package used by the module.
+- `enable`: A boolean option using mkEnableOption to toggle the module on or off.
+- `message`: A string option with a default value of "Hello, world!".
+- `port`: An integer option specifying the port for the service, defaulting to 8080.
+- `package`: A package option, defaulting to the python3 package, allowing users to customize the package used by the module.
 
 The module system provides several helper functions, such as mkPackageOption, which simplify the process of defining options.
 Additionally, `lib.types` offers all the standard types you might expect for configuration.
@@ -131,14 +131,14 @@ config = lib.mkIf cfg.enable {
         class RequestHandler(BaseHTTPRequestHandler):
             def do_GET(self):
                 response = "${cfg.message}"
-                
+
                 # Send response status code
                 self.send_response(200)
-                
+
                 # Send headers
                 self.send_header("Content-type", "text/plain")
                 self.end_headers()
-                
+
                 # Send the response body
                 self.wfile.write(response.encode())
 
@@ -310,4 +310,3 @@ I hope this blog post was a help in that regard.
 
 If you need help with NixOS or want to optimize your setup, I offer [NixOS consulting services](/services/nixos).
 Feel free to get in touch with me!
-

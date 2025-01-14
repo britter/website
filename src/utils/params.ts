@@ -1,20 +1,20 @@
 // originally copied from https://www.tomspencer.dev/blog/2023/12/05/date-based-urls-with-astro/
-import type { CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from "astro:content";
 
-type ImageModule = { default: {src: string}};
-const images = import.meta.glob("../assets/**", {eager: true}) as ImageModule;
+type ImageModule = { default: { src: string } };
+const images = import.meta.glob("../assets/**", { eager: true }) as ImageModule;
 
-export function getBlogParams(post: CollectionEntry<'blog'>) {
+export function getBlogParams(post: CollectionEntry<"blog">) {
   // Grab the `pubDate` from the blog post's frontmatter.
   // This will be of type `Date`, since the `CollectionEntry` of type 'blog'
   // defines the `pubDate` field as type 'Date'.
   const pubDate: Date = post.data.pubDate;
-  console.log(typeof pubDate)
+  console.log(typeof pubDate);
 
   // Parse out the year, month and day from the `pubDate`.
-  const pubYear = String(pubDate.getFullYear()).padStart(4, '0');
-  const pubMonth = String(pubDate.getMonth() + 1).padStart(2, '0');
-  const pubDay = String(pubDate.getDate()).padStart(2, '0');
+  const pubYear = String(pubDate.getFullYear()).padStart(4, "0");
+  const pubMonth = String(pubDate.getMonth() + 1).padStart(2, "0");
+  const pubDay = String(pubDate.getDate()).padStart(2, "0");
 
   // Astro generates the `slug` from the filename of the content.
   // Our filenames begin with `YYYY-MM-DD-`, but we don't want this in our resulting URL.
