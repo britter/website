@@ -6,28 +6,20 @@ const currentYear = new Date().getFullYear();
 ---
 
 <section class="py-10 mt-4">
-  <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-    <div
-      class="text-center xl:flex xl:items-center xl:justify-between xl:text-left"
-    >
-      <div class="xl:flex xl:items-center xl:justify-start">
-        <p class="mt-5 text-sm xl:ml-6 xl:mt-0">
-          © {currentYear}
-          {basic.name}. All Rights Reserved.
-        </p>
-      </div>
+  <!-- Horizontal line separator -->
+  <hr class="border-t border-gray-300 mb-6" />
 
-      <div
-        class="items-center mt-8 xl:mt-0 xl:flex xl:justify-end xl:space-x-8"
-      >
-        <ul
-          class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 xl:justify-end"
-        >
+  <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+    <div class="grid grid-cols-1 gap-8 text-center md:grid-cols-3 md:text-left">
+      <!-- Left Section: Navigation Links -->
+      <div class="flex flex-col items-center md:items-start">
+        <h3 class="text-sm font-semibold">Navigation</h3>
+        <ul class="space-y-2 mt-2 ml-4">
           <li>
             <a
               href="/blog"
               title="Blog"
-              class="text-sm transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
+              class="text-sm transition-all duration-200 hover:text-opacity-80 hover:underline focus:text-opacity-80"
             >
               Blog
             </a>
@@ -35,8 +27,8 @@ const currentYear = new Date().getFullYear();
           <li>
             <a
               href="/services"
-              title="Blog"
-              class="text-sm transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
+              title="Services"
+              class="text-sm transition-all duration-200 hover:text-opacity-80 hover:underline focus:text-opacity-80"
             >
               Services
             </a>
@@ -45,17 +37,21 @@ const currentYear = new Date().getFullYear();
             <a
               href="/"
               title="About"
-              class="text-sm transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
+              class="text-sm transition-all duration-200 hover:text-opacity-80 hover:underline focus:text-opacity-80"
             >
               About
             </a>
           </li>
         </ul>
+      </div>
 
-        <div class="w-full h-px mt-8 mb-5 xl:w-px xl:m-0 xl:h-6 bg-border">
-        </div>
-
-        <ul class="flex items-center justify-center space-x-8 xl:justify-end">
+      <!-- Center Section: Copyright & Social Links -->
+      <div class="flex flex-col items-center">
+        <p class="text-sm">
+          © {currentYear}
+          {basic.name}. All Rights Reserved.
+        </p>
+        <ul class="flex space-x-6 mt-4">
           <li>
             <a
               href="/feed.xml"
@@ -78,7 +74,6 @@ const currentYear = new Date().getFullYear();
               <Icon name="Github" />
             </a>
           </li>
-
           <li>
             <a
               href="https://chaos.social/@britter"
@@ -90,7 +85,6 @@ const currentYear = new Date().getFullYear();
               <Icon name="Mastodon" />
             </a>
           </li>
-
           <li>
             <a
               href="https://www.linkedin.com/in/benedikt-ritter-83847b84/"
@@ -103,6 +97,16 @@ const currentYear = new Date().getFullYear();
             </a>
           </li>
         </ul>
+      </div>
+
+      <!-- Right Section: Terms & Conditions -->
+      <div class="flex justify-center md:justify-end">
+        <a
+          href="/terms"
+          class="text-sm transition-all duration-200 hover:text-opacity-80 hover:underline focus:text-opacity-80"
+        >
+          Terms & Conditions
+        </a>
       </div>
     </div>
   </div>
