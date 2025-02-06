@@ -19,7 +19,7 @@
     devShells.default = pkgs.mkShell {
       inherit (self.checks.${system}.pre-commit-check) shellHook;
       buildInputs = with pkgs; [
-        nodejs_23
+        nodejs_22
       ] ++ self.checks.${system}.pre-commit-check.enabledPackages;
     };
   });
