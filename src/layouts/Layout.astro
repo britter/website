@@ -19,11 +19,8 @@ const { title, description, image, type = "website" } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
     <meta name="description" content={description} />
-
     <!-- social preview -->
     <meta property="og:title" content={title} />
     <meta
@@ -33,6 +30,15 @@ const { title, description, image, type = "website" } = Astro.props;
     <meta property="og:image" content={image} />
     <meta property="og:url" content={Astro.url} />
     <meta property="og:type" content={type} />
+
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="RSS Feed"
+      href="/feed.xml"
+    />
 
     <!-- initialize theme -->
     <script is:inline>
