@@ -14,8 +14,15 @@ export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false); // Tracks if form was successfully submitted
 
   const validateEmail = (email) => /^[^\s@]+@[^\s@]+$/.test(email);
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]),
+      )
+      .join("&");
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     let newErrors = {};
@@ -36,18 +43,33 @@ export default function ContactForm() {
     setIsSubmitting(true);
     setErrors({});
 
-    setTimeout(() => {
+    // Netlify Form Submission
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({ "form-name": "contact", ...formData }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Form submission failed");
+      }
+
       setSubmitted(true); // Show success checkmark
       setStatus("Message sent successfully!");
 
       setTimeout(() => {
-        setIsOpen(false); // Close modal after delay
+        setIsOpen(false);
         setStatus("");
         setIsSubmitting(false);
         setSubmitted(false);
         setFormData({ name: "", email: "", message: "" });
       }, 1500);
-    }, 1500);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setStatus("Submission failed. Please try again.");
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -80,7 +102,7 @@ export default function ContactForm() {
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full relative border border-gray-300">
+              <div className="bg-background p-6 rounded-lg shadow-xl max-w-md w-full relative border border-gray-300">
                 {/* Close Button (❌) */}
                 <button
                   className="absolute top-3 right-3 text-gray-600 hover:text-gray-900 transition"
