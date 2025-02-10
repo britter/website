@@ -137,7 +137,6 @@ export default function ContactForm() {
                       netlify-honeypot="bot-field"
                       onSubmit={handleSubmit}
                     >
-                      <input type="hidden" name="form-name" value="contact" />
                       <p className="hidden">
                         <label>
                           Don’t fill this out if you’re human:{" "}
