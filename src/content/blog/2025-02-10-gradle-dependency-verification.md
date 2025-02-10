@@ -167,6 +167,15 @@ So if a PGP key was present for an artifact, we removed the Gradle-generated che
 
 [^2]: This is because checksums only confirm **integrity** (the artifact has not been altered), while signatures confirm both integrity and **authenticity** (it was produced by a trusted source).
 
+**EDIT:** I need to make a correction here as [Cédric Champeau pointed out](https://www.linkedin.com/feed/update/urn:li:activity:7294644088950194176?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7294644088950194176%2C7294646893928669188%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287294646893928669188%2Curn%3Ali%3Aactivity%3A7294644088950194176%29):
+
+> Small nitpick, you're saying 'This is redundant, because verifying a signature is more secure than comparing checksums'.
+> That isn't so simple.
+> They are orthogonal dimensions, and one doesn't replace the other.
+> As your footnote mentions, checksums are for integrity, and signatures for authenticity.
+> Therefore, you could very well have a signed artifact which is compromised, because a key was stolen.
+> So signatures do _not_ include integrity, they just give a reasonable trust in who published an artifact.
+
 ### Replacing Component Entries with Trusted Key Entries
 
 Next, if an artifact is signed with a known PGP key, instead of listing it as a component, it can be added as a trusted key.
