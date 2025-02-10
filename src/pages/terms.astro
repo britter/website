@@ -5,8 +5,16 @@ import { Content } from "../content/terms.md";
 
 <Layout title="Terms & Conditions">
   <section class="bg-background">
-    <div class="container px-6 py-8 mx-auto prose prose-lg">
+    <div id="markdown" class="container px-6 py-8 mx-auto prose prose-lg">
       <Content />
     </div>
   </section>
+  <script>
+    import { toggleMarkdownTheme } from "../scripts/theme";
+
+    // initialized in Layout.astro
+    const theme = document.documentElement.dataset.theme;
+
+    toggleMarkdownTheme(theme);
+  </script>
 </Layout>
