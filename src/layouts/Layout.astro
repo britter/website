@@ -1,7 +1,7 @@
 ---
 import Header from "../components/sections/Header.astro";
 import Footer from "../components/sections/Footer.astro";
-
+import ContactForm from "../components/ContactForm";
 import "../styles/index.css";
 
 interface Props {
@@ -73,6 +73,7 @@ const { title, description, image, type = "website" } = Astro.props;
     <section class="flex-grow">
       <slot />
     </section>
+    <ContactForm client:load />
     <Footer />
   </body>
 </html>

@@ -6,8 +6,10 @@ import remarkCalloutDirectives from "@microflash/remark-callout-directives";
 import githubCalloutOptions from "@microflash/remark-callout-directives/config/github";
 import remarkDirective from "remark-directive";
 
+import react from "@astrojs/react";
+
 export default defineConfig({
-  integrations: [tailwind(), icon()],
+  integrations: [tailwind(), icon(), react()],
   redirects: {
     "/blogs": "/blog",
     "/blogs/2025-01-02-gradle-nix": "/blog/2025/01/02/gradle-nix",
