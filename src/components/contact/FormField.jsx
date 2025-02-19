@@ -18,7 +18,7 @@ export default function FormField({
           value={value}
           onChange={onChange}
           required
-          className="w-full border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="w-full rounded-md border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       ) : (
         <input
@@ -28,10 +28,10 @@ export default function FormField({
           value={value}
           onChange={onChange}
           required
-          className="w-full border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="w-full rounded-md border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       )}
-      {error && <p className="text-red-500 text-sm">{error}</p>}
+      {error && <p className="text-sm text-red-500">{error}</p>}
     </div>
   );
 }

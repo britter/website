@@ -5,16 +5,16 @@ import { basic } from "../../config/cv.json";
 const currentYear = new Date().getFullYear();
 ---
 
-<section class="py-10 mt-4">
+<section class="mt-4 py-10">
   <!-- Horizontal line separator -->
-  <hr class="border-t border-gray-300 mb-6" />
+  <hr class="mb-6 border-t border-gray-300" />
 
-  <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 gap-8 text-center md:grid-cols-3 md:text-left">
       <!-- Left Section: Navigation Links -->
       <div class="flex flex-col items-center md:items-start">
         <h3 class="text-sm font-semibold">Navigation</h3>
-        <ul class="space-y-2 mt-2 ml-4">
+        <ul class="ml-4 mt-2 space-y-2">
           <li>
             <a
               href="/blog"
@@ -51,7 +51,7 @@ const currentYear = new Date().getFullYear();
           © {currentYear}
           {basic.name}. All Rights Reserved.
         </p>
-        <ul class="flex space-x-6 mt-4">
+        <ul class="mt-4 flex space-x-6">
           <li>
             <a
               href="/feed.xml"

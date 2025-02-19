@@ -15,16 +15,14 @@ export default function ContactForm() {
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false); // Tracks if form was successfully submitted
 
-  const validateEmail = (email) => /^[^\s@]+@[^\s@]+$/.test(email);
-  const encode = (data) => {
+  const validateEmail = email => /^[^\s@]+@[^\s@]+$/.test(email);
+  const encode = data => {
     return Object.keys(data)
-      .map(
-        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]),
-      )
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
       .join("&");
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     let newErrors = {};
@@ -76,9 +74,9 @@ export default function ContactForm() {
 
   return (
     <>
-      <div className="flex justify-center mt-6">
+      <div className="mt-6 flex justify-center">
         <button
-          className="px-4 py-2 bg-primary text-white rounded-md hover:bg-secondary transition"
+          className="rounded-md bg-primary px-4 py-2 text-white transition hover:bg-secondary"
           onClick={() => setIsOpen(true)}
         >
           Contact Me
@@ -90,7 +88,7 @@ export default function ContactForm() {
           <>
             {/* Blurred Background */}
             <motion.div
-              className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex items-center justify-center z-50"
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-md"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -98,16 +96,16 @@ export default function ContactForm() {
 
             {/* Modal Wrapper */}
             <motion.div
-              className="fixed inset-0 flex items-center justify-center z-50"
+              className="fixed inset-0 z-50 flex items-center justify-center"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="bg-background p-6 rounded-lg shadow-xl max-w-md w-full relative border border-gray-300">
+              <div className="bg-background relative w-full max-w-md rounded-lg border border-gray-300 p-6 shadow-xl">
                 {/* Close Button (❌) */}
                 <button
-                  className="absolute top-3 right-3 text-gray-600 hover:text-gray-900 transition"
+                  className="absolute right-3 top-3 text-gray-600 transition hover:text-gray-900"
                   onClick={() => setIsOpen(false)}
                 >
                   ❌
@@ -117,14 +115,14 @@ export default function ContactForm() {
                   <SuccessMessage />
                 ) : (
                   <>
-                    <h2 className="text-xl font-bold mb-4">Contact Me</h2>
+                    <h2 className="mb-4 text-xl font-bold">Contact Me</h2>
                     <form onSubmit={handleSubmit}>
                       <FormField
                         label="Name"
                         type="text"
                         name="name"
                         value={formData.name}
-                        onChange={(e) =>
+                        onChange={e =>
                           setFormData({ ...formData, name: e.target.value })
                         }
                         error={errors.name}
@@ -134,7 +132,7 @@ export default function ContactForm() {
                         type="email"
                         name="email"
                         value={formData.email}
-                        onChange={(e) =>
+                        onChange={e =>
                           setFormData({ ...formData, email: e.target.value })
                         }
                         error={errors.email}
@@ -144,7 +142,7 @@ export default function ContactForm() {
                         type="textarea"
                         name="message"
                         value={formData.message}
-                        onChange={(e) =>
+                        onChange={e =>
                           setFormData({ ...formData, message: e.target.value })
                         }
                         error={errors.message}
@@ -152,7 +150,7 @@ export default function ContactForm() {
                       <div className="flex justify-end space-x-2">
                         <button
                           type="submit"
-                          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                          className="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
                         >
                           {isSubmitting ? "Sending..." : "Send"}
                         </button>

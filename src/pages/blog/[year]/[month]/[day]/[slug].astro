@@ -7,7 +7,7 @@ import { getBlogParams } from "../../../../../utils/params";
 
 export const getStaticPaths = async () => {
   const blogs = await getCollection("blog");
-  const paths = blogs.map((blog) => {
+  const paths = blogs.map(blog => {
     return {
       params: getBlogParams(blog),
       props: {
@@ -34,8 +34,8 @@ const blogParams = getBlogParams(blog);
   image={blogParams.image}
   type="article"
 >
-  <section class="lg:flex justify-center mt-12">
-    <div id="markdown" class="prose prose-lg overflow-visible relative mb-5">
+  <section class="mt-12 justify-center lg:flex">
+    <div id="markdown" class="prose prose-lg relative mb-5 overflow-visible">
       <h1>{blog.data.title}</h1>
       <time datetime={blog.data.pubDate.toLocaleDateString()} class="text-sm">
         {

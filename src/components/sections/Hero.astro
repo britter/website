@@ -4,12 +4,12 @@ import heroImage from "../../assets/benedikt_ritter.jpg";
 import { basic } from "../../config/cv.json";
 ---
 
-<section class="py-5 px-4 sm:py-10 lg:py-16">
-  <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-    <div class="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
+<section class="px-4 py-5 sm:py-10 lg:py-16">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
       <div class="relative flex justify-center">
         <Image
-          class="w-full md:max-w-md lg:max-w-md rounded-xl"
+          class="w-full rounded-xl md:max-w-md lg:max-w-md"
           src={heroImage}
           alt="Profile picture of Benedikt Ritter"
         />
@@ -19,7 +19,7 @@ import { basic } from "../../config/cv.json";
           {basic?.job}
         </p>
 
-        <h1 class="text-2xl font-bold sm:text-4xl lg:text-5xl mt-3">
+        <h1 class="mt-3 text-2xl font-bold sm:text-4xl lg:text-5xl">
           {basic?.name}
         </h1>
 
@@ -32,9 +32,7 @@ import { basic } from "../../config/cv.json";
             href=`/cv/${basic?.cv_file_name}`
             title="Download CV"
             download
-            class="inline-flex items-center justify-center px-10 py-4 text-base text-white
-                            font-semibold transition-all duration-200 rounded
-                            bg-primary hover:bg-secondary focus:bg-secondary"
+            class="inline-flex items-center justify-center rounded bg-primary px-10 py-4 text-base font-semibold text-white transition-all duration-200 hover:bg-secondary focus:bg-secondary"
             role="button"
           >
             Download CV

@@ -12,7 +12,7 @@ const menuItems = [
 
 <header class="bg-background py-4">
   <div
-    class="container max-w-6xl mx-auto flex justify-between items-center px-4 md:px-8"
+    class="container mx-auto flex max-w-6xl items-center justify-between px-4 md:px-8"
   >
     <!-- Logo -->
     <div class="text-2xl font-bold">
@@ -21,9 +21,9 @@ const menuItems = [
 
     <div class="flex gap-5">
       <!-- PC Menu -->
-      <nav class="hidden sm:flex space-x-6 items-center">
+      <nav class="hidden items-center space-x-6 sm:flex">
         {
-          menuItems.map((item) => (
+          menuItems.map(item => (
             <a href={item.href} class="hover:text-offset">
               {item.name}
             </a>
@@ -32,7 +32,7 @@ const menuItems = [
       </nav>
 
       <!-- Mobile Menu Button -->
-      <div class="sm:hidden flex">
+      <div class="flex sm:hidden">
         <button id="menu-btn" class="focus:outline-none">
           <Icon name="Menu" class="size-6" />
         </button>
@@ -45,8 +45,8 @@ const menuItems = [
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden sm:hidden">
     {
-      menuItems.map((item) => (
-        <a href={item.href} class="block px-4 py-2 hover:bg-background-offset">
+      menuItems.map(item => (
+        <a href={item.href} class="hover:bg-background-offset block px-4 py-2">
           {item.name}
         </a>
       ))

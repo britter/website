@@ -10,14 +10,14 @@ export default function SuccessMessage() {
       transition={{ duration: 0.5 }}
     >
       <motion.div
-        className="w-16 h-16 flex items-center justify-center rounded-full bg-green-500"
+        className="flex h-16 w-16 items-center justify-center rounded-full bg-green-500"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="w-10 h-10 text-white"
+          className="h-10 w-10 text-white"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"

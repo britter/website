@@ -9,7 +9,7 @@ export async function GET(context) {
     description:
       "Articles about Developer Productivity, Gradle Build Tool, and NixOS",
     site: context.site,
-    items: blog.map((post) => ({
+    items: blog.map(post => ({
       title: post.data.title,
       pubDate: post.data.pubDate,
       description: post.data.description,

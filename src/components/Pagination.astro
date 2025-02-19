@@ -14,19 +14,19 @@ const currentPage = page.currentPage;
 
 <nav
   aria-label="Blog pagination"
-  class="flex justify-center items-center space-x-4 mt-8"
+  class="mt-8 flex items-center justify-center space-x-4"
 >
   {
     hasPreviousPage ? (
       <a
         href={`/blog/${currentPage - 1}`}
-        class="transition-all duration-300 ease-in-out flex items-center justify-center px-6 py-2 h-10 rounded-full border border-border bg-background hover:bg-offset hover:shadow-lg"
+        class="border-border bg-background flex h-10 items-center justify-center rounded-full border px-6 py-2 transition-all duration-300 ease-in-out hover:bg-offset hover:shadow-lg"
       >
         Previous
       </a>
     ) : (
       <span
-        class="transition-all duration-300 ease-in-out flex items-center justify-center px-6 py-2 h-10 rounded-full border cursor-not-allowed text-offset bg-offset"
+        class="flex h-10 cursor-not-allowed items-center justify-center rounded-full border bg-offset px-6 py-2 text-offset transition-all duration-300 ease-in-out"
         aria-disabled="true"
       >
         Previous
@@ -34,7 +34,7 @@ const currentPage = page.currentPage;
     )
   }
 
-  <span class="flex items-center justify-center px-6 py-2 h-10 rounded-full">
+  <span class="flex h-10 items-center justify-center rounded-full px-6 py-2">
     {currentPage}
   </span>
 
@@ -42,13 +42,13 @@ const currentPage = page.currentPage;
     hasNextPage ? (
       <a
         href={`/blog/${currentPage + 1}`}
-        class="transition-all duration-300 ease-in-out flex items-center justify-center px-6 py-2 h-10 rounded-full border border-border bg-background hover:bg-offset hover:shadow-lg"
+        class="border-border bg-background flex h-10 items-center justify-center rounded-full border px-6 py-2 transition-all duration-300 ease-in-out hover:bg-offset hover:shadow-lg"
       >
         Next
       </a>
     ) : (
       <span
-        class="transition-all duration-300 ease-in-out flex items-center justify-center px-6 py-2 h-10 rounded-full border cursor-not-allowed text-offset bg-offset"
+        class="flex h-10 cursor-not-allowed items-center justify-center rounded-full border bg-offset px-6 py-2 text-offset transition-all duration-300 ease-in-out"
         aria-disabled="true"
       >
         Next
