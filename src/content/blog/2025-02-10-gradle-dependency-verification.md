@@ -28,7 +28,7 @@ While Renovate is fantastic for keeping dependencies up to date, it also introdu
 While this may sound like using Renovate requires the use of dependency verification, it really only made us aware of how little we had paid attention before when updating dependencies manually.
 So to make it clear: Dependency verification is not a prerequisite for enabling automatic dependency updates.
 You should always be paying attention when updating dependencies.
-Dependency update automation just multiplies the risks, because dependency updates happen much more timely and ferquently without human supervision.
+Dependency update automation just multiplies the risks, because dependency updates happen much more timely and frequently without human supervision.
 
 By enabling dependency verification, we added a safeguard to ensure that updates are still signed by trusted authors.
 This provides peace of mind, knowing that even if a dependency is compromised, the absence of valid PGP signatures will cause the build to fail, prompting a deeper investigation.
@@ -149,8 +149,8 @@ Since parsing a regex in your head is difficult, here are some examples that wou
 
 ### Dealing with Sources and Javadoc JARs
 
-The next issue we encountered during project sync were source and javadoc JARs that IntelliJ downloads in order to be able to navigate to the source code of library code, and show documentation.
-Given these are not executable code, we configured our verification to trust all source and Javadoc JARs.
+The next issue we encountered during project sync were source and javadoc JARs that IntelliJ downloads in order to be able to navigate to the source code of referenced libraries, and show their documentation.
+Given these artifacts don't contain executable code, we configured our verification to trust all source and Javadoc JARs.
 
 ```xml
 <trusted-artifacts>
@@ -199,11 +199,11 @@ So we replaced all `<component>` entries meeting that requirement with a `<trust
 ### Deciding on Trust Scope
 
 At this point we had to make a decision about the trust scope for our project.
-With teh current configuration in the verification metadata we said "we trust that `com.beust:jcommander:1.82` is safe to use if it was signed by key `C70B844F002F21F6D2B9C87522E44AC0622B91C3`."
+With the current configuration in the verification metadata we said "we trust that `com.beust:jcommander:1.82` is safe to use if it was signed by key `C70B844F002F21F6D2B9C87522E44AC0622B91C3`."
 But what about the next release of [JCommander](https://jcommander.org)?
 We would have to at least update the verification file to cover the next version as well.
-Instead we decided that we do not only trust keys if they sign specific releases.
-In other words, if somebody created a release for a some component before, we believe it's same to use the next release if it's signed by the same key.
+Instead we decided that we do not only trust keys if they sign specific releases, but instead trust a the key for any release of that component.
+In other words, if somebody created a release for a some component before, we believe it's safe to use the next release if it's signed by the same key.
 Trusting a key for all versions makes dependency updates easier but introduces a risk if the key is compromised.
 For GradleX, trusting keys for all future releases was deemed "secure enough," so we removed the `version` attribute from all `<trusted-key>` elements.
 That way, as long as projects continue to use the same signing key, we don't have to touch the verification metadata during dependency updates.
@@ -213,7 +213,7 @@ That way, as long as projects continue to use the same signing key, we don't hav
 The last step was to deal with the remaining entries in the `<components>` section.
 Some of them had a signature but the comment Gradle generated said, that is was unable to retrieve the signing key.
 In our case all these artifacts where available on [Maven Central](https://search.maven.org), including their signatures.
-We followed the following steps to retrieve the signing key:
+We followed these steps to retrieve the signing key:
 
 1. Download both the JAR and the `.asc` signature file.
 2. Run `gpg --verify <artifact>.asc` to extract the signing key.
@@ -256,7 +256,7 @@ So let's go through the modifications we made, and discuss their implications br
 - **Manually adding missing keys:** Looking up keys on a key server touches on the same point as the first one in this list.
   PGP signing is only good as long as you have a way of establishing trust to the keys that were used to sign artifacts.
 - **Trusting all source and javadoc artifacts:** Since these artifacts are not executable, there's little risk.
-  The only attack vector I can think of if a clever social engineering attack where somebody injects a JavaDoc JAR, that has a link in some class documentation that when clicked will compromise your computer.
+  The only attack vector I can think of is a clever social engineering attack where somebody injects a JavaDoc JAR, that has a link in some class documentation that when clicked will compromise your computer.
 - **Trusting keys for future releases:** This is probably the most severe decision we made.
   Tursting a key to be safe for any release of a component, puts you add risk of a supply chain attack if that key gets compromised.
   If you cannot accept this risk, you need to reverify that the key has not been compromised for each release.
