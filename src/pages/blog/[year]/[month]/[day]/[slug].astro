@@ -34,19 +34,21 @@ const blogParams = getBlogParams(blog);
   image={blogParams.image}
   type="article"
 >
-  <section class="mt-12 justify-center lg:flex">
-    <div id="markdown" class="prose prose-lg relative mb-5 overflow-visible">
-      <h1>{blog.data.title}</h1>
-      <time datetime={blog.data.pubDate.toLocaleDateString()} class="text-sm">
-        {
-          new Date(blog.data.pubDate).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })
-        }
-      </time>
-      <Content />
+  <section class="bg-background">
+    <div class="container mx-auto justify-center px-6 py-8 lg:flex">
+      <div id="markdown" class="prose prose-lg relative mb-5 overflow-visible">
+        <h1>{blog.data.title}</h1>
+        <time datetime={blog.data.pubDate.toLocaleDateString()} class="text-sm">
+          {
+            new Date(blog.data.pubDate).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          }
+        </time>
+        <Content />
+      </div>
     </div>
   </section>
 
