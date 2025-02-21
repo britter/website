@@ -50,8 +50,7 @@ I charge by the hour to provide flexibility and accommodate the dynamic nature o
 - If a non-trivial fix to an open-source component is required to ensure the success of the client project, I will first seek written approval from the client to allocate paid time for such contributions.
 - Unless otherwise agreed in writing, all intellectual property rights to work created during the engagement remain with me until full payment has been received.
 - Upon full payment, the client is granted full ownership of the specific deliverables created for their project. However, I retain the right to extract and reuse generic, non-client-specific components as part of free and open-source libraries, provided that no confidential or proprietary information is disclosed.
-
-- I reserve the right to showcase the work in my portfolio, unless the client requests confidentiality in writing.
+- I reserve the right to produce and publish content in various formats, including but not limited to blog posts, conference presentations, podcasts, and videos, about my work, provided that no confidential or client-specific information is disclosed.
 
 ## 7. Confidentiality & Non-Disclosure
 
