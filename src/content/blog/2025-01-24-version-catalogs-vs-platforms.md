@@ -125,7 +125,7 @@ We’ll look at an example of this shortly, after we define our own Platform.
 [^6]: There's a second method called `enforcedPlatform`, see [the documentation](https://docs.gradle.org/current/userguide/platforms.html#sec:enforced-platform) for more details.
 
 To define a Platform we need to add a new subproject to our build.
-The new subproject has to apply the `java-platform` plugin and the dependencies blog should only define dependency constraints:[^7]
+The new subproject has to apply the `java-platform` plugin and the dependencies block should only define dependency constraints:[^7]
 
 [^7]:
     Platforms can also contain regular dependency declarations.
