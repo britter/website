@@ -1,0 +1,128 @@
+---
+title: "OceanSprint 2025: Code, Community, and the Canary Islands"
+description: "A sunny sprint of code and community in Lanzarote. OceanSprint 2025 brought together Nix enthusiasts for a week of collaboration, exploration, and connection—fueled by shared purpose and amazing sponsors."
+pubDate: "2025-04-01"
+image: "oceansprint-2025.png"
+---
+
+import { Image } from "astro:assets";
+import peopleImage from "../../assets/oceansprint-2025/IMG_9186.png";
+import wineFields from "../../assets/oceansprint-2025/IMG_9217.png";
+import surfing from "../../assets/oceansprint-2025/IMG_9213.png";
+import downstreamDist from "../../assets/oceansprint-2025/IMG_9238.png";
+import sponsors from "../../assets/oceansprint-2025/IMG_9250.png";
+
+"What’s the point of having a house on the beach if you don’t share it?" — [_Nejc Zupan_](https://github.com/zupo)
+
+That quote perfectly captures the spirit of [OceanSprint 2025](https://oceansprint.org).
+Over five days in the sun-soaked paradise of Lanzarote, contributors from across the Nix ecosystem came together not just to write code, but to share ideas, meals, stories, and a few ocean waves.
+This wasn’t your average tech event—it was a gathering built on openness, curiosity, and collaboration.
+
+## 🧠 The Idea
+
+OceanSprint isn’t just a hackathon.
+It’s a gathering of the Nix ecosystem’s most passionate contributors—people who want to push forward the future of functional, declarative, reproducible systems.
+The concept is simple: bring brilliant folks together in a beautiful place, give them time, space, and good food—and let the magic happen.
+
+It’s not about keynotes or big releases; it’s about focused collaboration, writing code, exchanging ideas, and solving real problems.
+And sometimes, just understanding each other a little better.
+
+<Image src={peopleImage} alt="People hacking on the deck of Niteo House" />
+
+## 🏝️ The Island
+
+This year’s sprint took place on Lanzarote, one of the Canary Islands.
+With its volcanic terrain, warm breezes, and endless coastline, it’s the kind of place that quietly resets your brain.
+The black sands and rugged beauty are unlike anywhere else—and somehow, that uniqueness echoed in the work we did together.
+
+It was the perfect backdrop: inspiring, a little wild, and totally disconnected from the chaos of everyday life.
+
+<Image src={wineFields} alt="Wine fields on Lanzarote" />
+
+## 🏡 The Venue
+
+Our home base was a spacious villa in Costa Teguise, with enough room for laptops, long discussions, breakout sessions, and yes—BBQs.
+Fiber internet kept things moving fast, while the patio and shared meals helped slow things down.
+
+We hacked under palm trees, fixed bugs while barefoot, and shared ideas in the pool.
+It was part office, part playground, part think tank. Just right.
+
+## 🧑‍💻 The People
+
+The real heart of OceanSprint was the people.
+Contributors came from across the Nix ecosystem—including Nix, Lix, Tvix/Snix, and more.
+Despite recent tensions and forks in the community, what we witnessed here was nothing short of inspiring: constructive conversations, open minds, and a genuine spirit of collaboration.
+
+Different visions coexisted, and discussions were respectful, curious, and grounded in a shared belief in the power of reproducibility. It reminded us that open source isn’t about agreement—it’s about dialogue.
+
+<Image
+  src={downstreamDist}
+  alt="'Days since last fork: 3' written on a whiteboard. The work 'fork' is crossed and replaced with 'downstream distribution'"
+/>
+
+## 🖥️ The Gadgets
+
+Let’s talk peripherals. OceanSprint was a hardware enthusiast’s dream.
+
+- [@multivac61](https://github.com/multivac61) brought along a [GPD Pocket 4](https://gpdstore.net/gpd-mini-laptop/gpd-pocket-4/)—a surprisingly powerful mini laptop with a high-quality build that turned heads.
+- [@flokli](https://github.com/flokli) typed away on a [BastardKB Dilemma V3](https://bastardkb.com/product/dilemma-built-v3/) split keyboard, powered by a custom Nix-based config now open sourced at [flokli/keyboards](https://github.com/flokli/keyboards).
+- [@adisbladis](https://github.com/adisbladis) had the most unique setup: a Surface tablet mounted on a tripod for a display, paired with a mechanical keyboard (likely a Keychron) and a [RollerMouse Go](https://contour-design.co.uk/collections/centred-mice/products/rollermouse-go)—minimalist yet efficient.
+- [@adrian-gierakowski](https://github.com/adrian-gierakowski) used a wooden [Cornat C10 mechanical keyboard](https://backercrew.com/keyboard-c10-adjustable-key-position-keypad/) with a wonderfully tactile sound and layout.
+
+Whether for comfort, efficiency, or sheer geek factor, the gear people brought added a fun and personal flair to the sprint atmosphere.
+
+## 🏄️ The Excursions
+
+The sprint wasn’t all terminal windows and commits.
+We made space to explore the island too. There were:
+
+- Surfing lessons at Famara Beach 🌊
+- A hike to the top of a volcano, with sweeping views over Costa Teguise 🌋
+- Winery tours, learning about Lanzarote’s unique vine-growing techniques 🍷
+- Traditional paella lunches, sunset walks, and impromptu bike rides
+
+These moments helped us unwind, connect, and return to our work with fresh eyes.
+
+<Image
+  src={surfing}
+  alt="I, standing on Famara Beach, with a wet suit on, reading for surf lessons"
+/>
+
+## 🛠️ The Projects
+
+OceanSprint 2025 was buzzing with progress. Here are just a few of the many exciting things people worked on:
+
+- **NixOS module system enhancements** – New functions for error handling and module introspection.
+- **Devenv 1.5 improvements** – Faster dev environments, overlays, and AI support.
+- **Inception of Snix** – Started as a downstream distribution of Tvix, people worked on infrastructure, documentation, and overlay store functionality.
+- **NixOS test driver fixes** – Better error messages and macOS support.
+- **FOD tracker prototype** – Monitoring over 350k fixed-output derivations.
+- **Supply chain security tooling** – With [nix-attest](https://github.com/arianvp/nix-attest), [laut](https://github.com/mschwaig/laut), and [lila](https://github.com/JulienMalka/lila).
+- **Bashless NixOS init** – Aiming for simpler, cleaner system bootstrapping.
+- **Clang-built Linux kernel** – Successfully compiled with LLVM/Clang.
+
+Read more about the projects in the full [OceanSprint 2025 Report](https://oceansprint.org/reports/2025/).
+
+## 💖 Gratitude
+
+We owe a huge thank you to our amazing sponsors.
+Your support covered nearly everything—venue, meals, excursions, and the environment that made all this possible.
+You made it easy for people to focus, collaborate, and just be present.
+
+Thank you to: [Numtide](https://numtide.com), [Mercury](https://mercury.com/), [Secunet](https://www.secunet.com/en/), [Clan.lol](https://clan.lol), [Shopify](https://shopify.com), [NixOS Foundation](https://nixos.org), [Nixcademy](https://nixcademy.com), [Cyberus Technology](https://cyberus-technology.de/en), [Flox](https://flox.dev/), [flyingcircus.io](https://flyingcircus.io), [Supercede](https://supercede.com/), [Cachix](https://cachix.org), and [Pareto Security](https://paretosecurity.com/).
+If you're looking for a career in the NixOS space, you should definitely check out the sponsor's job pages.
+
+A special thank you to Nejc Zupan and Domen Kožar for their warm hospitality and exceptional organization. You brought this incredible community together and made it feel like home.
+
+You didn’t just support an event. You invested in a community—and it made all the difference.
+
+<Image
+  src={sponsors}
+  alt="The back of the OceanSprint 2025 t-shirt with a list of all the sponsors"
+/>
+
+## 🌅 Until Next Time
+
+We came as contributors. We leave as collaborators, friends, and builders—full of ideas and energy for what’s next in the Nix world. OceanSprint 2025 was a reminder that open source is more than code. It’s people, place, and purpose.
+
+See you at the next one.
