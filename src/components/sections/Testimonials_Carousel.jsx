@@ -6,7 +6,7 @@ import {
 } from "react-icons/fa";
 import { SiGithub, SiLinkedin, SiMastodon, SiYoutube } from "react-icons/si";
 
-const INTERVAL_MS = 5000;
+const INTERVAL_MS = 17000;
 const MIN_HEIGHT_PX = 330; // adjust as needed
 
 const iconMap = {
