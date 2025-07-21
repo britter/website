@@ -1,5 +1,19 @@
 ---
 import TestimonialsCarousel from "./Testimonials_Carousel.jsx";
+type ImageModule = { src: string };
+const images = import.meta.glob("../../assets/*.{jpg,png}", {
+  eager: true,
+  import: "default",
+}) as ImageModule;
+
+// Create a key:value map where keys are filenames like "alice.jpg"
+const imageMap = Object.fromEntries(
+  Object.entries(images).map(([path, mod]) => {
+    const parts = path.split("/");
+    const filename = parts[parts.length - 1];
+    return [filename, mod.src];
+  })
+);
 ---
 
 <section class="bg-background">
@@ -17,7 +31,7 @@ import TestimonialsCarousel from "./Testimonials_Carousel.jsx";
     </p>
 
     <div class="mt-8 flex justify-center xl:mt-12">
-      <TestimonialsCarousel client:load />
+      <TestimonialsCarousel imageMap={imageMap} client:load />
     </div>
   </div>
 </section>
