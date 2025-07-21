@@ -70,5 +70,37 @@
       "type": "Technical",
       "link": "/services/nixos"
     }
+  ],
+  "testimonials": [
+    {
+      "name": "Marc Philipp",
+      "github": "marcphilipp",
+      "job": "JUnit Project Lead",
+      "quote": "Working with Benedikt on an innovative and challenging project was  one of the highlights of my career. He is a superb engineer and  absolutely reliable in getting things done with high quality as well as  appropriate test coverage and documentation. His well-structured  approach to investigating problems and managing tasks was crucial to the  project and should be an asset to any project he's involved with.",
+      "links": {
+        "github": "https://github.com/marcphilipp",
+        "linkedin": "https://linkedin.com/in/alicejohnson",
+        "website": "https://marcphilipp.de"
+      }
+    },
+    {
+      "name": "Torsten Schlichting",
+      "github": "torstenschlichting",
+      "job": "Head of Product Management at GBTEC Software AG",
+      "quote": "Benedikt was a tremendous asset to our team – highly motivated, a quick thinker, and absolutely reliable. He quickly grasped complex topics, supported other team members whenever needed, and contributed thoughtful ideas instead of just executing tasks. If you're looking for a dependable and smart developer, he's the one.",
+      "links": {
+        "linkedin": "https://www.linkedin.com/in/schlichting-torsten-936203156/"
+      }
+    },
+    {
+      "name": "Jendrik Johannes",
+      "github": "jjohannes",
+      "job": "Trainer and Consultant for Software Build Automation with Gradle",
+      "quote": "Benedikt and I regularly collaborate on the open-source project GradleX and other initiatives. Working with Benedikt is always efficient and result-oriented. I particularly value his excellent communication skills and his analytical approach to problem-solving. I can vouch for his deep technical expertise in Java, Gradle, and NixOS. Whatever challenge you’re facing in developer productivity, I highly recommend working with Benedikt to solve it.",
+      "links": {
+        "github": "https://github.com/jjohannes",
+        "linkedin": "https://www.linkedin.com/in/jendrikjohannes/"
+      }
+    }
   ]
 }

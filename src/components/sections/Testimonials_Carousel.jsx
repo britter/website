@@ -1,37 +1,9 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-const testimonials = [
-  {
-    name: "Alice Johnson",
-    github: "alicejohnson",
-    job: "Frontend Developer at Stripe",
-    quote:
-      "Working with you was a game-changer. Your attention to detail and speed were outstanding.",
-    links: {
-      github: "https://github.com/alicejohnson",
-      linkedin: "https://linkedin.com/in/alicejohnson",
-      website: "https://alice.dev",
-      youtube: "https://youtube.com/@alicejohnson",
-    },
-  },
-  {
-    name: "Bob Smith",
-    github: "bobsmith",
-    job: "DevOps Engineer at Netflix",
-    quote:
-      "You brought incredible efficiency to our pipeline. Your skills are top-notch! We’d love to work together again sometime on future infrastructure scaling challenges, especially given how you handled the rollout of our CI/CD improvements.",
-    links: {
-      github: "https://github.com/bobsmith",
-      linkedin: "https://linkedin.com/in/bobsmith",
-      website: "",
-      youtube: "",
-    },
-  },
-];
+import { testimonials } from "../../config/cv.json";
 
 const INTERVAL_MS = 5000;
-const MIN_HEIGHT_PX = 220; // adjust as needed
+const MIN_HEIGHT_PX = 330; // adjust as needed
 
 export default function TestimonialsCarousel() {
   const [current, setCurrent] = useState(0);
@@ -108,7 +80,7 @@ export default function TestimonialsCarousel() {
                   “{person.quote}”
                 </blockquote>
                 <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                  {person.job}
+                  {person.name} - {person.job}
                 </p>
                 <div className="mt-2 flex justify-center gap-3 md:justify-start">
                   {Object.entries(person.links).map(([platform, url]) =>
