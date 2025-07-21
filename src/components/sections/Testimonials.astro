@@ -1,5 +1,6 @@
 ---
 import TestimonialsCarousel from "./Testimonials_Carousel.jsx";
+import { testimonials } from "../../config/cv.json";
 type ImageModule = { src: string };
 const images = import.meta.glob("../../assets/*.{jpg,png}", {
   eager: true,
@@ -14,6 +15,25 @@ const imageMap = Object.fromEntries(
     return [filename, mod.src];
   })
 );
+
+const processedTestimonials = testimonials.map(t => {
+  const avatar = t.github
+    ? `https://github.com/${t.github}.png`
+    : t.image
+      ? imageMap[t.image]
+      : null;
+
+  const socialLinks = Object.entries(t.links || {}).map(([platform, url]) => ({
+    url,
+    platform: platform.toLowerCase(),
+  }));
+
+  return {
+    ...t,
+    avatar,
+    socialLinks,
+  };
+});
 ---
 
 <section class="bg-background">
@@ -31,7 +51,7 @@ const imageMap = Object.fromEntries(
     </p>
 
     <div class="mt-8 flex justify-center xl:mt-12">
-      <TestimonialsCarousel imageMap={imageMap} client:load />
+      <TestimonialsCarousel testimonials={processedTestimonials} client:load />
     </div>
   </div>
 </section>

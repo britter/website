@@ -1,11 +1,19 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { testimonials } from "../../config/cv.json";
+import * as Icons from "lucide-react";
 
 const INTERVAL_MS = 5000;
 const MIN_HEIGHT_PX = 330; // adjust as needed
 
-export default function TestimonialsCarousel({ imageMap }) {
+const iconMap = {
+  github: Icons.Github,
+  linkedin: Icons.Linkedin,
+  mastodon: Icons.Mastodon,
+  website: Icons.Globe,
+  youtube: Icons.Youtube,
+};
+
+export default function TestimonialsCarousel({ testimonials }) {
   const [current, setCurrent] = useState(0);
   const [progress, setProgress] = useState(0);
 
@@ -60,58 +68,49 @@ export default function TestimonialsCarousel({ imageMap }) {
         className="relative w-full"
         style={{ minHeight: `${MIN_HEIGHT_PX}px` }}
       >
-        {testimonials.map((person, index) => {
-          const localImage = person.image ? imageMap[person.image] : null;
-          return (
-            <div
-              key={index}
-              className={`transition-opacity duration-500 ${
-                current === index
-                  ? "relative z-10 opacity-100"
-                  : "pointer-events-none absolute inset-0 z-0 opacity-0"
-              }`}
-            >
-              <div className="flex w-full flex-col items-center rounded-2xl bg-white p-6 shadow-xl md:flex-row dark:bg-gray-800">
-                {person.github ? (
-                  <img
-                    src={`https://github.com/${person.github}.png`}
-                    alt={person.name}
-                    className="mb-4 h-24 w-24 flex-shrink-0 rounded-full object-cover md:mb-0 md:mr-6"
-                  />
-                ) : localImage ? (
-                  <img
-                    src={localImage}
-                    alt={person.name}
-                    className="mb-4 h-24 w-24 flex-shrink-0 rounded-full object-cover md:mb-0 md:mr-6"
-                  />
-                ) : null}
-                <div className="w-full text-center md:text-left">
-                  <blockquote className="mb-2 text-lg font-medium italic text-gray-800 dark:text-gray-100">
-                    “{person.quote}”
-                  </blockquote>
-                  <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                    {person.name} - {person.job}
-                  </p>
-                  <div className="mt-2 flex justify-center gap-3 md:justify-start">
-                    {Object.entries(person.links).map(([platform, url]) =>
-                      url ? (
-                        <a
-                          key={platform}
-                          href={url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-sm capitalize text-gray-600 hover:text-black dark:text-gray-300"
-                        >
-                          {platform}
-                        </a>
-                      ) : null
-                    )}
-                  </div>
+        {testimonials.map((person, index) => (
+          <div
+            key={index}
+            className={`transition-opacity duration-500 ${
+              current === index
+                ? "relative z-10 opacity-100"
+                : "pointer-events-none absolute inset-0 z-0 opacity-0"
+            }`}
+          >
+            <div className="flex w-full flex-col items-center rounded-2xl bg-white p-6 shadow-xl md:flex-row dark:bg-gray-800">
+              <img
+                src={person.avatar}
+                alt={person.name}
+                className="mb-4 h-24 w-24 flex-shrink-0 rounded-full object-cover md:mb-0 md:mr-6"
+              />
+              <div className="w-full text-center md:text-left">
+                <blockquote className="mb-2 text-lg font-medium italic text-gray-800 dark:text-gray-100">
+                  “{person.quote}”
+                </blockquote>
+                <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                  {person.name} - {person.job}
+                </p>
+                <div className="mt-2 flex justify-center gap-3 md:justify-start">
+                  {person.socialLinks.map((link, i) => {
+                    const Icon = iconMap[link.platform] || Icons.Link;
+                    return (
+                      <a
+                        key={i}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mx-1 text-gray-500 hover:text-blue-600"
+                        aria-label={link.platform}
+                      >
+                        <Icon className="h-5 w-5" />
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
 
       {/* Right arrow */}
