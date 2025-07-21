@@ -20,7 +20,7 @@ const testimonials = [
     github: "bobsmith",
     job: "DevOps Engineer at Netflix",
     quote:
-      "You brought incredible efficiency to our pipeline. Your skills are top-notch!",
+      "You brought incredible efficiency to our pipeline. Your skills are top-notch! We’d love to work together again sometime on future infrastructure scaling challenges, especially given how you handled the rollout of our CI/CD improvements.",
     links: {
       github: "https://github.com/bobsmith",
       linkedin: "https://linkedin.com/in/bobsmith",
@@ -31,6 +31,7 @@ const testimonials = [
 ];
 
 const INTERVAL_MS = 5000;
+const MIN_HEIGHT_PX = 220; // adjust as needed
 
 export default function TestimonialsCarousel() {
   const [current, setCurrent] = useState(0);
@@ -70,85 +71,98 @@ export default function TestimonialsCarousel() {
     setProgress(0);
   };
 
-  const person = testimonials[current];
-
   return (
-    <div className="relative mx-auto flex w-full max-w-4xl items-center">
+    // Outer container with relative and padding for arrows outside slide
+    <div className="relative mx-auto w-full max-w-4xl px-12 py-8 md:px-16">
       {/* Left arrow */}
       <button
         onClick={prevSlide}
-        className="absolute -left-10 top-1/2 hidden -translate-y-1/2 rounded-full bg-gray-100 p-2 hover:bg-gray-300 md:flex dark:bg-gray-700 dark:hover:bg-gray-600"
+        className="absolute left-0 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-gray-100 p-2 hover:bg-gray-300 md:flex dark:bg-gray-700 dark:hover:bg-gray-600"
+        aria-label="Previous testimonial"
       >
         <ChevronLeft className="h-5 w-5 text-gray-700 dark:text-white" />
       </button>
 
-      {/* Slide and Progress Bar wrapper */}
-      <div className="flex-1">
-        {/* Card content */}
-        <div className="flex flex-col items-center rounded-2xl bg-white p-6 shadow-xl transition duration-500 ease-in-out md:flex-row dark:bg-gray-800">
-          <img
-            className="mb-4 h-24 w-24 rounded-full object-cover md:mb-0 md:mr-6"
-            src={`https://github.com/${person.github}.png`}
-            alt={person.name}
-          />
-          <div className="w-full text-center md:text-left">
-            <blockquote className="mb-2 text-lg font-medium italic text-gray-800 dark:text-gray-100">
-              “{person.quote}”
-            </blockquote>
-            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-              {person.job}
-            </p>
-            <div className="mt-2 flex justify-center gap-3 md:justify-start">
-              {Object.entries(person.links).map(([platform, url]) =>
-                url ? (
-                  <a
-                    key={platform}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm capitalize text-gray-600 hover:text-black dark:text-gray-300"
-                  >
-                    {platform}
-                  </a>
-                ) : null
-              )}
+      {/* Slides container with fixed min-height and full width */}
+      <div
+        className="relative w-full"
+        style={{ minHeight: `${MIN_HEIGHT_PX}px` }}
+      >
+        {testimonials.map((person, index) => (
+          <div
+            key={index}
+            className={`transition-opacity duration-500 ${
+              current === index
+                ? "relative z-10 opacity-100"
+                : "pointer-events-none absolute inset-0 z-0 opacity-0"
+            }`}
+          >
+            <div className="flex w-full flex-col items-center rounded-2xl bg-white p-6 shadow-xl md:flex-row dark:bg-gray-800">
+              <img
+                className="mb-4 h-24 w-24 flex-shrink-0 rounded-full object-cover md:mb-0 md:mr-6"
+                src={`https://github.com/${person.github}.png`}
+                alt={person.name}
+              />
+              <div className="w-full text-center md:text-left">
+                <blockquote className="mb-2 text-lg font-medium italic text-gray-800 dark:text-gray-100">
+                  “{person.quote}”
+                </blockquote>
+                <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                  {person.job}
+                </p>
+                <div className="mt-2 flex justify-center gap-3 md:justify-start">
+                  {Object.entries(person.links).map(([platform, url]) =>
+                    url ? (
+                      <a
+                        key={platform}
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm capitalize text-gray-600 hover:text-black dark:text-gray-300"
+                      >
+                        {platform}
+                      </a>
+                    ) : null
+                  )}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* Progress bar OUTSIDE the card but aligned */}
-        <div className="mt-1 px-6">
-          <div className="h-1 rounded bg-gray-200 dark:bg-gray-700">
-            <div
-              className="h-full rounded bg-blue-500 transition-all duration-100 ease-linear"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-        </div>
-
-        {/* Dot indicators */}
-        <div className="mt-4 flex justify-center space-x-2">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goTo(index)}
-              className={`h-3 w-3 rounded-full ${
-                current === index
-                  ? "bg-blue-500"
-                  : "bg-gray-300 dark:bg-gray-600"
-              }`}
-            />
-          ))}
-        </div>
+        ))}
       </div>
 
       {/* Right arrow */}
       <button
         onClick={nextSlide}
-        className="absolute -right-10 top-1/2 hidden -translate-y-1/2 rounded-full bg-gray-100 p-2 hover:bg-gray-300 md:flex dark:bg-gray-700 dark:hover:bg-gray-600"
+        className="absolute right-0 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-gray-100 p-2 hover:bg-gray-300 md:flex dark:bg-gray-700 dark:hover:bg-gray-600"
+        aria-label="Next testimonial"
       >
         <ChevronRight className="h-5 w-5 text-gray-700 dark:text-white" />
       </button>
+
+      {/* Progress bar below slides */}
+      <div className="mt-4 w-full px-6">
+        <div className="h-1 rounded bg-gray-200 dark:bg-gray-700">
+          <div
+            className="h-full rounded bg-blue-500 transition-all duration-100 ease-linear"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+      </div>
+
+      {/* Dot indicators */}
+      <div className="mt-4 flex w-full justify-center space-x-2 px-6">
+        {testimonials.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goTo(index)}
+            className={`h-3 w-3 rounded-full ${
+              current === index ? "bg-blue-500" : "bg-gray-300 dark:bg-gray-600"
+            }`}
+            aria-label={`Go to testimonial ${index + 1}`}
+          />
+        ))}
+      </div>
     </div>
   );
 }
