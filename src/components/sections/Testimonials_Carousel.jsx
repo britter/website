@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import * as Icons from "lucide-react";
+import {
+  FaChevronCircleLeft,
+  FaChevronCircleRight,
+  FaGlobe,
+} from "react-icons/fa";
+import { SiGithub, SiLinkedin, SiMastodon, SiYoutube } from "react-icons/si";
 
 const INTERVAL_MS = 5000;
 const MIN_HEIGHT_PX = 330; // adjust as needed
 
 const iconMap = {
-  github: Icons.Github,
-  linkedin: Icons.Linkedin,
-  mastodon: Icons.Mastodon,
-  website: Icons.Globe,
-  youtube: Icons.Youtube,
+  github: SiGithub,
+  linkedin: SiLinkedin,
+  mastodon: SiMastodon,
+  youtube: SiYoutube,
+  website: FaGlobe,
 };
 
 export default function TestimonialsCarousel({ testimonials }) {
@@ -60,7 +64,7 @@ export default function TestimonialsCarousel({ testimonials }) {
         className="absolute left-0 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-gray-100 p-2 hover:bg-gray-300 md:flex dark:bg-gray-700 dark:hover:bg-gray-600"
         aria-label="Previous testimonial"
       >
-        <ChevronLeft className="h-5 w-5 text-gray-700 dark:text-white" />
+        <FaChevronCircleLeft className="h-5 w-5 text-gray-700 dark:text-white" />
       </button>
 
       {/* Slides container with fixed min-height and full width */}
@@ -119,7 +123,7 @@ export default function TestimonialsCarousel({ testimonials }) {
         className="absolute right-0 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-gray-100 p-2 hover:bg-gray-300 md:flex dark:bg-gray-700 dark:hover:bg-gray-600"
         aria-label="Next testimonial"
       >
-        <ChevronRight className="h-5 w-5 text-gray-700 dark:text-white" />
+        <FaChevronCircleRight className="h-5 w-5 text-gray-700 dark:text-white" />
       </button>
 
       {/* Progress bar below slides */}
