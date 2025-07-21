@@ -1,0 +1,23 @@
+---
+import TestimonialsCarousel from "./Testimonials_Carousel.jsx";
+---
+
+<section class="bg-background">
+  <div class="container mx-auto px-6 py-8">
+    <h1 class="text-center text-3xl font-semibold capitalize lg:text-4xl">
+      Testimonials
+    </h1>
+
+    <p class="mt-4 text-center text-offset">
+      Don't just take my word for it. I could tell you I'm a passionate and
+      reliable software developer—but it's much more meaningful to hear from the
+      people I've worked with directly. These are real quotes from
+      collaborators, teammates, and clients who’ve seen my work and impact up
+      close.
+    </p>
+
+    <div class="mt-8 flex justify-center xl:mt-12">
+      <TestimonialsCarousel client:load />
+    </div>
+  </div>
+</section>
