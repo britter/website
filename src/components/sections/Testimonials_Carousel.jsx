@@ -3,6 +3,7 @@ import {
   FaChevronCircleLeft,
   FaChevronCircleRight,
   FaGlobe,
+  FaLink,
 } from "react-icons/fa";
 import { SiGithub, SiLinkedin, SiMastodon, SiYoutube } from "react-icons/si";
 
@@ -96,7 +97,7 @@ export default function TestimonialsCarousel({ testimonials }) {
                 </p>
                 <div className="mt-2 flex justify-center gap-3 md:justify-start">
                   {person.socialLinks.map((link, i) => {
-                    const Icon = iconMap[link.platform] || Icons.Link;
+                    const Icon = iconMap[link.platform] || FaLink;
                     return (
                       <a
                         key={i}
