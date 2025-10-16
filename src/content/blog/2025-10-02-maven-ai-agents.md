@@ -6,23 +6,25 @@ image: "maven-ai-struggles.png"
 ---
 
 Agentic AI tools such as Claude can accelerate many aspects of software development.
-However, when these systems interact with Apache Maven, they often encounter fundamental difficulties.
-The root cause lies in Maven’s unique life cycle–based execution model, which differs significantly from dependency-graph (DAG)–based build tools such as Gradle.
+However, when these systems interact with [Apache Maven™](https://maven.apache.org), they often encounter fundamental difficulties.
+The root cause lies in Maven’s unique life cycle–based execution model, which differs significantly from build tools based on [directed acyclic graphs (DAG)](https://en.wikipedia.org/wiki/Directed_acyclic_graph) such as [Gradle](https://gradle.org).
 
 ## Maven’s Execution Model and AI Expectations
 
 Modern AI assistants are trained to optimize workflows through small, targeted actions.
 When asked to validate a code change, they naturally try to issue the narrowest command possible.
-This expectation maps well to tools that use DAG-based execution, where dependencies are rebuilt only when necessary.
+This expectation maps well to tools that use DAG-based execution, where dependencies[^1] are rebuilt only when necessary.
 
-Maven, by contrast, is organized around sequential life cycle phases (validate -> compile -> test -> verify -> install).
+[^1]: I'm talking about task dependencies, such as "creating the jar, depends on compiling the Java code first", not binary dependencies that build tools pull from repositories such as [Maven Central](https://maven.org).
+
+Maven, by contrast, is organized around sequential life cycle phases (clean → validate → compile → test → verify → install).
 While this approach ensures correctness when executed from the project root, it does not naturally align with the AI’s assumption that it can target specific modules or tests individually.
 As a result, AI-driven commands often fail or even produce misleading results.
 
 ## Typical AI Missteps with Maven
 
 The examples that I'm presenting here can be grouped into false negatives and false positives.
-They present the result of working with Claude Code on a relatively small Java code base consisting of a handful of Maven modules with a parent POM file in the project root.
+They present the result of working with [Claude Code](https://claude.ai) on a relatively small Java code base consisting of a handful of Maven modules with a parent POM file in the project root.
 In my experience the AI often creates commands that lead it to form an incorrect picture of the project state - either assuming something is broken when it is not, or assuming everything works when in fact it does not.
 
 ### False Negatives
@@ -35,14 +37,14 @@ mvn test -Dtest=ApiTest
 ```
 
 From the project root, Maven will execute the test phase in every module.
-Because ApiTest exists only in modules/api, Surefire treats the other modules as having "no specified tests" and - by default - fails the build.
-The AI interprets this as a genuine defect and begins searching for a non‑existent problem until it is told to scope the build, for example:
+Because `ApiTest` exists only in modules/api, the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) treats the other modules as having "no specified tests" and - by default - fails the build.
+The AI interprets this as a genuine defect and begins searching for a non‑existent problem until it is told to scope the command to the module that contains the test, for example:
 
 ```shell
 mvn test -Dtest=ApiTest -pl modules/api
 ```
 
-However this may now produce a false negative because dependent modules will not be compiled, which might either cause compilation issues in the test or run tests on unfixed code causing a test failure although the code was already fixed.
+However this may now produce another false negative because dependent modules will not be compiled, which might either cause compilation issues in the test or run tests on unfixed code causing a test failure although the code was already fixed.
 Maven experts will suggest combining the [`-am` flag](https://maven.apache.org/ref/3.9.11/maven-embedder/cli.html) (short for `--also-make` which will also build modules depended on by the modules in the `-pl` list) together with [Surefire's `-Dsurefire.failIfNoSpecifiedTests=false` flag](https://maven.apache.org/surefire/maven-surefire-plugin/test-mojo.html#failIfNoSpecifiedTests) to address this, for example:
 
 ```shell
@@ -61,16 +63,19 @@ Let's look at another variant of the situation with the command that selects the
 mvn test -Dtest=ApiTest -pl modules/api
 ```
 
-What if we've changed something in the modules/core and this change would break ApiTest?
+What if we've changed something in modules/core and this change would break `ApiTest`?
 Since the build command only requests to build module/api, Maven will not rebuild modules/core, even though it has changed.
-This can results in a false positive: if code in the core module was broken by changes but not recompiled, the ApiTest may still pass because it runs against stale compile outputs.
+This can results in a false positive: if code in the core module was broken by changes but not recompiled, then `ApiTest` may still pass because it runs against stale compile outputs.
 The build shows green although the code has a bug.
 An AI will assume everything is fine and may respond with high confidence.
-For example, Claude might conclude: ":tada: Perfect! All tests passed successfully, your change is good to go."
+For example, Claude might conclude:
+
+> 🎉 Perfect! All tests passed successfully, your change is good to go.
+
 In reality the broken code is about to be shipped.
 
-Another false positive arises from the split between Surefire and Failsafe.
-Unit tests are executed by Surefire, while integration tests are executed by Failsafe.
+Another false positive arises from the split between the Maven Surefire and Maven Failsafe plugins.
+Unit tests are executed by Surefire in the test phase, while integration tests are executed by Failsafe in the verify phase.
 AI tools often attempt:
 
 ```shell
@@ -78,7 +83,7 @@ mvn test -Dtest=IntegrationTest
 ```
 
 This silently skips integration tests.
-The problem is twofold: the AI uses mvn test instead of the correct mvn verify, and it also specifies `-Dtest` instead of `-Dit.test`.
+The problem is twofold: the AI uses `mvn test` instead of the correct `mvn verify`, and it also specifies `-Dtest` instead of `-Dit.test`.
 As a result, integration tests are never run, yet the AI may believe that all tests are passing.
 This is more severe, as a developer leaning too heavily on AI might ship broken code.
 When told that integration tests have to be executed with Failsafe, AI sometimes resorts to executing the plugin directly, for example:
@@ -87,7 +92,7 @@ When told that integration tests have to be executed with Failsafe, AI sometimes
 mvn failsafe:integration-test failsafe:verify
 ```
 
-But this just exaggerates the problem, because now Maven only executes those specific goals without running any of the upstream phases, even within that module.
+But this just exaggerates the problem, because now Maven only executes that specific goal without running any of the upstream phases, even within that module.
 
 False positives are especially dangerous because they mislead both the AI and the developer into believing that everything is working when it is not.
 The AI will confidently announce success, and a developer relying too heavily on such feedback may merge or release broken code.
@@ -97,7 +102,7 @@ This not only undermines trust in the AI assistant but also creates direct costs
 
 All of these examples point back to the same root cause.
 AI tools are designed to do the minimal work needed to answer a question or validate a change.
-Maven, on the other hand, requires full life cycle execution for everything to work correctly.
+Maven, on the other hand, requires full life cycle execution based on clean project state for everything to work correctly.
 Skipping phases or scoping commands too narrowly almost always leads to incorrect results.
 This is why developers often resort to heavy-handed commands such as:
 
@@ -105,18 +110,18 @@ This is why developers often resort to heavy-handed commands such as:
 mvn clean install
 ```
 
-This discards all previous work and executes the full build from scratch, ensuring consistency but at the cost of time and resources—even if many modules or phases are unchanged.
+This discards all previous work and executes the full build from scratch, ensuring consistency but at the cost of time and resources - even if many modules or phases are unchanged.
 The life cycle model prioritizes determinism and correctness, but it clashes with the optimization instincts of AI agents.
 
 It is also worth noting that Maven’s strict life cycle model is quite unique in the world of build tools.
 Most other popular systems follow a dependency graph–based approach.
-Well-known examples include Gradle, Bazel, Make, and Cargo, all of which determine what needs to be rebuilt based on the dependency graph and file changes.
+Well-known examples include Gradle, Bazel, Make, and Cargo, all of which determine what needs to be rebuilt based on a graph and file changes.
 
 ## Why DAG-Based Build Tools Are Easier for AI
 
-Dependency graph (DAG)–based build tools like Gradle operate differently.
-Instead of enforcing linear phases, they determine what actually needs to be rebuilt based on dependency relationships and file changes.
-This incremental, dependency-aware approach makes them a more natural fit for AI workflows.
+DAG-based build tools like Gradle operate differently.
+Instead of enforcing linear phases, they determine what actually needs to be rebuilt based on task dependency relationships and file changes.
+This incremental, task dependency-aware approach makes them a more natural fit for AI workflows.
 
 Consider the earlier examples. Running a single test with Gradle can be done as:
 
