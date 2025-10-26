@@ -1,7 +1,7 @@
 ---
 title: "Why Agentic AI Tools Struggle with Maven’s Lifecycle Model"
 description: "Agentic AI tools often struggle with Apache Maven because its unique lifecycle model clashes with AI’s preference for minimal, incremental work, leading to false negatives and false positives. DAG-based build systems like Gradle align better, ensuring reliable incremental builds and clearer CLI behavior for both AI and humans."
-pubDate: "2025-10-02"
+pubDate: "2025-10-26"
 image: "maven-ai-struggles.png"
 ---
 
@@ -37,7 +37,7 @@ mvn test -Dtest=ApiTest
 ```
 
 From the project root, Maven will execute the test phase in every module.
-Because `ApiTest` exists only in modules/api, the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) treats the other modules as having "no specified tests" and - by default - fails the build.
+Because `ApiTest` exists only in `modules/api`, the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) treats the other modules as having "no specified tests" and - by default - fails the build.
 The AI interprets this as a genuine defect and begins searching for a non‑existent problem until it is told to scope the command to the module that contains the test, for example:
 
 ```shell
@@ -63,8 +63,8 @@ Let's look at another variant of the situation with the command that selects the
 mvn test -Dtest=ApiTest -pl modules/api
 ```
 
-What if we've changed something in modules/core and this change would break `ApiTest`?
-Since the build command only requests to build module/api, Maven will not rebuild modules/core, even though it has changed.
+What if we've changed something in `modules/core` and this change would break `ApiTest`?
+Since the build command only requests to build module/api, Maven will not rebuild `modules/core`, even though it has changed.
 This can results in a false positive: if code in the core module was broken by changes but not recompiled, then `ApiTest` may still pass because it runs against stale compile outputs.
 The build shows green although the code has a bug.
 An AI will assume everything is fine and may respond with high confidence.
@@ -142,16 +142,16 @@ The AI can issue focused commands with confidence that the right scope will be r
 And because DAG-based tools are common across ecosystems - from Cargo in Rust to Make in C/C++ - the AI can transfer learned patterns more effectively.
 Maven, by contrast, remains the outlier.
 
-## When AI Has to Author Build Logic
+## Everything better on the Gradle side?
 
 While AI tools find Gradle easier to execute, the situation reverses when they must author or modify build logic.
 Maven’s XML-based configuration model has remained stable for years, which means there are many valid examples in the public domain for an AI to learn from.
-The structure is consistent, and the semantics of the POM rarely change, allowing an AI to produce correct edits with high confidence.
+The structure is consistent, and the semantics of the POM rarely change, allowing an AI to produce correct edits most of the time.
 
-Gradle, however, presents a different challenge.
-There are two distinct DSLs - Groovy and Kotlin - with a third, the Declarative Configuration Language (DCL), currently in development.
-In addition, Gradle frequently evolves its best practices, including the move from allprojects to local build plugins, ongoing API changes, and the introduction of the Provider API.
-These shifts make it difficult for an AI model to determine the correct syntax and structure for a given Gradle version or build setup.
+When it comes to editing build files, Gradle presents a different challenge for AI agents.
+There are [two distinct DSLs](https://docs.gradle.org/current/userguide/kotlin_dsl.html) - Groovy and Kotlin - with a third, the [Declarative Configuration Language (DCL)](https://declarative.gradle.org/), currently in development.
+In addition, Gradle frequently evolves its best practices, including the move from [`allprojects` to local build plugins](https://docs.gradle.org/current/userguide/best_practices_structuring_builds.html#favor_composite_builds), ongoing API changes, and the introduction of the [Provider API](https://docs.gradle.org/current/userguide/properties_providers.html).
+These shifts make it difficult for an AI model to determine the correct syntax and structure for a given Gradle version.
 As a result, while AI may execute Gradle commands more effectively, it struggles far more when asked to author or fix Gradle build scripts.
 
 ## Conclusion
