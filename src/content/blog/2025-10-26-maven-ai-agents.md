@@ -161,4 +161,4 @@ This makes Gradle’s execution model more natural for AI systems that aim to mi
 Maven’s stable XML configuration still offers an advantage for generating or maintaining build logic, but when it comes to running builds, DAG-based tools align far better with how both AI agents and developers think about incremental work.
 
 If you’re navigating challenges with Maven or Gradle - or looking to improve your build automation workflows - I offer consulting and guidance to help teams modernize and optimize their builds.
-Learn more at [britter.dev/services](/servives/).
+Learn more at [britter.dev/services](/services/).
