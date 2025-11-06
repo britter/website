@@ -23,6 +23,15 @@ export default function TestimonialsCarousel({ testimonials }) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    // Respect user's preference for reduced motion (accessibility + testing)
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReducedMotion) {
+      return; // Don't auto-advance carousel
+    }
+
     let start = Date.now();
 
     const tick = () => {
@@ -127,8 +136,8 @@ export default function TestimonialsCarousel({ testimonials }) {
         <FaChevronCircleRight className="h-5 w-5 text-gray-700 dark:text-white" />
       </button>
 
-      {/* Progress bar below slides */}
-      <div className="mt-4 w-full px-6">
+      {/* Progress bar below slides - hidden when reduced motion is preferred */}
+      <div className="mt-4 w-full px-6 motion-reduce:hidden">
         <div className="h-1 rounded bg-gray-200 dark:bg-gray-700">
           <div
             className="h-full rounded bg-blue-500 transition-all duration-100 ease-linear"

@@ -26,3 +26,7 @@ pnpm-debug.log*
 # auto generated config file by git-hooks.nix
 .pre-commit-config.yaml
 
+# playwright test artifacts
+playwright-report/
+test-results/
+
