@@ -8,17 +8,17 @@ const url = `/blog/${blogParams.path}`;
 
 <a href={url} class="block">
   <li
-    class="bg-background group flex flex-col items-start rounded-lg border border-default p-5 shadow-md transition-shadow hover:shadow-lg md:flex-row"
+    class="bg-background group border-default flex flex-col items-start rounded-lg border p-5 shadow-md transition-shadow hover:shadow-lg md:flex-row"
   >
     <div class="flex-1 pr-3">
       <h3
-        class="pt-1 text-2xl font-semibold transition-colors group-hover:text-primary"
+        class="group-hover:text-primary pt-1 text-2xl font-semibold transition-colors"
       >
         {blog.data.title}
       </h3>
       <time
         datetime={blog.data.pubDate.toLocaleDateString()}
-        class="mt-3 block text-sm text-offset"
+        class="text-offset mt-3 block text-sm"
       >
         {
           new Date(blog.data.pubDate).toLocaleDateString("en-US", {
@@ -28,7 +28,7 @@ const url = `/blog/${blogParams.path}`;
           })
         }
       </time>
-      <p class="mt-4 line-clamp-2 text-offset">{blog.data.description}</p>
+      <p class="text-offset mt-4 line-clamp-2">{blog.data.description}</p>
     </div>
     {
       blog.data.image && (

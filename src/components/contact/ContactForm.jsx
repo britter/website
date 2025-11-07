@@ -76,7 +76,7 @@ export default function ContactForm() {
     <>
       <div className="mt-6 flex justify-center">
         <button
-          className="rounded-md bg-primary px-4 py-2 text-white transition hover:bg-secondary"
+          className="bg-primary hover:bg-secondary rounded-md px-4 py-2 text-white transition"
           onClick={() => setIsOpen(true)}
         >
           Contact Me
@@ -88,7 +88,7 @@ export default function ContactForm() {
           <>
             {/* Blurred Background */}
             <motion.div
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-md"
+              className="bg-opacity-50 fixed inset-0 z-50 flex items-center justify-center bg-black backdrop-blur-md"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -105,7 +105,7 @@ export default function ContactForm() {
               <div className="bg-background relative w-full max-w-md rounded-lg border border-gray-300 p-6 shadow-xl">
                 {/* Close Button (❌) */}
                 <button
-                  className="absolute right-3 top-3 text-gray-600 transition hover:text-gray-900"
+                  className="absolute top-3 right-3 text-gray-600 transition hover:text-gray-900"
                   onClick={() => setIsOpen(false)}
                 >
                   ❌
