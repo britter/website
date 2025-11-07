@@ -20,13 +20,13 @@ const currentPage = page.currentPage;
     hasPreviousPage ? (
       <a
         href={`/blog/${currentPage - 1}`}
-        class="border-border bg-background flex h-10 items-center justify-center rounded-full border px-6 py-2 transition-all duration-300 ease-in-out hover:bg-offset hover:shadow-lg"
+        class="border-border bg-background hover:bg-offset flex h-10 items-center justify-center rounded-full border px-6 py-2 transition-all duration-300 ease-in-out hover:shadow-lg"
       >
         Previous
       </a>
     ) : (
       <span
-        class="flex h-10 cursor-not-allowed items-center justify-center rounded-full border bg-offset px-6 py-2 text-offset transition-all duration-300 ease-in-out"
+        class="bg-offset text-offset flex h-10 cursor-not-allowed items-center justify-center rounded-full border px-6 py-2 transition-all duration-300 ease-in-out"
         aria-disabled="true"
       >
         Previous
@@ -42,13 +42,13 @@ const currentPage = page.currentPage;
     hasNextPage ? (
       <a
         href={`/blog/${currentPage + 1}`}
-        class="border-border bg-background flex h-10 items-center justify-center rounded-full border px-6 py-2 transition-all duration-300 ease-in-out hover:bg-offset hover:shadow-lg"
+        class="border-border bg-background hover:bg-offset flex h-10 items-center justify-center rounded-full border px-6 py-2 transition-all duration-300 ease-in-out hover:shadow-lg"
       >
         Next
       </a>
     ) : (
       <span
-        class="flex h-10 cursor-not-allowed items-center justify-center rounded-full border bg-offset px-6 py-2 text-offset transition-all duration-300 ease-in-out"
+        class="bg-offset text-offset flex h-10 cursor-not-allowed items-center justify-center rounded-full border px-6 py-2 transition-all duration-300 ease-in-out"
         aria-disabled="true"
       >
         Next

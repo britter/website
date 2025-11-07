@@ -71,7 +71,7 @@ export default function TestimonialsCarousel({ testimonials }) {
       {/* Left arrow */}
       <button
         onClick={prevSlide}
-        className="absolute left-0 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-gray-100 p-2 hover:bg-gray-300 md:flex dark:bg-gray-700 dark:hover:bg-gray-600"
+        className="absolute top-1/2 left-0 z-20 hidden -translate-y-1/2 rounded-full bg-gray-100 p-2 hover:bg-gray-300 md:flex dark:bg-gray-700 dark:hover:bg-gray-600"
         aria-label="Previous testimonial"
       >
         <FaChevronCircleLeft className="h-5 w-5 text-gray-700 dark:text-white" />
@@ -95,10 +95,10 @@ export default function TestimonialsCarousel({ testimonials }) {
               <img
                 src={person.avatar}
                 alt={person.name}
-                className="mb-4 h-24 w-24 flex-shrink-0 rounded-full object-cover md:mb-0 md:mr-6"
+                className="mb-4 h-24 w-24 flex-shrink-0 rounded-full object-cover md:mr-6 md:mb-0"
               />
               <div className="w-full text-center md:text-left">
-                <blockquote className="mb-2 text-lg font-medium italic text-gray-800 dark:text-gray-100">
+                <blockquote className="mb-2 text-lg font-medium text-gray-800 italic dark:text-gray-100">
                   “{person.quote}”
                 </blockquote>
                 <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
@@ -130,7 +130,7 @@ export default function TestimonialsCarousel({ testimonials }) {
       {/* Right arrow */}
       <button
         onClick={nextSlide}
-        className="absolute right-0 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-gray-100 p-2 hover:bg-gray-300 md:flex dark:bg-gray-700 dark:hover:bg-gray-600"
+        className="absolute top-1/2 right-0 z-20 hidden -translate-y-1/2 rounded-full bg-gray-100 p-2 hover:bg-gray-300 md:flex dark:bg-gray-700 dark:hover:bg-gray-600"
         aria-label="Next testimonial"
       >
         <FaChevronCircleRight className="h-5 w-5 text-gray-700 dark:text-white" />
