@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import remarkCalloutDirectives from "@microflash/remark-callout-directives";
 import githubCalloutOptions from "@microflash/remark-callout-directives/config/github";
@@ -10,7 +10,10 @@ import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 
 export default defineConfig({
-  integrations: [tailwind(), icon(), react(), mdx()],
+  integrations: [icon(), react(), mdx()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   redirects: {
     "/blogs": "/blog",
     "/blogs/2025-01-02-gradle-nix": "/blog/2025/01/02/gradle-nix",

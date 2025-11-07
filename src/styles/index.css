@@ -1,2 +1,82 @@
-@import "theme.css";
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@import "./theme.css";
 @import "@microflash/remark-callout-directives/theme/github";
+
+/* Background utilities */
+@utility bg-default {
+  background-color: var(--color-background);
+}
+
+@utility bg-background {
+  background-color: var(--color-background);
+}
+
+@utility bg-offset {
+  background-color: var(--color-background-offset);
+}
+
+@utility bg-background-offset {
+  background-color: var(--color-background-offset);
+}
+
+@utility bg-border {
+  background-color: var(--color-border);
+}
+
+/* Text color utilities */
+@utility text-default {
+  color: var(--color-text);
+}
+
+@utility text-text {
+  color: var(--color-text);
+}
+
+@utility text-offset {
+  color: var(--color-text-offset);
+}
+
+/* Border color utilities */
+@utility border-default {
+  border-color: var(--color-border);
+}
+
+@utility border-border {
+  border-color: var(--color-border);
+}
+
+/* Theme color utilities */
+@utility bg-primary {
+  background-color: var(--color-primary);
+}
+
+@utility bg-secondary {
+  background-color: var(--color-secondary);
+}
+
+@utility text-primary {
+  color: var(--color-primary);
+}
+
+@utility text-secondary {
+  color: var(--color-secondary);
+}
+
+@theme {
+  /* Custom animations */
+  --animate-spin-slower: spin 35s ease infinite;
+  --animate-spin-slow: spin 25s ease-in-out infinite reverse;
+}
+
+/* Override default border color (replaces borderColor.default from v3 config) */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border);
+  }
+}
