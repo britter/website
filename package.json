@@ -20,7 +20,7 @@
     "@astrojs/mdx": "^4.3.10",
     "@astrojs/react": "^4.4.2",
     "@astrojs/rss": "^4.0.13",
-    "@microflash/remark-callout-directives": "^4.3.2",
+    "@microflash/remark-callout-directives": "^5.0.0",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "astro": "^5.15.4",
