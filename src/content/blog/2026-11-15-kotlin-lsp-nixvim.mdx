@@ -1,0 +1,168 @@
+---
+title: "Packaging kotlin-lsp for NixVim"
+description: "A short how-to explaining how to package the kotlin-lsp language server with Nix in order to use it with NixVim"
+pubDate: "2025-11-15"
+image: "maven-ai-struggles.png"
+---
+
+I recently started a small side project for my home lab and decided to implement it with [Kotlin](https://kotlinlang.org).
+My editor of choise has become [Neovim](https://neovim.io) over the past few months due to it's flexibility and configurability, so naturally I wanted to have a nice experience while editing Kotlin code inside of Neovim.
+Since I manage my Neovim configuration using [NixVim](https://github.com/nix-community/nixvim), this required packaging the [kotlin-lsp](https://github.com/Kotlin/kotlin-lsp) to be able to use it in my NixVim configuration.
+In this blog post I'm going to explain how I did that in order to have a fully declarative setup of kotlin-lsp in Neovim.
+
+:::note
+If you want to include kotlin-lsp into your configuration, I need to warn you:
+kotlin-lsp is still pretty much in alpha stage and has some rough edges.
+Some features don't work or are buggy, others are simply not implemented yet.
+So don't expect an experience as polished as with other LSPs.
+:::
+
+## Kotlin tooling landscape
+
+Since Kotlin is a [JetBrains](https://jetbrains.org) product the company did not have much of an incentive to provide a language server (LSP)[^1] for the language.
+Their flagship product is [Intellij IDEA](https://www.jetbrains.com/idea/) which probably has the best developer experience when working on Kotlin code.
+Providing an LSP would just help making Kotlin development outside of Intellij IDEA better, which helps editors like [VSCode](https://code.visualstudio.com/) - direct competitors of Intellij IDEA.
+When I started looking into this, I first found [github.com/fwcd/kotlin-language-server](https://github.com/fwcd/kotlin-language-server) which looks pretty solid, but according to the README.md should be considered deprecated due to "an official language server" being now available.
+Heading over to [github.com/Kotlin/kotlin-lsp](https://github.com/Kotlin/kotlin-lsp) I expected something as mature as kotlin-language-server only to learn that kotlin-lsp is still in alpha stage.
+Furthermore kotlin-lsp is kind of semi open-source, stating in the README.md:
+
+> Currently, the LSP implementation is partially closed-source, primarily for the sake of development speed convenience -- it heavily depends on parts of IntelliJ, Fleet, and our distributed Bazel build that allows us to iterate quickly and experiment much faster, cutting corners and re-using internal infrastructure where it helps.
+
+Amazing, we can't build from source and the released binaries contain a good part of IntelliJ IDEA.
+Not what I would call "light-weight"...
+But hey, it is what it is, so let's just try to make this work in Neovim using NixVim config.
+
+[^1]: I know that LSP is short for _language server protocol_ but people use it as an abbreviation for language server in my experience.
+
+## Packaging kotlin-lsp with Nix
+
+You can say a lot about Java, but one thing that is great is the fact that binaries are pretty portable as long as there is a [Java Virtual Machine](https://en.wikipedia.org/wiki/Java_virtual_machine) for your system.
+In other words, when packaging a binary Java application in Nix, you usually don't need tricks like [patchelf](https://github.com/NixOS/patchelf) or [pkgs.buildFHSEnv](https://noogle.dev/f/pkgs/buildFHSEnv).
+These tools work around the fact that pre-built binaries typically don't run on [NixOS](https://nixos.org) - I use NixOS btw - mostly due to the fact that NixOS doesn't follow the [filesystem hierarchy standard](https://specifications.freedesktop.org/fhs/latest/index.html).
+
+So when packaging a Java application and I can't [build from source](/blog/2025/01/02/gradle-nix), I typically just wrap the application into a shell script that sets the JAVA_HOME variable or constructs the Java classpath from the applications JAR files and calls `java -cp /path/to/jars`.
+And that's basically what I did to package kotlin-lsp:
+
+```nix
+{
+  stdenvNoCC,
+  fetchzip,
+  makeWrapper,
+  jdk21,
+}:
+stdenvNoCC.mkDerivation (finalAttrs: {
+  pname = "kotlin-lsp";
+  version = "0.253.10629";
+
+  src = fetchzip {
+    url = "https://download-cdn.jetbrains.com/kotlin-lsp/${finalAttrs.version}/kotlin-${finalAttrs.version}.zip";
+    sha256 = "sha256-LCLGo3Q8/4TYI7z50UdXAbtPNgzFYtmUY/kzo2JCln0=";
+    stripRoot = false;
+  };
+
+  nativeBuildInputs = [
+    makeWrapper
+  ];
+
+  installPhase = ''
+    mkdir -p $out/bin
+    cp -r $src $out/share
+    chmod +x $out/share/kotlin-lsp.sh
+    makeWrapper $out/share/kotlin-lsp.sh $out/bin/kotlin-lsp \
+      --set JAVA_HOME ${jdk21}
+  '';
+}
+```
+
+There are some bits that come together here. So as [ChatGPT](https://chatgpt.com) would say, let's unpack this carefully.
+First, the derivation uses `stdenvNoCC` which is a way to set up a derivation without the standard C toolchain.
+We can't really use the source code from GitHub as discussed earlier, so using [`fetchFromGitHub`](https://noogle.dev/f/pkgs/fetchFromGitHub) doesn't help to define the derivation's `src` attribute.
+Instead we're using [`fetchzip`](https://noogle.dev/f/pkgs/fetchzip) to retrieve the binary release of kotlin-lsp from JetBrains' download portal.
+`fetchzip` retrieves the zip from that URL and unpacks it for further processing.
+
+The next step is to setup the derivation's output, which involves creating the right folder structure and putting things in the right places.
+There are some conventions around which folders to create and what to put into them, but they do seem to apply only to native programs and libraries.
+For example when building a C program that also exposes a native library, the binary program goes into `$out/bin` and the library goes into `$out/lib`.
+This enables other NixOS tooling to detect certain things, e.g. [`lib.getExe`](https://noggle.dev/f/lib/getExe) will find the binary if it's located in the bin folder.
+I've seen `$out/share` being used for "other stuff" in a few places, to I typically put JARs there.
+
+kotlin-lsp's release zip contains a `kotlin-lsp.sh` shell script that can start the LSP.
+This script requires the JAVA_HOME environment variable to be defined so it can construct a Java command line to start the LSP.
+One way of dealing with this is to just link that script into `$out/bin` and require users of the package to configure JAVA_HOME.
+While this is just the way many Java programs work (tools like [Gradle](https://gradle.org) or [Apache Maven](https://maven.apache.org) do it the same way), I really don't like this dependency on the runtime environment.
+What if I want to run kotlin-lsp with Java 21, but Gradle with Java 17?
+For that reason, I usually use the `makeWrapper` utility to create a wrapper script that configures JAVA_HOME just for the wrapped program.
+That way, no matter how my environment is configured, when I (or Neovim) execute kotlin-lsp it will always be started with Java 21.
+
+## Configuring the LSP in NixVim
+
+After the heavy lifting of packaging the LSP, we can now use NixVim to make kotlin-lsp available in Neovim.
+Luckily NixVim's [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) wrapper module supports configuring kotlin-lsp, but [requires setting the package attribute](https://nix-community.github.io/nixvim/plugins/lsp/servers/kotlin_lsp/index.html?#pluginslspserverskotlin_lsppackage).
+This is exactly what we've built the derivation for:
+
+```nix
+programs.nixvim.plugins.lsp = {
+  enable = true;
+  servers.kotlin_lsp = {
+    enable = true;
+    package = pkgs.callPackage ./kotlin-lsp.nix { };
+  };
+};
+```
+
+After applying this change, Neovim starts kotlin-lsp automatically when a Kotlin source file is opened.
+Here are a some screenshots of how that looks like in action.
+
+import { Image } from "astro:assets";
+import syntaxHighlighting from "../../assets/kotlin-lsp/syntax-highlighting.png";
+import inlayHints from "../../assets/kotlin-lsp/inlay-hints.png";
+import codeCompletion from "../../assets/kotlin-lsp/code-completion.png";
+import codeActions from "../../assets/kotlin-lsp/code-actions.png";
+
+export const screenshots = [
+  {
+    img: syntaxHighlighting,
+    alt: "Kotlin source code with syntax highlighting",
+    desc: "Syntax highlighting",
+  },
+  {
+    img: inlayHints,
+    alt: "A compilation error displayed as an inlay hint",
+    desc: "Inlay hints",
+  },
+  {
+    img: codeCompletion,
+    alt: "Code compition popup",
+    desc: "Code completion",
+  },
+  {
+    img: codeActions,
+    alt: "Code actions popup",
+    desc: "Code actions",
+  },
+];
+
+<div class="grid grid-cols-1 gap-1 md:grid-cols-2">
+  {screenshots.map(screenshot => (
+    <div class="flex flex-col">
+      <a href={screenshot.img.src} target="_blank" rel="noopener noreferrer">
+        <Image
+          class="block h-auto w-full object-cover"
+          src={screenshot.img}
+          alt={screenshot.alt}
+        />
+      </a>
+      <p class="text-sm text-gray-600 italic">{screenshot.desc}</p>
+    </div>
+  ))}
+</div>
+
+## Conclusion
+
+While the tooling landscape for Kotlin seems to be scattered outside of Intellij IDEA, an official language server by the Kotlin team has been release.
+Setting it up on traditional configuration systems requries installing the language server release and than wiring things up correctly with nvim-lspconfig while making sure no clashes with the JAVA_HOME environment variable occure.
+In this blog post I've shown how to use Nix for automatically downloading and installing kotlin-lsp and configuring it in Neovim using the NixVim configuration framework.
+The result is a reproducible development environment, that can be rolled out on any system that has a Nix installation without manual steps.
+
+If you're looking into streamlining your team's development tooling, check out the [services](/services) I offer and feel free to reach out to me.
+I'm happy to help!
