@@ -1,7 +1,10 @@
 {
-  "name": "new",
+  "name": "britter.dev",
   "type": "module",
-  "version": "1.0.3",
+  "version": "1.0.0",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
