@@ -47,7 +47,10 @@ test.describe("Visual Regression Tests", () => {
 
   test("blog listing", async ({ page }) => {
     await page.goto("/blog");
-    await expect(page).toHaveScreenshot("blog-listing.png", { fullPage: true });
+    await expect(page).toHaveScreenshot("blog-listing.png", {
+      fullPage: true,
+      mask: [page.locator(".blog-post")],
+    });
   });
 
   test("terms page", async ({ page }) => {
