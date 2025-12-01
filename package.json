@@ -33,7 +33,7 @@
     "typescript": "^5.5.4"
   },
   "devDependencies": {
-    "@playwright/test": "1.56.1",
+    "@playwright/test": "1.57.0",
     "@tailwindcss/typography": "0.5.19",
     "@tailwindcss/vite": "4.1.17",
     "patch-package": "8.0.1",
