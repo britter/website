@@ -57,3 +57,18 @@ It does that so good, that most of the time I don't think about the fact that I'
 I only realize when I have to work on a different computer or server and have to fall back to plain old bash.
 
 So the first donation goes to [Johannes Altmanninger](https://github.com/korbelus) who is listed as the receiver of GitHub sponsoring on [fish shell's GitHub repository](https://github.com/fish-shell/fish-shell).
+
+### Day 2 - vaultwarden
+
+https://github.com/dani-garcia/vaultwarden
+
+> Unofficial Bitwarden compatible server written in Rust, formerly known as bitwarden_rs
+
+Using unique, strong passwords everywhere is essential nowadays.
+When I started my home lab, I knew that among the first services I wanted to host myself was some sort of password manager.
+Vaultwarden is exactly what I needed in order to migrate my and my wife's password safes from [1Password](https://1password.com) into my home lab.
+It is compatible to the [Bitwarden](https://bitwarden.com) iOS and Android apps as well as the various Bitwarden browser extensions.
+Since I installed it on my home server more than a year ago, I never had to touch it again.
+As with fish shell, it simply works.
+
+The donation for day 2 therefore goes to [Daniel García](https://github.com/dani-garcia), maintainer of the Vaultwarden project.
