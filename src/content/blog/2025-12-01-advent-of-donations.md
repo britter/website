@@ -72,3 +72,21 @@ Since I installed it on my home server more than a year ago, I never had to touc
 As with fish shell, it simply works.
 
 The donation for day 2 therefore goes to [Daniel García](https://github.com/dani-garcia), maintainer of the Vaultwarden project.
+
+### Day 3 - Codeberg e.V.
+
+https://codeberg.org
+
+> Software development, but free!
+>
+> Codeberg is a non-profit, community-led effort that provides Git hosting and other services for free and open source projects.
+
+For the past decade [GitHub](https://github.com) has been the de-facto standard code hosting platform for projects of any size.
+While there have been alternatives like [GitLab](https://gitlab.com) and [BitBucket](https://bitbucket.org) most of them are corporations in the US.
+So putting your code there it will always be subject to changing company strategy and even legislation of foreign counties.
+Codeberg is different.
+It's a [Forgejo](https://forgejo.org/) instance operated by a non-profit organization in Berlin, Germany.
+Forgejo's code is open source, so you know exactly what's happening behind the scenes.
+Furthermore you can become a member of Codeberg e.V. for a yearly fee starting at 24€ and become involved in its organization and operations.
+
+For day 3 I've decided to spend 50€ on a Codeberg e.V. membership.
