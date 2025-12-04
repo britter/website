@@ -90,3 +90,20 @@ Forgejo's code is open source, so you know exactly what's happening behind the s
 Furthermore you can become a member of Codeberg e.V. for a yearly fee starting at 24€ and become involved in its organization and operations.
 
 For day 3 I've decided to spend 50€ on a Codeberg e.V. membership.
+
+### Day 4 - tree-sitter-alloy
+
+https://github.com/mattsre/tree-sitter-alloy
+
+> Grafana Alloy grammar for tree-sitter
+
+Looking at what I've donated to, this may look like it doesn't fit into the group of high profile projects we've had so far.
+But remember the rules of the game: I want to sponsor individuals whose work helped me in 2025 in any way.
+[Matt Conway](https://github.com/mattsre) - maintainer of tree-sitter-alloy - is exactly such an individual.
+In one of my projects we decided to setup telemetry using [Open Telemetry](https://opentelemetry.io/) with [Grafana Alloy](https://grafana.com/docs/alloy/latest/) as the collector.
+So naturally I had to write some Alloy config.
+Since Alloy uses a custom configuration language that isn't widely supported yet but editors, the editing experience was pretty bad.
+Luckily I found the tree-sitter-alloy grammar, which makes editing Alloy files in [NeoVim](https://neovim.io) and absolute joy.
+I even reported an [issue](https://github.com/mattsre/tree-sitter-alloy/issues/2) with highlighting of escaped strings that was fixed within a day.
+
+So Matt Conway will receive my donation of $50 for putting together this project that directly helped me do my job.
