@@ -13,5 +13,16 @@
   },
   "nix": {
     "enabled": true
-  }
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^run-visual-tests\\.sh$"],
+      "matchStrings": [
+        "mcr\\.microsoft\\.com/playwright:v(?<currentValue>[0-9.]+)-noble"
+      ],
+      "depNameTemplate": "@playwright/test",
+      "datasourceTemplate": "npm"
+    }
+  ]
 }
