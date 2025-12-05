@@ -107,3 +107,17 @@ Luckily I found the tree-sitter-alloy grammar, which makes editing Alloy files i
 I even reported an [issue](https://github.com/mattsre/tree-sitter-alloy/issues/2) with highlighting of escaped strings that was fixed within a day.
 
 So Matt Conway will receive my donation of $50 for putting together this project that directly helped me do my job.
+
+### Day 5 - Marco Peluso
+
+https://www.youtube.com/@marco_peluso
+
+> Hi, my name is Marco. Let's get started!
+
+Marco Peluso is a YouTuber dedicated to creating videos about efficient terminal workflows in general and working with vim in particular.
+When I decided to go all in on NeoVim at the beginning of the year, I started to absorb any content I could find about how move around and edit quickly without using the mouse.
+Around that time I found Marco's channel, and boy has it helped me level up my Vim skills.
+Marco takes a very structured approach to teaching Vim by creating short videos about a single feature at a time and explaining it end to end.
+I watched most of his videos and can only highly recommend checking the channel out.
+
+Marco helped me improve my Vim skills and therefore will receive today's donation of $50.
