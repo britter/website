@@ -10,5 +10,5 @@ echo "Running Playwright tests in Docker..."
 docker run --rm --init --ipc=host \
   -v "$(pwd)":/work \
   -w /work \
-  mcr.microsoft.com/playwright:v1.56.1-noble \
+  mcr.microsoft.com/playwright:v1.57.0-noble \
   npx playwright test "$@"
