@@ -121,3 +121,19 @@ Marco takes a very structured approach to teaching Vim by creating short videos 
 I watched most of his videos and can only highly recommend checking the channel out.
 
 Marco helped me improve my Vim skills and therefore will receive today's donation of $50.
+
+### Day 6 - Catppuccin
+
+https://catppuccin.com
+
+> Soothing pastel theme for the high-spirited!
+>
+> A community-driven color scheme meant for coding, designing, and much more!
+
+I'm the type of developer who needs some eye candy while coding.
+After having tried other color schemes including Dracular and Solarized Light, I've been using Catppuccin Macchiato for about two years now.
+The Catppuccin project offers a [wide range of ports](https://catppuccin.com/ports/) so you can essentially style your whole desktop with the same color palette.
+Moreover for NixOS users, they offer [modules](https://github.com/catppuccin/nix) that automatically style every supported program that's enable in your configuration.
+This makes creating a beautiful desktop super easy.
+
+For making me happy everytime I look at my desktop, the Catppuccin project will receive today's donation of $50.
