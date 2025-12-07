@@ -137,3 +137,16 @@ Moreover for NixOS users, they offer [modules](https://github.com/catppuccin/nix
 This makes creating a beautiful desktop super easy.
 
 For making me happy everytime I look at my desktop, the Catppuccin project will receive today's donation of $50.
+
+### Day 7 - GrapheneOS
+
+> The private and secure mobile operating system with Android app compatibility.
+> Developed as a non-profit open source project.
+
+As I've already revealed in the introduction of this blog post, I've replaced my iPhone this year with a Pixel 7a running [GrapheneOS](https://grapheneos.org).
+GrapheneOS is a privacy-focused mobile operating system build on top of the [Android Open Source Project](https://source.android.com/).
+It's one pillar of my quest to get rid of big tech in my life.
+People look at their mobile screens tens of times each day and I'm no exception.
+GrapheneOS probably belongs to the open source tech that I'm using the most each day.
+
+Donation of day 7 therefore goes to [Daniel Micay](https://github.com/thestinger), developer of GrapheneOS.
