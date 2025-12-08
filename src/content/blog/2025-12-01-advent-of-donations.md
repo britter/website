@@ -140,6 +140,8 @@ For making me happy everytime I look at my desktop, the Catppuccin project will 
 
 ### Day 7 - GrapheneOS
 
+https://grapheneos.org
+
 > The private and secure mobile operating system with Android app compatibility.
 > Developed as a non-profit open source project.
 
@@ -150,3 +152,15 @@ People look at their mobile screens tens of times each day and I'm no exception.
 GrapheneOS probably belongs to the open source tech that I'm using the most each day.
 
 Donation of day 7 therefore goes to [Daniel Micay](https://github.com/thestinger), developer of GrapheneOS.
+
+### Day 8 - hledger
+
+https://hledger.org
+
+> Robust, fast, intuitive plain text accounting tool with CLI, TUI and web interfaces.
+
+When I started my [self-employment at the beginning of the year](/blog/2024/12/20/hello-world/), I knew that I needed some sort of accounting software.
+By chance I came across [plain text accounting](https://plaintextaccounting.org/) - the idea of having all your accounting data inside of plain text files, that can be edited with a simple text editor (read: NeoVim).
+hledger is one CLI tool for managing a plain text accounting data base and has made account fun for me (not kidding!).
+
+heldger's developer [Simon Michael](https://github.com/simonmichael) will receive today's donation.
