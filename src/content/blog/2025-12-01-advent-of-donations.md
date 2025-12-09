@@ -164,3 +164,17 @@ By chance I came across [plain text accounting](https://plaintextaccounting.org/
 hledger is one CLI tool for managing a plain text accounting data base and has made account fun for me (not kidding!).
 
 heldger's developer [Simon Michael](https://github.com/simonmichael) will receive today's donation.
+
+### Day 9 - bat
+
+https://github.com/sharkdp/bat
+
+> A cat(1) clone with wings.
+
+`bat` was among the first programs from the [modern unix](https://github.com/ibraheemdev/modern-unix) list that I used (in fact I think I used it before I knew about that list).
+The idea of tools like `bat` and others from the modern unix list is to reimplement / reimagine classical unix command lines tools but with modern features.
+Using these tools leads to a more modern and enjoyable experience when using the terminal.
+In that spirit, `bat` is a `cat` clone that includes syntax highlighting and git support.
+I've aliased it to `cat` and thus use it almost every day.
+
+The donation of day 9 goes to [David Peter](https://github.com/sharkdp/), developer of `bat`.
