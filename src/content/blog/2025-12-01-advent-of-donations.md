@@ -178,3 +178,18 @@ In that spirit, `bat` is a `cat` clone that includes syntax highlighting and git
 I've aliased it to `cat` and thus use it almost every day.
 
 The donation of day 9 goes to [David Peter](https://github.com/sharkdp/), developer of `bat`.
+
+### Day 10 - chaos.social
+
+https://chaos.social
+
+> chaos.social
+>
+> Decentralized social media powered by Mastodon
+
+When Twitter went up in flames some time ago, I was looking for a new micro blogging home.
+I wanted to try Mastodon but didn't know which [instance](https://joinmastodon.org/servers) to choose.
+Somehow I ended up on chaos.social which is operated by a non-profit in Germany.
+Since chaos.social is founded soley by donations, it's about time I give something back.
+
+Today I'm donating to [chaos.social e.V.](https://meta.chaos.social/verein), the non-profit operating the chaos.social mastodon instance.
