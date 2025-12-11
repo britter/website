@@ -3,6 +3,7 @@ import Header from "../components/sections/Header.astro";
 import Footer from "../components/sections/Footer.astro";
 import "../styles/index.css";
 import Contact from "../components/contact/Contact.astro";
+import defaultImage from "../assets/benedikt_ritter.jpg";
 
 interface Props {
   title: string;
@@ -11,7 +12,12 @@ interface Props {
   type?: string;
 }
 
-const { title, description, image, type = "website" } = Astro.props;
+const {
+  title,
+  description,
+  image = defaultImage.src,
+  type = "website",
+} = Astro.props;
 ---
 
 <!doctype html>
