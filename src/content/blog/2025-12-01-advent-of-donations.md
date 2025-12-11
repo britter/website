@@ -193,3 +193,16 @@ Somehow I ended up on chaos.social which is operated by a non-profit in Germany.
 Since chaos.social is founded soley by donations, it's about time I give something back.
 
 Today I'm donating to [chaos.social e.V.](https://meta.chaos.social/verein), the non-profit operating the chaos.social mastodon instance.
+
+### Day 11 - tmux
+
+https://github.com/tmux/tmux
+
+> tmux is a terminal multiplexer: it enables a number of terminals to be created, accessed, and controlled from a single screen.
+
+Remember when I said, that whatever I do it often starts with opening [fish](#day-1---fish)?
+The first command I usually type into a new fish session is `tmux`.
+tmux helps me stay focused in my terminal, providing the key bindings I need so I can work without the mouse.
+It's one of those foundational tools that I uses every single day.
+
+The donation of day 11 goes to [Nicholas Marriott](https://github.com/nicm) developer of tmux.
