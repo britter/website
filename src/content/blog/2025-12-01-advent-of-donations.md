@@ -206,3 +206,17 @@ tmux helps me stay focused in my terminal, providing the key bindings I need so 
 It's one of those foundational tools that I uses every single day.
 
 The donation of day 11 goes to [Nicholas Marriott](https://github.com/nicm) developer of tmux.
+
+### Day 12 - Molly
+
+https://molly.im
+
+> An improved Signal app
+
+As soon as I had migrated from iOS to [GrapheneOS](#day-7---grapheneos) I needed to find alternatives for the apps that I had been using before.
+In case of Signal for iOS, there is the normal Signal for Android app, but it requires Google Play services.
+I try to avoid installing apps from the Google Play store as much as possible and instead try to use FOSS apps from the [F-Driod store](https://f-droid.org).
+That's how I found Molly which is a fork of the original Signal app that works without Google Play services and can be installed via F-Droid.
+I've been using it ever since and am super happy with the experience.
+
+Today's donations therefore goes to the Molly project.
