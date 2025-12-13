@@ -220,3 +220,15 @@ That's how I found Molly which is a fork of the original Signal app that works w
 I've been using it ever since and am super happy with the experience.
 
 Today's donations therefore goes to the Molly project.
+
+### Day 13 - Vimjoyer
+
+https://www.youtube.com/@vimjoyer
+
+Today we have another content creator.
+Vimjoyer is a YouTuber dedicated to creating content about NixOS.
+His channel played a big role in my NixOS journey and in understanding how things play together.
+Vimjoyer's videos are short and to the point and feature nicely animated source code.
+If you want to learn NixOS, I can only recommend checking out the channel.
+
+My donation for day 13 goes to Vimjoyer for producing great video content about my favorite operating system.
