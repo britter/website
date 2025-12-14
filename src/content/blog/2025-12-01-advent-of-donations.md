@@ -232,3 +232,16 @@ Vimjoyer's videos are short and to the point and feature nicely animated source 
 If you want to learn NixOS, I can only recommend checking out the channel.
 
 My donation for day 13 goes to Vimjoyer for producing great video content about my favorite operating system.
+
+### Day 14 - Nix Community
+
+https://nix-community.org/
+
+> A project incubator that works in parallel of the [@NixOS](https://github.com/NixOS) org
+
+The Nix Community project fills the gaps that don't fit into the broader NixOS organization.
+I use multiple of the Nix Community projects, both on my laptop and on my servers.
+This includes [home-manager](https://github.com/nix-community/home-manager), [disko](https://github.com/nix-community/disko), [nixos-anywhere](https://github.com/nix-community/nixos-anywhere), [nixvim](https://github.com/nix-community/nixvim), and more.
+Using Nix Community projects makes using NixOS even more pleasant.
+
+The Nix Community project will receive the donation for day 14.
