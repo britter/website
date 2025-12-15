@@ -246,7 +246,7 @@ Using Nix Community projects makes using NixOS even more pleasant.
 
 The Nix Community project will receive the donation for day 14.
 
-### Day 14 - zoxide
+### Day 15 - zoxide
 
 https://github.com/ajeetdsouza/zoxide
 
