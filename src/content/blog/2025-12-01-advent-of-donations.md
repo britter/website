@@ -245,3 +245,16 @@ This includes [home-manager](https://github.com/nix-community/home-manager), [di
 Using Nix Community projects makes using NixOS even more pleasant.
 
 The Nix Community project will receive the donation for day 14.
+
+### Day 14 - zoxide
+
+https://github.com/ajeetdsouza/zoxide
+
+> A smarter cd command. Supports all major shells.
+
+I've talked about how my work most of the time begins with opening [fish](#day-1---fish), and that the first command I insert into fish is [tmux](#day-11---tmux).
+Once I'm in my tmux session, I typically use zoxide to jump directly to the directory of the project I want to work on.
+zoxide keeps a list of all the locations you visit in your terminal and then let's you jump to them without typing in their absolute path.
+This speeds up moving around in the terminal tremendously.
+
+For his work on zoxide, [Ajeet D'Souza](https://github.com/ajeetdsouza) will receive today's donation.
