@@ -258,3 +258,17 @@ zoxide keeps a list of all the locations you visit in your terminal and then let
 This speeds up moving around in the terminal tremendously.
 
 For his work on zoxide, [Ajeet D'Souza](https://github.com/ajeetdsouza) will receive today's donation.
+
+### Day 16 - Restic
+
+https://restic.net
+
+> Fast, secure, efficient backup program
+
+I'm hosting a few servies on a home server for almost two years now and it has been great fun.
+But at the beginning once I had migrated off Google Docs the fact that I did not have a proper backup gave me sleepless nights.
+I started with some bash scripts calling rsync to move stuff to a backup computer but that only got me so far.
+That's when I discovered Restic, an amazing tool that creates incremental backups and can store them in various backends including S3-compatible object storage.
+Moving my backups to Restic finally gave me peace of mind knowning I can always restore previous versions of all my files.
+
+For providing Restic [Alexander Neumann](https://github.com/f0d) will receive today's donation.
