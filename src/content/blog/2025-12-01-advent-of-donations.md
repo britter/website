@@ -272,3 +272,16 @@ That's when I discovered Restic, an amazing tool that creates incremental backup
 Moving my backups to Restic finally gave me peace of mind knowning I can always restore previous versions of all my files.
 
 For providing Restic [Alexander Neumann](https://github.com/f0d) will receive today's donation.
+
+### Day 17 - fzf
+
+https://junegunn.github.io/fzf/
+
+> A command-line fuzzy finder
+
+Once I'm in my [tmux](#day-11---tmux) session inside of [fish](#day-1---fish) and have navigated to my project directory using [zoxide](#day-15---zoxide), I typically start NeoVim using a custom alias called `v`.
+The alias uses fzf to start a fuzzy search in the current working directory, using [bat](#day-9---bat) to display file previews.
+Once I select a file it will launch NeoVim with that file.
+This pretty much concludes my workflow from opening the terminal to opening a file in NeoVim.
+
+[Junegunn Choi](https://github.com/junegunn) will receive today's donation for making fzf.
