@@ -285,3 +285,15 @@ Once I select a file it will launch NeoVim with that file.
 This pretty much concludes my workflow from opening the terminal to opening a file in NeoVim.
 
 [Junegunn Choi](https://github.com/junegunn) will receive today's donation for making fzf.
+
+### Day 18 - KOReader
+
+> An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats, running on Cervantes, Kindle, Kobo, PocketBook and Android devices
+
+KOReader is another pick from the software I use in order to get rid of big tech as much as I can.
+I've had a Kindle for almost a decade and it's my preferred way to consume books.
+But using a Kindle naturally means you're locked into Amazon's ecosystem...
+Only until you liberate your Kindle by flashing KOReader onto it.
+KOReader has so many features, my favorite one being night mode, which will invert the colors so that the screen is mostly black with only the letters being lit in white.
+
+The KOReader team will receive today's donation.
