@@ -288,6 +288,8 @@ This pretty much concludes my workflow from opening the terminal to opening a fi
 
 ### Day 18 - KOReader
 
+https://koreader.rocks
+
 > An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats, running on Cervantes, Kindle, Kobo, PocketBook and Android devices
 
 KOReader is another pick from the software I use in order to get rid of big tech as much as I can.
@@ -297,3 +299,19 @@ Only until you liberate your Kindle by flashing KOReader onto it.
 KOReader has so many features, my favorite one being night mode, which will invert the colors so that the screen is mostly black with only the letters being lit in white.
 
 The KOReader team will receive today's donation.
+
+### Day 19 - Astro
+
+https://astro.build
+
+> The web framework for content-driven websites.
+
+At the beginning of the year when I kick-started my self-employment I knew that I needed a new website.
+My old website was based on [Jekyll](https://jekyllrb.com/) and hadn't been updated in ages.
+A good friend suggested to look into Astro, a JavaScript based static website generator.
+At first I was hesitant, because I didn't want to write JavaScript to create a simple website.
+But I quickly started enjoying the flexibility and ease of use.
+Since then I had to bootstrap two other websites ([gradlex.org](https://gradlex.org), and [testlens.app](https://testlens.app)) both of which I built with Astro.
+In my opinion it's the best option available for building static websites at the moment.
+
+For that reason, the Astro team will receive today's donation.
