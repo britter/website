@@ -315,3 +315,17 @@ Since then I had to bootstrap two other websites ([gradlex.org](https://gradlex.
 In my opinion it's the best option available for building static websites at the moment.
 
 For that reason, the Astro team will receive today's donation.
+
+### Day 20 - eza
+
+https://eza.rocks
+
+> A modern, maintained replacement for ls, written in rust
+
+Another tool from the [modern unix](https://github.com/ibraheemdev/modern-unix) list that I used frequently was [exa](https://github.com/ogham/exa).
+Unfortunately at some point it became unmaintained and from the repository's README it looks like the maintainer is not longer responsive.
+eza was created as a replacement for exa, hence the "maintained" in the description.
+I have an alias called `ll` that calls eza with some flags to display file type icons and git status.
+I use it alomst every day.
+
+The donation for day 20 goes to [Christina Sørensen](https://github.com/cafkafk) for making eza.
