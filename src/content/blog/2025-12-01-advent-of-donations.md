@@ -329,3 +329,17 @@ I have an alias called `ll` that calls eza with some flags to display file type 
 I use it alomst every day.
 
 The donation for day 20 goes to [Christina Sørensen](https://github.com/cafkafk) for making eza.
+
+### Day 21 - JUnit
+
+https://junit.org
+
+> The programmer-friendly testing framework for Java and the JVM
+
+I've been a Java developer for 15 years now.
+That's a long time and I've seen a lot of technologies come and go (anybody remember [CORBA](https://en.wikipedia.org/wiki/Common_Object_Request_Broker_Architecture)?).
+But one thing hasn't changed: I've used JUnit in each and every project for testing.
+It's with no doubt one of the most important open source projects for the JVM.
+And it's completely built by volunteers.
+
+So the donation for day 21 goes to the JUnit team.
