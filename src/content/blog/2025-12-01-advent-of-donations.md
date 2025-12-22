@@ -343,3 +343,17 @@ It's with no doubt one of the most important open source projects for the JVM.
 And it's completely built by volunteers.
 
 So the donation for day 21 goes to the JUnit team.
+
+### Day 22 - tldr
+
+https://tldr.sh
+
+> Collaborative cheatsheets for console commands
+
+Are you like me, and can't remember which flags to pass to the `tar` command to decompress a gzip compressed tarbal?
+The man pages for the `tar` command are very comprehensive, but that also makes it difficult to find the right options.
+That's when `tldr` comes in handy.
+Instead of giving you all the options, it just presents a few examples for common use cases of a command.
+It's just incredibly helpful when working on the command line.
+
+On day 22 I'm sponsoring the tldr team.
