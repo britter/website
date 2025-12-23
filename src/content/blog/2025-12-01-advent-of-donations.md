@@ -357,3 +357,16 @@ Instead of giving you all the options, it just presents a few examples for commo
 It's just incredibly helpful when working on the command line.
 
 On day 22 I'm sponsoring the tldr team.
+
+### Day 23 - lazygit
+
+https://github.com/jesseduffield/lazygit
+
+> simple terminal UI for git commands
+
+Git is a powerful tool and I would not start any software project without it.
+However, sometimes the git command line interface is not the best way to visiualize and modify the state of a repository.
+lazygit fills the gap between the bare git CLI experience and rich GUI clients such as Fork or SourceTree.
+It's a terminal UI application that makes it easy to work with git repositories.
+
+Today I'm sponsoring [Jesse Duffield](https://github.com/jesseduffield) developer of lazygit.
