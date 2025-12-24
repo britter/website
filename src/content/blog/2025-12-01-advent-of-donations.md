@@ -370,3 +370,18 @@ lazygit fills the gap between the bare git CLI experience and rich GUI clients s
 It's a terminal UI application that makes it easy to work with git repositories.
 
 Today I'm sponsoring [Jesse Duffield](https://github.com/jesseduffield) developer of lazygit.
+
+### Day 24 - Vim
+
+https://vim.org
+
+> Vim is Charityware. You can use and copy it as much as you like, but you are encouraged to make a donation for needy children in Uganda.
+
+As you know by now, I'm a happy user of NeoVim.
+NeoVim is a Vim-fork focused on extensibility and usability, so it's only natural that I want to support my favorite editor as part of Advent of Donations.
+I decided to sponsor Vim and not NeoVim due to the way Vim's creator Bram Moolenaar wanted donations to be used:
+Bram spend summer 1994 to summer 1995 at the Kibaale Children's Centre (KCC) in Uganda and when he came back he wanted to continue supporting the KCC.
+Hence till this day the documentation of Vim and NeoVim contain a section about the fact that all donations will be send to the KCC.
+I can't think of a more adequate project to send my final donation to, than a place that's dedicated to help children in need.
+
+On the final day of Advent of Donations I'm sponsoring Vim with 100$.
