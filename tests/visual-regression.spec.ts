@@ -9,6 +9,8 @@ test.describe("Visual Regression Tests", () => {
       fullPage: true,
       // Small tolerance for font rendering/subpixel variations between runs
       maxDiffPixelRatio: 0.02,
+      // Mask the copyright year in footer
+      mask: [page.locator(".footer-copyright")],
     });
   });
 
@@ -16,6 +18,7 @@ test.describe("Visual Regression Tests", () => {
     await page.goto("/services");
     await expect(page).toHaveScreenshot("services-index.png", {
       fullPage: true,
+      mask: [page.locator(".footer-copyright")],
     });
   });
 
@@ -23,6 +26,7 @@ test.describe("Visual Regression Tests", () => {
     await page.goto("/services/gradle");
     await expect(page).toHaveScreenshot("services-gradle.png", {
       fullPage: true,
+      mask: [page.locator(".footer-copyright")],
     });
   });
 
@@ -30,18 +34,23 @@ test.describe("Visual Regression Tests", () => {
     await page.goto("/services/nixos");
     await expect(page).toHaveScreenshot("services-nixos.png", {
       fullPage: true,
+      mask: [page.locator(".footer-copyright")],
     });
   });
 
   test("services - dpe", async ({ page }) => {
     await page.goto("/services/dpe");
-    await expect(page).toHaveScreenshot("services-dpe.png", { fullPage: true });
+    await expect(page).toHaveScreenshot("services-dpe.png", {
+      fullPage: true,
+      mask: [page.locator(".footer-copyright")],
+    });
   });
 
   test("services - engineering growth", async ({ page }) => {
     await page.goto("/services/engineering-growth");
     await expect(page).toHaveScreenshot("services-engineering-growth.png", {
       fullPage: true,
+      mask: [page.locator(".footer-copyright")],
     });
   });
 
@@ -49,13 +58,16 @@ test.describe("Visual Regression Tests", () => {
     await page.goto("/blog");
     await expect(page).toHaveScreenshot("blog-listing.png", {
       fullPage: true,
-      mask: [page.locator(".blog-post")],
+      mask: [page.locator(".blog-post"), page.locator(".footer-copyright")],
     });
   });
 
   test("terms page", async ({ page }) => {
     await page.goto("/terms");
-    await expect(page).toHaveScreenshot("terms.png", { fullPage: true });
+    await expect(page).toHaveScreenshot("terms.png", {
+      fullPage: true,
+      mask: [page.locator(".footer-copyright")],
+    });
   });
 
   // Blog posts with special features
@@ -63,6 +75,7 @@ test.describe("Visual Regression Tests", () => {
     await page.goto("/blog/2025/04/01/oceansprint-2025");
     await expect(page).toHaveScreenshot("blog-oceansprint-mdx.png", {
       fullPage: true,
+      mask: [page.locator(".footer-copyright")],
     });
   });
 
@@ -70,6 +83,7 @@ test.describe("Visual Regression Tests", () => {
     await page.goto("/blog/2025/02/10/gradle-dependency-verification");
     await expect(page).toHaveScreenshot("blog-gradle-verification.png", {
       fullPage: true,
+      mask: [page.locator(".footer-copyright")],
     });
   });
 
@@ -79,6 +93,7 @@ test.describe("Visual Regression Tests", () => {
     await page.goto("/blog/2025/10/26/maven-ai-agents");
     await expect(page).toHaveScreenshot("blog-maven-ai.png", {
       fullPage: true,
+      mask: [page.locator(".footer-copyright")],
     });
   });
 });
