@@ -27,6 +27,7 @@ const {
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <meta name="fediverse:creator" content="@britter@chaos.social" />
     <!-- social preview -->
     <meta property="og:title" content={title} />
     <meta
@@ -45,6 +46,7 @@ const {
       title="RSS Feed"
       href="/feed.xml"
     />
+    <link rel="me" href="https://chaos.social/@britter" />
 
     <!-- initialize theme -->
     <script is:inline>
