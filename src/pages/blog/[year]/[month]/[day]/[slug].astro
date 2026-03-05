@@ -34,7 +34,7 @@ const blogParams = getBlogParams(blog);
   image={blogParams.image}
   type="article"
 >
-  <section class="bg-background">
+  <article class="bg-background">
     <div class="container mx-auto justify-center px-6 py-8 lg:flex">
       <div id="markdown" class="prose prose-lg relative mb-5 overflow-visible">
         <h1>{blog.data.title}</h1>
@@ -50,7 +50,7 @@ const blogParams = getBlogParams(blog);
         <Content />
       </div>
     </div>
-  </section>
+  </article>
 
   <script>
     import { toggleMarkdownTheme } from "../../../../../scripts/theme";
