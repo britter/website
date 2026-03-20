@@ -15,11 +15,11 @@ export function getBlogParams(post: CollectionEntry<"blog">) {
   const pubMonth = String(pubDate.getMonth() + 1).padStart(2, "0");
   const pubDay = String(pubDate.getDate()).padStart(2, "0");
 
-  // Astro generates the `slug` from the filename of the content.
+  // Astro generates the `id` from the filename of the content (including extension).
   // Our filenames begin with `YYYY-MM-DD-`, but we don't want this in our resulting URL.
-  // So, we use a regex to remove this prefix, if it exists.
-  const slug =
-    (post.slug.match(/\d{4}-\d{2}-\d{2}-(.+)/) || [])[1] || post.slug;
+  // Strip the file extension first, then remove the date prefix if it exists.
+  const postId = post.id.replace(/\.[^/.]+$/, "");
+  const slug = (postId.match(/\d{4}-\d{2}-\d{2}-(.+)/) || [])[1] || postId;
 
   // Build our desired date-based path from the relevant parts.
   const path = `${pubYear}/${pubMonth}/${pubDay}/${slug}`;
