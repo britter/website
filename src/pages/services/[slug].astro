@@ -1,0 +1,29 @@
+---
+import ServicePage from "../../layouts/ServicePage.astro";
+import { services } from "../../config/data.json";
+
+export function getStaticPaths() {
+  return services.map(service => ({ params: { slug: service.slug } }));
+}
+
+const { slug } = Astro.params;
+const service = services.find(s => s.slug === slug)!;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "../../assets/*.{jpg,png}",
+  { eager: true }
+);
+const image = service.image
+  ? images[`../../assets/${service.image}`]?.default
+  : undefined;
+---
+
+<ServicePage
+  title={service.title}
+  headlineMain={service.headlineMain}
+  headlineAccent={service.headlineAccent}
+  heroDescription={service.heroDescription}
+  intro={service.intro}
+  offerings={service.offerings}
+  image={image}
+/>

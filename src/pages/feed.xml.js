@@ -1,17 +1,20 @@
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
-import { getBlogParams } from "../utils/params";
+import { getBlogParams, getPubDate } from "../utils/params";
 
 export async function GET(context) {
   const blog = await getCollection("blog");
+  const sorted = blog.sort(
+    (a, b) => getPubDate(b).getTime() - getPubDate(a).getTime()
+  );
   return rss({
-    title: "Benedikt Ritter's Blog",
+    title: "Reproducible Thoughts",
     description:
-      "Articles about Developer Productivity, Gradle Build Tool, and NixOS",
+      "Notes from the intersection of Gradle, NixOS, and a decade of building software that actually works.",
     site: context.site,
-    items: blog.map(post => ({
+    items: sorted.map(post => ({
       title: post.data.title,
-      pubDate: post.data.pubDate,
+      pubDate: getPubDate(post),
       description: post.data.description,
       link: `/blog/${getBlogParams(post).path}`,
     })),

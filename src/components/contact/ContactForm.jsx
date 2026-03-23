@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import FormField from "./FormField";
 import SuccessMessage from "./SuccessMessage";
@@ -13,7 +13,13 @@ export default function ContactForm() {
     message: "",
   });
   const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false); // Tracks if form was successfully submitted
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    const handler = () => setIsOpen(true);
+    window.addEventListener("open-contact-modal", handler);
+    return () => window.removeEventListener("open-contact-modal", handler);
+  }, []);
 
   const validateEmail = email => /^[^\s@]+@[^\s@]+$/.test(email);
   const encode = data => {
@@ -43,7 +49,6 @@ export default function ContactForm() {
     setIsSubmitting(true);
     setErrors({});
 
-    // Netlify Form Submission
     try {
       const response = await fetch("/", {
         method: "POST",
@@ -55,7 +60,7 @@ export default function ContactForm() {
         throw new Error("Form submission failed");
       }
 
-      setSubmitted(true); // Show success checkmark
+      setSubmitted(true);
       setStatus("Message sent successfully!");
 
       setTimeout(() => {
@@ -73,96 +78,142 @@ export default function ContactForm() {
   };
 
   return (
-    <>
-      <div className="mt-6 flex justify-center">
-        <button
-          className="bg-primary hover:bg-secondary rounded-md px-4 py-2 text-white transition"
-          onClick={() => setIsOpen(true)}
-        >
-          Contact Me
-        </button>
-      </div>
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          {/* Blurred transparent backdrop */}
+          <motion.div
+            className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsOpen(false)}
+          />
 
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            {/* Blurred Background */}
-            <motion.div
-              className="bg-opacity-50 fixed inset-0 z-50 flex items-center justify-center bg-black backdrop-blur-md"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            />
-
-            {/* Modal Wrapper */}
-            <motion.div
-              className="fixed inset-0 z-50 flex items-center justify-center"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
+          {/* Modal */}
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div
+              className="relative w-full max-w-md p-8"
+              style={{
+                backgroundColor: "var(--color-surface-container-lowest)",
+                border: "1px solid var(--color-outline-variant)",
+              }}
+              onClick={e => e.stopPropagation()}
             >
-              <div className="bg-background relative w-full max-w-md rounded-lg border border-gray-300 p-6 shadow-xl">
-                {/* Close Button (❌) */}
-                <button
-                  className="absolute top-3 right-3 text-gray-600 transition hover:text-gray-900"
-                  onClick={() => setIsOpen(false)}
+              {/* Close button */}
+              <button
+                className="absolute top-4 right-4 p-1 transition-colors"
+                style={{ color: "var(--color-on-surface-variant)" }}
+                onClick={() => setIsOpen(false)}
+                aria-label="Close"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={1.5}
                 >
-                  ❌
-                </button>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
 
-                {submitted ? (
-                  <SuccessMessage />
-                ) : (
-                  <>
-                    <h2 className="mb-4 text-xl font-bold">Contact Me</h2>
-                    <form onSubmit={handleSubmit}>
-                      <FormField
-                        label="Name"
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={e =>
-                          setFormData({ ...formData, name: e.target.value })
-                        }
-                        error={errors.name}
-                      />
-                      <FormField
-                        label="Email"
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={e =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
-                        error={errors.email}
-                      />
-                      <FormField
-                        label="Message"
-                        type="textarea"
-                        name="message"
-                        value={formData.message}
-                        onChange={e =>
-                          setFormData({ ...formData, message: e.target.value })
-                        }
-                        error={errors.message}
-                      />
-                      <div className="flex justify-end space-x-2">
-                        <button
-                          type="submit"
-                          className="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+              {submitted ? (
+                <SuccessMessage />
+              ) : (
+                <>
+                  <div
+                    className="mb-1 text-xs font-bold tracking-widest uppercase"
+                    style={{
+                      color: "var(--color-secondary)",
+                      fontFamily: "var(--font-label)",
+                    }}
+                  >
+                    Get in touch
+                  </div>
+                  <h2
+                    className="mb-6 text-2xl font-black tracking-tighter"
+                    style={{
+                      color: "var(--color-primary)",
+                      fontFamily: "var(--font-sans)",
+                    }}
+                  >
+                    Let's work together
+                  </h2>
+                  <form onSubmit={handleSubmit}>
+                    <FormField
+                      label="Name"
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={e =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
+                      error={errors.name}
+                    />
+                    <FormField
+                      label="Email"
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={e =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
+                      error={errors.email}
+                    />
+                    <FormField
+                      label="Message"
+                      type="textarea"
+                      name="message"
+                      value={formData.message}
+                      onChange={e =>
+                        setFormData({ ...formData, message: e.target.value })
+                      }
+                      error={errors.message}
+                    />
+                    <div className="flex items-center justify-between gap-4">
+                      {status && (
+                        <p
+                          className="text-sm"
+                          style={{
+                            color: "var(--color-on-surface-variant)",
+                            fontFamily: "var(--font-mono)",
+                          }}
                         >
-                          {isSubmitting ? "Sending..." : "Send"}
-                        </button>
-                      </div>
-                    </form>
-                  </>
-                )}
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-    </>
+                          {status}
+                        </p>
+                      )}
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="ml-auto px-6 py-3 text-sm font-bold tracking-widest uppercase transition-opacity hover:opacity-90 disabled:opacity-50"
+                        style={{
+                          backgroundColor: "var(--color-secondary)",
+                          color: "var(--color-on-primary)",
+                          fontFamily: "var(--font-label)",
+                        }}
+                      >
+                        {isSubmitting ? "Sending..." : "Send message"}
+                      </button>
+                    </div>
+                  </form>
+                </>
+              )}
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
   );
 }

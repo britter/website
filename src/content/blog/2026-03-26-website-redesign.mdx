@@ -1,0 +1,100 @@
+---
+title: "Redesigning britter.dev"
+description: "How I went from a generic Astro community template to a custom design system - with a detour through Google Stitch and two days of iterating with Claude."
+topics: ["Meta"]
+---
+
+When I started going freelance [at the beginning of 2025](/blog/2024/12/20/hello-world/), I needed a website quickly.
+I followed the [Astro tutorial](https://docs.astro.build/en/tutorial/0-introduction/), found a community template that looked decent enough, and shipped it.
+The website featured a section about the servies I offer, a short vita section, a blog, and a contact from that people could use to get in touch with me.
+But it looked like a thousand other developer portfolios.
+
+## A Year of Incremental Improvements
+
+Over the course of 2025 I kept improving it.
+Some of that was fixing real bugs - a theming issue in markdown sections, a broken LinkedIn icon after a `react-icons` major version bump, some semantic HTML problems in the blog post markup.
+Small things, but the kind that accumulate.
+
+I also added things I care about from a maintenance perspective.
+[Renovate](https://docs.renovatebot.com/) for automated dependency updates, and a [Playwright-based visual regression test suite](https://playwright.dev/) running in Docker so those automated PRs don't silently break the layout.
+Because what's the point of automated updates if you're not confident they didn't break anything?
+
+Later in the year I added real testimonials from people I'd worked with.
+And I kept publishing blog posts whenever I had some spare time.
+I also got some inbound leads via the contact form, and multiple people requesting my services said they did so because of my blog posts.
+This made the blog become the central piece of the webiste and slowly made me care more about how the reading experience actually felt.
+
+By the end of 2025 the site worked, but it still felt generic.
+Time for something that actually looked like me.
+
+## Designing with Google Stitch
+
+So I wanted to redesign my website and make it look a little less generic an more modern.
+The problem was: I'm really bad at designing.
+When I look at websites I can tell what I like and what I don't like, but I can't start with an empty canvas and design something nice from stratch.
+Then I'd heard about [Google Stitch](https://stitch.withgoogle.com/) from a [Fireship video](https://www.youtube.com/watch?v=qaB5HF4ax9M), where it was called out to be an AI accelerated [Figma](https://figma.com) killer.
+I gave it a try, feeding it some context about what I do and provided a link to my webiste.
+
+import { Image } from "astro:assets";
+import stitchSession from "../../assets/blog/2026-03-26-website-redesign/stitch-session.png";
+
+<Image
+  src={stitchSession}
+  alt="Screenshot of the Google Stitch session showing one of earlier iterations of the new webiste design"
+/>
+<p class="text-center text-sm text-gray-600 italic">Google Stitch in action.</p>
+
+The results were mixed.
+I liked the initial blue-ish design, which is what you can now see in the final result.
+However, Stitch goes beyond colors and margins.
+It creates a design system that also includes what kind of content is presented and in which way.
+Instead of having a portfolio website, it proposed to create a "technical authority hub".
+It added statements such as "40% average build time reduction - achieved through remote cache optimization and and dependency graph pruning."
+A lot of it sounded like LinkedIn speak, but I still liked the visual appearance.
+
+## Iterating With Claude
+
+From there, I exported the design system and started building in Astro with Claude Code.
+This is where the actual work happened - about two days of back and forth.
+A few decisions that came out of that process:
+
+**Simplified Services Portfolio.**
+I went from four service offerings down to two: Gradle and NixOS.
+The other two (Engineering Growth, and Developer Productivity Engineering) and never been requested by anybody.
+Arguably both of them were too vague and people probably don't search for this kind of consulting.
+
+**The blog as the central piece.**
+I renamed it _Reproducible Thoughts_ - a name that fits the intersection of Gradle, NixOS, and reproducibility that most of my writing lives in.
+Post pages now open with a dark journal-style header that gives the whole thing a more deliberate publication feel.
+I also revamped the blog listing page and added a listing by topic.
+Last but not least the three most recent blog posts are now listed on the home page.
+
+**OG images automation.**
+The old site used a different hero image per blog post - a mix of stock photos and AI-generated images.
+Most of them were fine in isolation, but together they made the blog listing look incoherent.
+Every post had a different color palette, mood, and style.
+I replaced the whole approach with generated OG images using [Satori](https://github.com/vercel/satori): every post gets the same branded dark template with the title, topics, date, and the _Reproducible Thoughts_ wordmark.
+Another piece of my website automated, so I don't need to think about it anymore.
+
+**A proper vita page.**
+The old site had a thin CV section.
+The new vita page has a full work history timeline with company descriptions and personal extended reflections on each role.
+I also added my latest career step, which is [testlens.app](https://testlens.app).
+
+**An open source page.**
+A significant part of what I do lives in open source - [GradleX](https://gradlex.org), nixpkgs contributions, Apache Software Foundation membership.
+This wasn't reflected at all in the old design.
+Now it has its own page.
+
+## What I'd Do Differently
+
+Stitch is good for creating a design system if you're not good at designing like me.
+The direction of the content it created didn't feel like a good fit for me so I just used the visuals in the end.
+For that reason, when designing a website for a new product, I would still recommend hiring a professional.
+
+The two days with Claude were surprisingly productive.
+I'd estimate the same work would have taken me a week alone - mostly because the feedback loop of "does this look right?" → "try this" → "still not quite" is fast when the other side can both reason about the design and write the code.
+
+The site still isn't perfect but it's a gradual improvement over what I before.
+Enough for year 2 of my self-employment.
+Hope you like it!

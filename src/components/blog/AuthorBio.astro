@@ -1,0 +1,74 @@
+---
+import { Image } from "astro:assets";
+import heroImage from "../../assets/benedikt_ritter.jpg";
+
+/**
+ * variant:
+ *   sidebar — compact card used in the blog listing sidebar
+ *   post    — full card with longer bio and contact CTA, used at the bottom of a post
+ */
+interface Props {
+  variant?: "sidebar" | "post";
+}
+
+const { variant = "sidebar" } = Astro.props;
+---
+
+{
+  variant === "post" ? (
+    <div class="bg-surface-container-low flex flex-col items-start gap-6 rounded-lg p-8 md:flex-row">
+      <div class="h-16 w-16 flex-shrink-0 overflow-hidden rounded-full">
+        <Image
+          src={heroImage}
+          alt="Benedikt Ritter"
+          class="h-full w-full object-cover"
+        />
+      </div>
+      <div class="space-y-3">
+        <div>
+          <h4 class="text-on-surface font-sans font-bold">Benedikt Ritter</h4>
+          <p class="text-on-surface-variant font-mono text-xs">
+            Gradle & NixOS Consultant
+          </p>
+        </div>
+        <p class="text-on-surface-variant text-sm leading-relaxed">
+          Developer productivity consultant with five years at Gradle Inc.
+          building Develocity, and co-founder of TestLens. Apache Software
+          Foundation member and founder of GradleX. I help engineering teams
+          ship faster through better Gradle build tooling and reproducible NixOS
+          infrastructure.
+        </p>
+        <button
+          id="post-contact-btn"
+          class="text-secondary font-label cursor-pointer text-sm font-bold tracking-widest uppercase transition-opacity hover:opacity-70"
+        >
+          Get in touch →
+        </button>
+      </div>
+    </div>
+  ) : (
+    <div class="bg-surface-container-low space-y-4 rounded-lg p-6">
+      <div class="h-14 w-14 overflow-hidden rounded-full">
+        <Image
+          src={heroImage}
+          alt="Benedikt Ritter"
+          class="h-full w-full object-cover"
+        />
+      </div>
+      <div>
+        <h4 class="text-on-surface font-sans font-bold">Benedikt Ritter</h4>
+        <p class="text-on-surface-variant mt-1 text-sm leading-relaxed">
+          Developer productivity consultant specializing in Gradle and NixOS.
+          Apache Software Foundation member, GradleX founder, and co-founder of
+          TestLens.
+        </p>
+      </div>
+    </div>
+  )
+}
+
+<script>
+  document.getElementById("post-contact-btn")?.addEventListener("click", () => {
+    window.dispatchEvent(new CustomEvent("open-contact-modal"));
+  });
+</script>

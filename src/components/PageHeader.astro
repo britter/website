@@ -1,0 +1,42 @@
+---
+interface Props {
+  badge: string;
+  description?: string;
+  backLink?: { href: string; label: string };
+}
+
+const { badge, description, backLink } = Astro.props;
+---
+
+<header class="bg-surface pt-32 pb-12">
+  <div class="mx-auto max-w-7xl px-6">
+    {
+      backLink && (
+        <a
+          href={backLink.href}
+          class="font-label text-on-surface-variant hover:text-secondary mb-6 inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase transition-colors"
+        >
+          ← {backLink.label}
+        </a>
+      )
+    }
+    <div
+      class="bg-secondary font-label mb-6 inline-block px-3 py-1 text-[10px] font-bold tracking-widest text-white uppercase"
+    >
+      {badge}
+    </div>
+    <h1
+      class="text-primary mb-4 text-6xl leading-none font-black tracking-tighter md:text-7xl"
+    >
+      <slot name="title" />
+    </h1>
+    {
+      description && (
+        <p class="text-on-surface-variant max-w-2xl text-xl leading-relaxed font-light">
+          {description}
+        </p>
+      )
+    }
+    <slot />
+  </div>
+</header>

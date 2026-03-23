@@ -1,8 +1,7 @@
 ---
 title: "Why Agentic AI Tools Struggle with Maven’s Lifecycle Model"
 description: "Agentic AI tools often struggle with Apache Maven because its unique lifecycle model clashes with AI’s preference for minimal, incremental work, leading to false negatives and false positives. DAG-based build systems like Gradle align better, ensuring reliable incremental builds and clearer CLI behavior for both AI and humans."
-pubDate: "2025-10-26"
-image: "maven-ai-struggles.png"
+topics: ["Maven", "Gradle", "AI"]
 ---
 
 Agentic AI tools such as Claude can accelerate many aspects of software development.

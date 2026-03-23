@@ -1,0 +1,230 @@
+{
+  "basic": {
+    "name": "Benedikt Ritter",
+    "job": "Developer Productivity Consultant",
+    "summary": "Developer productivity consultant and co-founder of TestLens. Deep expertise in Gradle, NixOS, and the JVM ecosystem — helping engineering teams ship faster with better tooling and reproducible infrastructure.",
+    "cv_file_name": "benedikt_ritter_cv.pdf"
+  },
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Blog", "href": "/blog" },
+    { "label": "Vita", "href": "/vita" },
+    { "label": "Open Source", "href": "/open-source" },
+    { "label": "Podcast", "href": "https://autoweird.fm", "external": true }
+  ],
+  "experiences": [
+    {
+      "title": "Co-Founder",
+      "sub_title": "TestLens",
+      "url": "https://testlens.app",
+      "years": "2026 - present",
+      "company": "TestLens is a CI/CD test analytics platform that helps engineering teams tame flaky tests by surfacing test failures directly in pull requests, distinguishing genuinely broken tests from unreliable ones, and enabling one-click muting. Founded together with Marc Philipp (JUnit project lead) and Jendrik Johannes (former Gradle core developer), the product is currently in private beta.",
+      "details": "As co-founder I lead all infrastructure and DevOps decisions. The platform runs on NixOS, with infrastructure managed as code using OpenTofu, and observability provided through Grafana. My background in reproducible environments and build tooling directly informs the infrastructure architecture — the same principles I've applied in consulting work underpin how TestLens is built and operated."
+    },
+    {
+      "title": "Developer Productivity Consultant",
+      "sub_title": "Self employed",
+      "years": "2025 - present",
+      "details": "Independent consulting focused on developer productivity — helping engineering teams ship faster and with less friction. I specialize in Gradle build systems, NixOS reproducible environments, and the Java platform, drawing on five years building and selling developer productivity tooling at Gradle Inc. and a decade of open source work in the JVM ecosystem."
+    },
+    {
+      "title": "Lead Software Engineer",
+      "sub_title": "Gradle Inc.",
+      "url": "https://gradle.com",
+      "years": "2019 - 2024",
+      "company": "Gradle Technologies builds Develocity, a developer productivity and observability platform that accelerates software delivery for large engineering organizations through build caching, test distribution, and predictive test selection. The company also maintains the open-source Gradle Build Tool, one of the most widely adopted build systems in the JVM ecosystem.",
+      "details": "I joined as a product engineer on what would become Develocity, working on the build cache and test distribution features for Apache Maven — directly reducing build times for enterprise customers. I later moved into leading the internal developer productivity team, owning the tooling, workflows, and infrastructure that 70 engineers depended on day-to-day. In that role I drove improvements across build performance, CI reliability, and developer experience — applying the same product we were selling to our own engineering organization."
+    },
+    {
+      "title": "IT Consultant",
+      "sub_title": "codecentric AG",
+      "url": "https://codecentric.de",
+      "years": "2013 - 2018",
+      "company": "codecentric AG is a German IT consultancy specializing in agile software development, software architecture, and DevOps. They deliver custom software projects for enterprise clients and are widely known in the German-speaking Java community for their technical depth and clean code culture.",
+      "details": "Over five years I delivered projects across insurance, logistics, retail, and services sectors — growing from consultant and developer into a lead developer role. On the technical side, I became a go-to person for build tooling early on, migrating a legacy Ant build to a modern Maven/Jenkins/Artifactory/Sonar stack for one client, and later helping establish internal Docker and OpenShift infrastructure for reproducible development environments. I did significant work in the insurance sector, delivering integration-heavy platforms using Mule ESB to connect multiple backend systems, as well as full-stack development across AngularJS, Angular 2, and React frontends backed by Spring Boot services. In my final projects I led delivery of two logistics platforms — including a B2C platform built on Spring Boot, Kubernetes, and Angular 2 that served as an architectural blueprint for subsequent projects at that client."
+    },
+    {
+      "title": "Software Engineer",
+      "sub_title": "GBTEC Software + Consulting AG",
+      "url": "https://www.gbtec.com",
+      "years": "2011 - 2013",
+      "company": "GBTEC is a German enterprise software company offering the BIC Platform — an AI-powered suite for business process management, enterprise architecture, and governance/risk/compliance used by over 1,200 organizations worldwide.",
+      "details": "My first engineering role after university. I contributed to the Eclipse RCP client, navigating significant complexity from legacy code inherited from two previous vendors. Key achievements included refactoring the persistence layer to support Oracle DB and MSSQL in addition to MySQL, and implementing a dynamic menu system driven by a backend workflow engine — enabling users to trigger workflows directly from the client despite Eclipse RCP having no native support for this pattern. I deepened my Maven expertise to the point where I became the team's go-to resource for build questions, and introduced test-driven development practices to a previously untested codebase."
+    }
+  ],
+  "education": [
+    {
+      "title": "Information Systems Research, M.Sc.",
+      "sub_title": "University Duisburg-Essen",
+      "years": "2009 - 2011",
+      "details": "Focused on software engineering and business process modeling. Wrote master thesis about modeling of business process variants."
+    },
+    {
+      "title": "Information Systems Research, B.Sc.",
+      "sub_title": "University Duisburg-Essen",
+      "years": "2006 - 2009",
+      "details": "Attended classes about software engineering as well as economics. Wrote bachelor thesis about business process model transformations."
+    }
+  ],
+  "services": [
+    {
+      "slug": "gradle",
+      "title": "Gradle Build Tool Consulting",
+      "tagline": "Faster builds. Less friction. More confidence.",
+      "description": "From build performance and dependency management to Groovy-to-Kotlin DSL migrations and custom plugin development — I help teams get the most out of Gradle.",
+      "image": "gradle.jpg",
+      "headlineMain": "Gradle Build Tool",
+      "headlineAccent": "Consulting.",
+      "heroDescription": "Gradle is one of the most powerful build systems available — but its flexibility also means it's easy to end up with a build that's slow, hard to maintain, or difficult to upgrade. I help teams cut through the complexity and build with confidence.",
+      "intro": "Having spent five years at Gradle Inc. working on Develocity — the platform that makes Gradle builds faster and more observable — I bring firsthand knowledge of how Gradle works at its core. I've seen the common pitfalls, the performance bottlenecks, and the patterns that make builds scale. Whether you're optimizing a single project or standardizing builds across a large engineering organization, I can help.",
+      "offerings": [
+        {
+          "title": "Build performance optimizations",
+          "description": "Analyze and optimize your build to reduce execution times, enable build caching, and improve developer productivity across the board."
+        },
+        {
+          "title": "Build DSL migrations",
+          "description": "Modernize your build scripts by migrating from Groovy DSL to Kotlin DSL for better type safety, IDE support, and long-term maintainability."
+        },
+        {
+          "title": "Build tool migrations",
+          "description": "Migrate your projects from Apache Maven or Apache Ant to Gradle for improved performance, modern tooling support, and a better developer experience."
+        },
+        {
+          "title": "Gradle version upgrades",
+          "description": "Safely upgrade your project to the latest Gradle version, addressing compatibility issues and taking advantage of new features along the way."
+        },
+        {
+          "title": "Advanced dependency management",
+          "description": "Resolve dependency conflicts, optimize configurations, and implement advanced strategies for dependency resolution and verification."
+        },
+        {
+          "title": "Build refactoring",
+          "description": "Simplify and modularize your build scripts for better maintainability and scalability as your project grows."
+        },
+        {
+          "title": "Custom plugin development",
+          "description": "Create tailored Gradle plugins to automate unique processes or extend Gradle's capabilities to suit your specific needs."
+        },
+        {
+          "title": "Training and adoption support",
+          "description": "Customized training sessions to help your team understand and adopt Gradle effectively, with content tailored to your project's specific challenges."
+        }
+      ]
+    },
+    {
+      "slug": "nixos",
+      "image": "nixos-consulting.jpg",
+      "title": "NixOS Consulting",
+      "tagline": "Reproducible infrastructure from development to production.",
+      "description": "Declarative system configuration, reproducible dev environments, Nix packaging, and server management — I help teams adopt and master NixOS and the Nix ecosystem.",
+      "headlineMain": "NixOS",
+      "headlineAccent": "Consulting.",
+      "heroDescription": "NixOS and the Nix ecosystem offer a fundamentally better way to manage software and infrastructure — but the learning curve is steep. I help teams adopt Nix gradually and confidently, from development environments to production infrastructure.",
+      "intro": "As a nixpkgs maintainer, home-manager contributor, and co-founder of TestLens — a platform running entirely on NixOS — I bring both community depth and production experience to every engagement. I've helped teams set up reproducible dev environments, package software for nixpkgs, and manage infrastructure declaratively with NixOS.",
+      "offerings": [
+        {
+          "title": "Nix packaging",
+          "description": "Build, maintain, and optimize Nix packages for your projects, ensuring consistent and reproducible software builds across all environments."
+        },
+        {
+          "title": "NixOS module implementations",
+          "description": "Create or enhance NixOS modules to configure systems declaratively and efficiently, making your infrastructure easier to reason about and maintain."
+        },
+        {
+          "title": "Server management with Nix tooling",
+          "description": "Manage and deploy servers with Nix tooling for precise, repeatable configurations and reduced operational overhead."
+        },
+        {
+          "title": "Reproducible development environments",
+          "description": "Set up development shells tailored to your team's needs, ensuring every developer works in an identical, reproducible environment — no more 'works on my machine'."
+        },
+        {
+          "title": "home-manager configuration",
+          "description": "Declaratively manage user environments across machines using home-manager, ensuring consistent tooling and dotfiles for every developer on your team."
+        },
+        {
+          "title": "Training and adoption support",
+          "description": "Customized training sessions to help your team adopt and master NixOS and the Nix ecosystem, with content tailored to your specific use cases and challenges."
+        }
+      ]
+    }
+  ],
+  "openSource": [
+    {
+      "role": "Member",
+      "org": "Apache Software Foundation",
+      "url": "https://apache.org",
+      "description": "Elected member of the Apache Software Foundation, one of the world's largest open source foundations. Supporting long-term governance and contributing to Apache Commons — a collection of reusable Java components used by millions of developers worldwide.",
+      "tags": ["Java", "Open Source Governance", "Apache Commons"],
+      "label": "ASF · MEMBER"
+    },
+    {
+      "role": "Founder",
+      "org": "GradleX",
+      "url": "https://github.com/gradlex-org",
+      "description": "Founded the GradleX organization to fill gaps in the Gradle plugin ecosystem. GradleX provides high-quality, well-maintained plugins that simplify dependency management, build structuring, and Java project conventions — making it easier for teams to adopt Gradle best practices.",
+      "tags": ["Gradle", "Build Systems", "Java", "Kotlin"],
+      "label": "GITHUB.COM/GRADLEX-ORG"
+    },
+    {
+      "role": "Maintainer",
+      "org": "nixpkgs — Gradle Package",
+      "url": "https://github.com/NixOS/nixpkgs",
+      "description": "Maintainer of the Gradle package in nixpkgs, the largest collection of Nix packages. Ensuring that Gradle is available, up-to-date, and correctly configured in the Nix ecosystem — enabling reproducible Java build environments for NixOS users and Nix developers.",
+      "tags": ["Nix", "nixpkgs", "Gradle", "Reproducibility"],
+      "label": "GITHUB.COM/NIXOS/NIXPKGS"
+    },
+    {
+      "role": "Maintainer",
+      "org": "home-manager — Gradle Module",
+      "url": "https://github.com/nix-community/home-manager",
+      "description": "Maintainer of the Gradle module in home-manager, the Nix tool for managing user environments declaratively. The module allows developers to configure Gradle through their Nix configuration, ensuring consistent tooling across machines.",
+      "tags": ["Nix", "home-manager", "Gradle", "Developer Experience"],
+      "label": "NIX-COMMUNITY/HOME-MANAGER"
+    }
+  ],
+  "podcast": {
+    "name": "@Autoweird.fm",
+    "handle": "autoweird.fm",
+    "url": "https://autoweird.fm",
+    "description": "Exploring the intersection of software engineering, productivity, and technical culture with my co-hosts.",
+    "fullDescription": "A podcast exploring the intersection of software engineering, productivity, and technical culture. Conversations with practitioners about how we build, why we build, and what it means to build well."
+  },
+  "testimonials": [
+    {
+      "name": "Marc Philipp",
+      "github": "marcphilipp",
+      "job": "JUnit Project Lead",
+      "quote": "Working with Benedikt on an innovative and challenging project was  one of the highlights of my career. He is a superb engineer and  absolutely reliable in getting things done with high quality as well as  appropriate test coverage and documentation. His well-structured  approach to investigating problems and managing tasks was crucial to the  project and should be an asset to any project he's involved with.",
+      "links": {
+        "github": "https://github.com/marcphilipp",
+        "linkedin": "https://www.linkedin.com/in/marcphilipp/",
+        "mastodon": "https://chaos.social/@marcphilipp",
+        "website": "https://marcphilipp.de"
+      }
+    },
+    {
+      "name": "Torsten Schlichting",
+      "image": "torsten_schlichting.jpg",
+      "job": "Head of Product Management at GBTEC Software AG",
+      "quote": "Benedikt was a tremendous asset to our team – highly motivated, a quick thinker, and absolutely reliable. He quickly grasped complex topics, supported other team members whenever needed, and contributed thoughtful ideas instead of just executing tasks. If you're looking for a dependable and smart developer, he's the one.",
+      "links": {
+        "linkedin": "https://www.linkedin.com/in/schlichting-torsten-936203156/"
+      }
+    },
+    {
+      "name": "Jendrik Johannes",
+      "github": "jjohannes",
+      "job": "Trainer and Consultant for Software Build Automation with Gradle",
+      "quote": "Benedikt and I regularly collaborate on the open-source project GradleX and other initiatives. Working with Benedikt is always efficient and result-oriented. I particularly value his excellent communication skills and his analytical approach to problem-solving. I can vouch for his deep technical expertise in Java, Gradle, and NixOS. Whatever challenge you’re facing in developer productivity, I highly recommend working with Benedikt to solve it.",
+      "links": {
+        "github": "https://github.com/jjohannes",
+        "linkedin": "https://www.linkedin.com/in/jendrikjohannes/",
+        "youtube": "https://youtube.com/@jjohannes",
+        "mastodon": "https://mastodon.social/@jendrik",
+        "website": "https://onepiece.software"
+      }
+    }
+  ]
+}

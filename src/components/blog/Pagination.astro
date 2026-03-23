@@ -1,0 +1,31 @@
+---
+interface Props {
+  prev?: string;
+  next?: string;
+}
+
+const { prev, next } = Astro.props;
+---
+
+{
+  (prev || next) && (
+    <div class="flex items-center gap-4 pt-4">
+      {prev && (
+        <a
+          href={prev}
+          class="bg-surface-container-high text-on-surface font-label hover:bg-surface-container-highest px-6 py-3 text-sm font-bold uppercase transition-colors"
+        >
+          ← Previous
+        </a>
+      )}
+      {next && (
+        <a
+          href={next}
+          class="bg-primary text-on-primary font-label px-6 py-3 text-sm font-bold uppercase transition-opacity hover:opacity-90"
+        >
+          Next page →
+        </a>
+      )}
+    </div>
+  )
+}

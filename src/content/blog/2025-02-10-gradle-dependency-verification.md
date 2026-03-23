@@ -1,8 +1,7 @@
 ---
 title: "Enabling Gradle Dependency Verification: A Practical Guide"
 description: "Dependency verification is a crucial aspect of maintaining the integrity and security of your software projects. This blog post gives a detailed breakdown of the process that leads to a streamlined and maintainable verification setup."
-pubDate: "2025-02-10"
-image: "dependency-verification.png"
+topics: ["Gradle", "Dependency Management"]
 ---
 
 Modern software development increasingly depends on third-party libraries, which introduces potential risks to the software supply chain.

@@ -1,19 +1,20 @@
 // originally copied from https://www.tomspencer.dev/blog/2023/12/05/date-based-urls-with-astro/
 import type { CollectionEntry } from "astro:content";
 
-type ImageModule = { default: { src: string } };
-const images = import.meta.glob("../assets/**", { eager: true }) as ImageModule;
+function parseDateParts(post: CollectionEntry<"blog">) {
+  const match = post.id.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!match)
+    throw new Error(`Cannot parse date from blog post ID: ${post.id}`);
+  return { pubYear: match[1], pubMonth: match[2], pubDay: match[3] };
+}
+
+export function getPubDate(post: CollectionEntry<"blog">): Date {
+  const { pubYear, pubMonth, pubDay } = parseDateParts(post);
+  return new Date(`${pubYear}-${pubMonth}-${pubDay}T00:00:00`);
+}
 
 export function getBlogParams(post: CollectionEntry<"blog">) {
-  // Grab the `pubDate` from the blog post's frontmatter.
-  // This will be of type `Date`, since the `CollectionEntry` of type 'blog'
-  // defines the `pubDate` field as type 'Date'.
-  const pubDate: Date = post.data.pubDate;
-
-  // Parse out the year, month and day from the `pubDate`.
-  const pubYear = String(pubDate.getFullYear()).padStart(4, "0");
-  const pubMonth = String(pubDate.getMonth() + 1).padStart(2, "0");
-  const pubDay = String(pubDate.getDate()).padStart(2, "0");
+  const { pubYear, pubMonth, pubDay } = parseDateParts(post);
 
   // Astro generates the `id` from the filename of the content (including extension).
   // Our filenames begin with `YYYY-MM-DD-`, but we don't want this in our resulting URL.
@@ -24,23 +25,11 @@ export function getBlogParams(post: CollectionEntry<"blog">) {
   // Build our desired date-based path from the relevant parts.
   const path = `${pubYear}/${pubMonth}/${pubDay}/${slug}`;
 
-  let image = "";
-  if (post.data.image) {
-    const imagePath = `../assets/${post.data.image}`;
-    if (imagePath in images) {
-      image = images[imagePath].default.src;
-    } else {
-      image = post.data.image;
-    }
-  }
-
-  // Return each token so it can be used by calling code.
   return {
     year: pubYear,
     month: pubMonth,
     day: pubDay,
     path,
     slug,
-    image,
   };
 }

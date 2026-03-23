@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+import { getPubDate } from "../../../utils/params";
+import Layout from "../../../layouts/Layout.astro";
+import PageHeader from "../../../components/PageHeader.astro";
+import BlogPostCard from "../../../components/blog/BlogPostCard.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  const topics = [...new Set(posts.flatMap(p => p.data.topics ?? []))];
+  return topics.map(topic => ({ params: { topic } }));
+}
+
+const { topic } = Astro.params;
+
+const allPosts = await getCollection("blog");
+const posts = allPosts
+  .filter(p => p.data.topics?.includes(topic))
+  .sort((a, b) => getPubDate(b).getTime() - getPubDate(a).getTime());
+---
+
+<Layout
+  title={`${topic} — Reproducible Thoughts`}
+  description={`Blog posts about ${topic} by Benedikt Ritter.`}
+>
+  <PageHeader badge="Topic" backLink={{ href: "/blog", label: "All posts" }}>
+    <Fragment slot="title">{topic}</Fragment>
+    <p class="text-on-surface-variant mt-4 font-mono text-sm">
+      {posts.length} post{posts.length !== 1 ? "s" : ""}
+    </p>
+  </PageHeader>
+
+  <main class="bg-surface pb-20">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="space-y-12 pt-12">
+        {
+          posts.map(post => (
+            <BlogPostCard post={post} variant="list" activeTopic={topic} />
+          ))
+        }
+      </div>
+    </div>
+  </main>
+</Layout>

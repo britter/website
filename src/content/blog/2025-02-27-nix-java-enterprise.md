@@ -1,8 +1,7 @@
 ---
 title: "NixOS Meets Enterprise Java: A Cautionary Tale"
 description: "In this blog post I explore the challenges of running an enterprise Java application on NixOS, highlighting issues with Gradle support and authenticated resources. I share lessons learned, workarounds, and why NixOS remains a powerful choice for managing infrastructure despite these hurdles."
-pubDate: "2025-02-27"
-image: "nixos-java.png"
+topics: ["NixOS", "Java"]
 ---
 
 [NixOS](https://nixos.org) is an incredible operating system that brings reproducibility and declarative configuration to an entirely new level.

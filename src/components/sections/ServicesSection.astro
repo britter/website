@@ -1,0 +1,53 @@
+---
+import { services } from "../../config/data.json";
+---
+
+<section class="bg-surface-container-low py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-12">
+      <span
+        class="font-label text-secondary text-sm font-bold tracking-widest uppercase"
+      >
+        Services
+      </span>
+      <h2
+        class="text-primary mt-3 text-4xl font-black tracking-tight md:text-5xl"
+      >
+        Developer Productivity &<br /><span class="text-secondary"
+          >Platform Engineering.</span
+        >
+      </h2>
+      <p class="text-on-surface-variant mt-4 max-w-2xl leading-relaxed">
+        I help engineering teams ship faster and with less friction — through
+        better build tooling, reproducible infrastructure, and the expertise to
+        make it stick.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+      {
+        services.map(service => (
+          <a
+            href={`/services/${service.slug}`}
+            class="group bg-surface hover:bg-surface-container flex flex-col justify-between gap-8 p-8 transition-colors md:p-10"
+          >
+            <div class="space-y-3">
+              <h3 class="text-primary group-hover:text-secondary text-2xl font-black tracking-tight transition-colors">
+                {service.title}
+              </h3>
+              <p class="text-secondary font-label text-sm font-bold tracking-wide italic">
+                {service.tagline}
+              </p>
+              <p class="text-on-surface-variant leading-relaxed">
+                {service.description}
+              </p>
+            </div>
+            <span class="text-secondary font-label text-sm font-bold tracking-widest uppercase transition-all group-hover:gap-3">
+              Learn more →
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

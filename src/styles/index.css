@@ -1,82 +1,79 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
-
-@import "./theme.css";
 @import "@microflash/remark-callout-directives/theme/github";
 
-/* Background utilities */
-@utility bg-default {
-  background-color: var(--color-background);
-}
-
-@utility bg-background {
-  background-color: var(--color-background);
-}
-
-@utility bg-offset {
-  background-color: var(--color-background-offset);
-}
-
-@utility bg-background-offset {
-  background-color: var(--color-background-offset);
-}
-
-@utility bg-border {
-  background-color: var(--color-border);
-}
-
-/* Text color utilities */
-@utility text-default {
-  color: var(--color-text);
-}
-
-@utility text-text {
-  color: var(--color-text);
-}
-
-@utility text-offset {
-  color: var(--color-text-offset);
-}
-
-/* Border color utilities */
-@utility border-default {
-  border-color: var(--color-border);
-}
-
-@utility border-border {
-  border-color: var(--color-border);
-}
-
-/* Theme color utilities */
-@utility bg-primary {
-  background-color: var(--color-primary);
-}
-
-@utility bg-secondary {
-  background-color: var(--color-secondary);
-}
-
-@utility text-primary {
-  color: var(--color-primary);
-}
-
-@utility text-secondary {
-  color: var(--color-secondary);
-}
-
 @theme {
-  /* Custom animations */
-  --animate-spin-slower: spin 35s ease infinite;
-  --animate-spin-slow: spin 25s ease-in-out infinite reverse;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-label: "Space Grotesk", ui-sans-serif, sans-serif;
+
+  --color-primary: #1d2b3e;
+  --color-primary-container: #334155;
+  --color-secondary: #0055c9;
+  --color-surface: #f7f9fb;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f2f4f6;
+  --color-surface-container: #eceef0;
+  --color-surface-container-high: #e6e8ea;
+  --color-surface-container-highest: #e0e3e5;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #9eadc5;
+  --color-on-surface: #191c1e;
+  --color-on-surface-variant: #44474c;
+  --color-on-tertiary-container: #9dadc6;
+  --color-outline: #75777d;
+  --color-outline-variant: #c5c6cd;
+  --color-secondary-fixed: #dae2ff;
+  --color-on-secondary-fixed: #001946;
 }
 
-/* Override default border color (replaces borderColor.default from v3 config) */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-border);
+  [data-theme="dark"] {
+    --color-primary: #b9c7e0;
+    --color-primary-container: #4a5e78;
+    --color-secondary: #6b9fef;
+    --color-surface: #111827;
+    --color-surface-container-lowest: #1a2332;
+    --color-surface-container-low: #1e2d42;
+    --color-surface-container: #243350;
+    --color-surface-container-high: #2a3a5c;
+    --color-surface-container-highest: #314269;
+    --color-on-primary: #1d2b3e;
+    --color-on-primary-container: #c5d4ea;
+    --color-on-surface: #e6e8ea;
+    --color-on-surface-variant: #c5c6cd;
+    --color-on-tertiary-container: #b7c8e1;
+    --color-outline: #8d9096;
+    --color-outline-variant: #44474c;
+    --color-secondary-fixed: #1e3a6e;
+    --color-on-secondary-fixed: #dae2ff;
   }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 10px;
+  }
+}
+
+/* Unlayered — wins over all @layer rules including the typography plugin */
+[data-theme="dark"] .prose {
+  --tw-prose-body: var(--color-on-surface);
+  --tw-prose-headings: var(--color-primary);
+  --tw-prose-lead: var(--color-on-surface-variant);
+  --tw-prose-links: var(--color-secondary);
+  --tw-prose-bold: var(--color-on-surface);
+  --tw-prose-counters: var(--color-on-surface-variant);
+  --tw-prose-bullets: var(--color-on-surface-variant);
+  --tw-prose-hr: var(--color-outline-variant);
+  --tw-prose-quotes: var(--color-on-surface);
+  --tw-prose-quote-borders: var(--color-secondary);
+  --tw-prose-captions: var(--color-on-surface-variant);
+  --tw-prose-code: var(--color-secondary);
+  --tw-prose-pre-code: var(--color-on-primary-container);
+  --tw-prose-pre-bg: var(--color-primary-container);
+  --tw-prose-th-borders: var(--color-outline-variant);
+  --tw-prose-td-borders: var(--color-outline-variant);
 }

@@ -1,0 +1,94 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getBlogParams, getPubDate } from "../../utils/params";
+import TopicBadge from "./TopicBadge.astro";
+
+/**
+ * variant:
+ *   featured — large bento card (used as the first/highlighted post)
+ *   list     — horizontal row with date column (used in post feeds)
+ */
+interface Props {
+  post: CollectionEntry<"blog">;
+  variant?: "featured" | "list";
+  activeTopic?: string;
+}
+
+const { post, variant = "list", activeTopic } = Astro.props;
+const params = getBlogParams(post);
+const url = `/blog/${params.path}`;
+const pubDate = getPubDate(post);
+---
+
+{
+  variant === "featured" ? (
+    <article class="group bg-surface-container-low hover:bg-surface-container rounded-xl p-1 transition-colors duration-300">
+      <div class="bg-surface-container-lowest space-y-4 rounded-lg p-8 md:p-10">
+        <div class="font-label flex flex-wrap items-center gap-3 text-xs font-bold tracking-widest uppercase">
+          {post.data.topics.slice(0, 2).map((t: string) => (
+            <TopicBadge topic={t} variant="inline" />
+          ))}
+          <span class="bg-outline-variant h-1 w-1 rounded-full" />
+          <span class="text-on-surface-variant font-mono">
+            {pubDate.toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+            })}
+          </span>
+        </div>
+        <a href={url} class="block">
+          <h2 class="text-primary group-hover:text-secondary text-3xl font-extrabold tracking-tight transition-colors md:text-4xl">
+            {post.data.title}
+          </h2>
+        </a>
+        <p class="text-on-surface-variant leading-relaxed">
+          {post.data.description}
+        </p>
+        <a
+          href={url}
+          class="text-secondary font-label inline-flex items-center gap-2 text-sm font-bold uppercase transition-all hover:gap-3"
+        >
+          Read full post →
+        </a>
+      </div>
+    </article>
+  ) : (
+    <article class="group flex flex-col items-start gap-6 md:flex-row">
+      <div class="text-outline-variant shrink-0 pt-1 font-mono text-sm md:w-28">
+        {pubDate.toLocaleDateString("en-US", {
+          month: "2-digit",
+          day: "2-digit",
+          year: "2-digit",
+        })}
+      </div>
+      <div class="flex-1 space-y-3">
+        {post.data.topics.length > 0 && (
+          <div class="flex flex-wrap gap-2">
+            {post.data.topics.map((t: string) => (
+              <TopicBadge
+                topic={t}
+                variant="pill-sm"
+                active={t === activeTopic}
+              />
+            ))}
+          </div>
+        )}
+        <a href={url} class="block">
+          <h3 class="text-primary group-hover:text-secondary text-2xl font-bold tracking-tight transition-colors">
+            {post.data.title}
+          </h3>
+        </a>
+        <p class="text-on-surface-variant max-w-xl text-sm leading-relaxed">
+          {post.data.description}
+        </p>
+        <a
+          href={url}
+          class="text-secondary font-label inline-flex items-center gap-2 text-sm font-bold uppercase transition-all hover:gap-3"
+        >
+          Read full post →
+        </a>
+      </div>
+    </article>
+  )
+}

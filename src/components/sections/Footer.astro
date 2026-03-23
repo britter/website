@@ -1,113 +1,119 @@
 ---
-import { Icon } from "astro-icon/components";
-import { basic } from "../../config/cv.json";
+import { nav as navLinks } from "../../config/data.json";
 
 const currentYear = new Date().getFullYear();
 ---
 
-<section class="mt-4 py-10">
-  <!-- Horizontal line separator -->
-  <hr class="mb-6 border-t border-gray-300" />
-
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 gap-8 text-center md:grid-cols-3 md:text-left">
-      <!-- Left Section: Navigation Links -->
-      <div class="flex flex-col items-center md:items-start">
-        <h3 class="text-sm font-semibold">Navigation</h3>
-        <ul class="mt-2 ml-4 space-y-2">
-          <li>
-            <a
-              href="/blog"
-              title="Blog"
-              class="hover:text-opacity-80 focus:text-opacity-80 text-sm transition-all duration-200 hover:underline"
-            >
-              Blog
-            </a>
-          </li>
-          <li>
-            <a
-              href="/services"
-              title="Services"
-              class="hover:text-opacity-80 focus:text-opacity-80 text-sm transition-all duration-200 hover:underline"
-            >
-              Services
-            </a>
-          </li>
-          <li>
-            <a
-              href="/"
-              title="About"
-              class="hover:text-opacity-80 focus:text-opacity-80 text-sm transition-all duration-200 hover:underline"
-            >
-              About
-            </a>
-          </li>
-        </ul>
+<footer class="bg-surface-container-low">
+  <div class="mx-auto max-w-7xl px-6 py-16">
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <!-- Brand -->
+      <div class="space-y-3">
+        <div
+          class="text-on-surface font-sans text-lg font-black tracking-tighter"
+        >
+          Benedikt Ritter
+        </div>
+        <p
+          id="footer-copyright"
+          class="text-outline font-mono text-xs leading-relaxed tracking-wide"
+        >
+          © {currentYear} Benedikt Ritter.<br />Built with Nix & Precision.
+        </p>
       </div>
 
-      <!-- Center Section: Copyright & Social Links -->
-      <div class="flex flex-col items-center">
-        <p class="footer-copyright text-sm">
-          © {currentYear}
-          {basic.name}. All Rights Reserved.
-        </p>
-        <ul class="mt-4 flex space-x-6">
-          <li>
-            <a
-              href="/feed.xml"
-              title="RSS Feed"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hover:text-opacity-80 focus:text-opacity-80 block transition-all duration-200"
-            >
-              <Icon name="Rss" />
-            </a>
-          </li>
+      <!-- Connect -->
+      <div class="space-y-3">
+        <h5
+          class="font-label text-outline text-[10px] font-bold tracking-widest uppercase"
+        >
+          Connect
+        </h5>
+        <ul class="space-y-2">
           <li>
             <a
               href="https://github.com/britter"
-              title="Github"
               target="_blank"
               rel="noopener noreferrer"
-              class="hover:text-opacity-80 focus:text-opacity-80 block transition-all duration-200"
+              class="text-on-surface-variant hover:text-secondary font-mono text-xs transition-colors"
             >
-              <Icon name="Github" />
+              GitHub
             </a>
           </li>
           <li>
             <a
               href="https://chaos.social/@britter"
-              title="Mastodon"
               target="_blank"
               rel="noopener noreferrer"
-              class="hover:text-opacity-80 focus:text-opacity-80 block transition-all duration-200"
+              class="text-on-surface-variant hover:text-secondary font-mono text-xs transition-colors"
             >
-              <Icon name="Mastodon" />
+              Mastodon
             </a>
           </li>
           <li>
             <a
               href="https://www.linkedin.com/in/benedikt-ritter-83847b84/"
-              title="LinkedIn"
               target="_blank"
               rel="noopener noreferrer"
-              class="hover:text-opacity-80 focus:text-opacity-80 block transition-all duration-200"
+              class="text-on-surface-variant hover:text-secondary font-mono text-xs transition-colors"
             >
-              <Icon name="LinkedIn" />
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a
+              href="/feed.xml"
+              class="text-on-surface-variant hover:text-secondary font-mono text-xs transition-colors"
+            >
+              RSS Feed
             </a>
           </li>
         </ul>
       </div>
 
-      <!-- Right Section: Terms & Conditions -->
-      <div class="flex justify-center md:justify-end">
-        <a
-          href="/terms"
-          class="hover:text-opacity-80 focus:text-opacity-80 text-sm transition-all duration-200 hover:underline"
+      <!-- Navigate -->
+      <div class="space-y-3">
+        <h5
+          class="font-label text-outline text-[10px] font-bold tracking-widest uppercase"
         >
-          Terms & Conditions
-        </a>
+          Navigate
+        </h5>
+        <ul class="space-y-2">
+          {
+            navLinks.map(link => (
+              <li>
+                <a
+                  href={link.href}
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noopener noreferrer" : undefined}
+                  class="text-on-surface-variant hover:text-secondary font-mono text-xs transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div class="space-y-3">
+        <h5
+          class="font-label text-outline text-[10px] font-bold tracking-widest uppercase"
+        >
+          Legal
+        </h5>
+        <ul class="space-y-2">
+          <li>
+            <a
+              href="/terms"
+              class="text-on-surface-variant hover:text-secondary font-mono text-xs transition-colors"
+            >
+              Terms & Conditions
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
-</section>
+</footer>
