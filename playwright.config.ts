@@ -16,10 +16,15 @@ export default defineConfig({
   projects: [
     {
       name: "firefox",
+      testMatch: "**/visual-regression.spec.ts",
       use: {
         ...devices["Desktop Firefox"],
         colorScheme: "light",
       },
+    },
+    {
+      name: "functional",
+      testMatch: "**/functional.spec.ts",
     },
   ],
 
