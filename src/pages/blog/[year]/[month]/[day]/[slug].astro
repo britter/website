@@ -98,46 +98,48 @@ const readingTime = Math.max(1, Math.round(wordCount / 200));
           style="border-top: 1px solid var(--color-surface-container-high);"
         >
           <span
-            class="font-label text-outline mr-1 text-xs tracking-widest uppercase"
+            class="font-label text-outline mr-1 shrink-0 text-xs tracking-widest uppercase"
             >Share:</span
           >
-          <a
-            id="share-mastodon"
-            href="https://mastodonshare.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
-            >Mastodon</a
-          >
-          <a
-            id="share-linkedin"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
-            >LinkedIn</a
-          >
-          <a
-            id="share-bluesky"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
-            >Bluesky</a
-          >
-          <a
-            id="share-x"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
-            >X</a
-          >
-          <button
-            id="share-copy"
-            class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
-            >Copy link</button
-          >
+          <div class="flex flex-wrap gap-2">
+            <a
+              id="share-mastodon"
+              href="https://mastodonshare.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
+              >Mastodon</a
+            >
+            <a
+              id="share-linkedin"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
+              >LinkedIn</a
+            >
+            <a
+              id="share-bluesky"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
+              >Bluesky</a
+            >
+            <a
+              id="share-x"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
+              >X</a
+            >
+            <button
+              id="share-copy"
+              class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
+              >Copy link</button
+            >
+          </div>
         </div>
 
         <!-- Author bio -->
