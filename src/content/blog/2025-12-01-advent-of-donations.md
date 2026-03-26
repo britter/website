@@ -1,8 +1,7 @@
 ---
 title: "Advent of Donations"
 description: "I've decided to donate to open source projects for each day of December 2025 until Christmas. This blog post lists the projects donated to."
-pubDate: "2025-12-01"
-image: "https://imgs.xkcd.com/comics/dependency.png"
+topics: ["Open Source"]
 ---
 
 Ever since I've started a career in software development, I was facinated with open source.

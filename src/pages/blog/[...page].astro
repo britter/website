@@ -1,37 +1,105 @@
 ---
 import { getCollection } from "astro:content";
 import type { Page } from "astro";
+import { getPubDate } from "../../utils/params";
 import type { CollectionEntry } from "astro:content";
-import type { Blog } from "../../types/Blog";
 import Layout from "../../layouts/Layout.astro";
-import BlogList from "../../components/BlogList.astro";
-import Pagination from "../../components/Pagination.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import BlogPostCard from "../../components/blog/BlogPostCard.astro";
+import AuthorBio from "../../components/blog/AuthorBio.astro";
+import Pagination from "../../components/blog/Pagination.astro";
 
 export async function getStaticPaths({ paginate }: any) {
-  const sourceBlogs = await getCollection("blog");
-
-  const byDate = (a: any, b: any) => {
-    const aDate = new Date((a as Blog).data.pubDate);
-    const bDate = new Date((b as Blog).data.pubDate);
-
-    return bDate.getTime() - aDate.getTime();
-  };
-
-  const blogs = sourceBlogs.sort(byDate);
-
-  return paginate(blogs, {
-    pageSize: 5,
-  });
+  const posts = await getCollection("blog");
+  const sorted = posts.sort(
+    (a, b) => getPubDate(b).getTime() - getPubDate(a).getTime()
+  );
+  return paginate(sorted, { pageSize: 10 });
 }
 
-export interface Props {
+interface Props {
   page: Page<CollectionEntry<"blog">>;
 }
 
 const { page } = Astro.props;
+
+const allPosts = await getCollection("blog");
+const topicCounts: Record<string, number> = {};
+for (const post of allPosts) {
+  for (const topic of post.data.topics ?? []) {
+    topicCounts[topic] = (topicCounts[topic] ?? 0) + 1;
+  }
+}
+const allTopics = Object.entries(topicCounts).sort((a, b) => b[1] - a[1]);
+
+const [featured, ...rest] = page.data;
 ---
 
-<Layout title="Blog">
-  <BlogList blogs={page?.data || []} />
-  <Pagination page={page} />
+<Layout
+  title="Reproducible Thoughts — Benedikt Ritter"
+  description="Technical writing on Gradle, NixOS, Java, and developer productivity."
+>
+  <PageHeader
+    badge="Technical Journal"
+    description="Notes from the intersection of Gradle, NixOS, and a decade of building software that actually works — build systems, reproducible environments, and everything in between."
+  >
+    <Fragment slot="title"
+      >Reproducible <br /><span class="text-secondary">Thoughts.</span
+      ></Fragment
+    >
+  </PageHeader>
+
+  <main class="bg-surface pb-20">
+    <div class="mx-auto max-w-7xl px-6">
+      <!--
+        Flat 12-col grid:
+          Row 1: featured post (8) + author bio (4)
+          Row 2: post listing (8) + topic cloud (4)
+      -->
+      <div class="grid grid-cols-1 gap-x-12 gap-y-12 lg:grid-cols-12">
+        <!-- Row 1 left: featured post -->
+        {
+          featured && (
+            <div class="lg:col-span-8">
+              <BlogPostCard post={featured} variant="featured" />
+            </div>
+          )
+        }
+
+        <!-- Row 1 right: author bio -->
+        <div class="lg:col-span-4 lg:self-start">
+          <AuthorBio variant="sidebar" />
+        </div>
+
+        <!-- Row 2 left: post list + pagination -->
+        <div class="space-y-12 lg:col-span-8">
+          {rest.map(post => <BlogPostCard post={post} variant="list" />)}
+          <Pagination prev={page.url.prev} next={page.url.next} />
+        </div>
+
+        <!-- Row 2 right: topic cloud -->
+        <div id="topic-cloud" class="space-y-4 lg:col-span-4 lg:self-start">
+          <h4
+            class="font-label text-outline text-[10px] font-bold tracking-widest uppercase"
+          >
+            Topics
+          </h4>
+          <div class="flex flex-wrap gap-2">
+            {
+              allTopics.map(([topic, count]) => (
+                <a
+                  href={`/blog/topic/${topic}`}
+                  class="bg-surface-container-lowest text-primary hover:bg-secondary px-3 py-1.5 font-mono text-xs transition-all hover:text-white"
+                  style="border: 1px solid var(--color-outline-variant); opacity: 0.6;"
+                >
+                  {topic}
+                  <span class="ml-1 text-[10px] opacity-70">{count}</span>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 </Layout>

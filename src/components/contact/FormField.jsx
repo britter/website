@@ -6,10 +6,27 @@ export default function FormField({
   onChange,
   error,
 }) {
+  const inputStyle = {
+    backgroundColor: "var(--color-surface-container-low)",
+    borderColor: "var(--color-outline-variant)",
+    color: "var(--color-on-surface)",
+    fontFamily: "var(--font-sans)",
+  };
+
+  const sharedClasses =
+    "w-full border px-3 py-2 text-sm transition-colors focus:outline-none";
+
   return (
-    <div className="mb-4">
-      <label className="block text-sm font-medium text-gray-700" htmlFor={name}>
-        {label}:
+    <div className="mb-5">
+      <label
+        className="mb-1.5 block text-xs font-bold tracking-widest uppercase"
+        style={{
+          color: "var(--color-on-surface-variant)",
+          fontFamily: "var(--font-label)",
+        }}
+        htmlFor={name}
+      >
+        {label}
       </label>
       {type === "textarea" ? (
         <textarea
@@ -18,7 +35,9 @@ export default function FormField({
           value={value}
           onChange={onChange}
           required
-          className="w-full rounded-md border px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+          rows={4}
+          className={sharedClasses}
+          style={inputStyle}
         />
       ) : (
         <input
@@ -28,10 +47,18 @@ export default function FormField({
           value={value}
           onChange={onChange}
           required
-          className="w-full rounded-md border px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+          className={sharedClasses}
+          style={inputStyle}
         />
       )}
-      {error && <p className="text-sm text-red-500">{error}</p>}
+      {error && (
+        <p
+          className="mt-1 text-xs"
+          style={{ color: "#e53e3e", fontFamily: "var(--font-mono)" }}
+        >
+          {error}
+        </p>
+      )}
     </div>
   );
 }

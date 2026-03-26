@@ -1,8 +1,7 @@
 ---
 title: "Optimizing Gradle Builds with Dockerized Databases, Flyway, and jOOQ"
 description: "How using a custom Gradle build service and rethinking task dependencies led to faster, cleaner builds in a Java backend project using Docker, Flyway, and jOOQ."
-pubDate: "2025-07-22"
-image: "gradle-docker-flyway.png"
+topics: ["Gradle", "Java"]
 ---
 
 In one of my side projects, I’m building a Java backend using [jOOQ](https://jooq.org) for type-safe SQL access and [Flyway](https://github.com/flyway/flyway) for database migrations.

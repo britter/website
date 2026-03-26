@@ -1,53 +1,133 @@
 ---
-import { Icon } from "astro-icon/components";
-import ThemeToggle from "../ThemeToggle.astro";
-import { basic } from "../../config/cv.json";
+import { nav as navLinks } from "../../config/data.json";
 
-const menuItems = [
-  { name: "Blog", href: "/blog" },
-  { name: "Services", href: "/services" },
-  { name: "About", href: "/" },
-];
+const pathname = Astro.url.pathname;
+
+function isActive(href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname.startsWith(href);
+}
 ---
 
-<header class="bg-background py-4">
-  <div
-    class="container mx-auto flex max-w-6xl items-center justify-between px-4 md:px-8"
-  >
-    <!-- Logo -->
-    <div class="text-2xl font-bold">
-      <a href="/" class="hover:text-offset">{basic?.name}</a>
-    </div>
+<header
+  class="fixed top-0 z-50 w-full backdrop-blur-xl"
+  style="background-color: color-mix(in srgb, var(--color-surface) 85%, transparent);"
+>
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+    <a
+      href="/"
+      class="text-on-surface hover:text-secondary text-xl font-black tracking-tighter transition-colors"
+    >
+      Benedikt Ritter
+    </a>
 
-    <div class="flex gap-5">
-      <!-- PC Menu -->
-      <nav class="hidden items-center space-x-6 sm:flex">
-        {
-          menuItems.map(item => (
-            <a href={item.href} class="hover:text-offset">
-              {item.name}
-            </a>
-          ))
-        }
-      </nav>
+    <!-- Desktop nav -->
+    <nav class="hidden items-center gap-8 md:flex">
+      {
+        navLinks.map(link => (
+          <a
+            href={link.href}
+            target={link.external ? "_blank" : undefined}
+            rel={link.external ? "noopener noreferrer" : undefined}
+            class={`pb-1 font-sans text-sm font-bold tracking-tight uppercase transition-colors ${
+              isActive(link.href)
+                ? "text-secondary border-secondary border-b-2"
+                : "text-on-surface-variant hover:text-on-surface"
+            }`}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
 
-      <!-- Mobile Menu Button -->
-      <div class="flex sm:hidden">
-        <button id="menu-btn" class="focus:outline-none">
-          <Icon name="Menu" class="size-6" />
-        </button>
-      </div>
+    <div class="flex items-center gap-2">
+      <!-- Theme toggle -->
+      <button
+        id="theme-toggle"
+        class="hover:bg-surface-container rounded-lg p-2 transition-colors"
+        aria-label="Toggle theme"
+      >
+        <svg
+          id="sun-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="1.5"
+        >
+          <circle cx="12" cy="12" r="4"></circle>
+          <path
+            stroke-linecap="round"
+            d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+          ></path>
+        </svg>
+        <svg
+          id="moon-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          class="hidden size-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="1.5"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
 
-      <ThemeToggle />
+      <!-- Mobile menu button -->
+      <button
+        id="menu-btn"
+        class="hover:bg-surface-container rounded-lg p-2 transition-colors md:hidden"
+        aria-label="Toggle menu"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="1.5"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+        </svg>
+      </button>
     </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden sm:hidden">
+  <!-- Subtle separator -->
+  <div
+    class="h-px w-full"
+    style="background-color: var(--color-outline-variant); opacity: 0.4;"
+  >
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="hidden space-y-1 px-6 py-4 backdrop-blur-xl md:hidden"
+    style="background-color: color-mix(in srgb, var(--color-surface) 97%, transparent);"
+  >
     {
-      menuItems.map(item => (
-        <a href={item.href} class="hover:bg-background-offset block px-4 py-2">
-          {item.name}
+      navLinks.map(link => (
+        <a
+          href={link.href}
+          target={link.external ? "_blank" : undefined}
+          rel={link.external ? "noopener noreferrer" : undefined}
+          class={`block py-2 font-sans text-sm font-bold tracking-tight uppercase transition-colors ${
+            isActive(link.href)
+              ? "text-secondary"
+              : "text-on-surface-variant hover:text-on-surface"
+          }`}
+        >
+          {link.label}
         </a>
       ))
     }
@@ -55,10 +135,23 @@ const menuItems = [
 </header>
 
 <script>
-  const menuBtn = document.getElementById("menu-btn");
-  const mobileMenu = document.getElementById("mobile-menu");
+  function updateThemeIcon() {
+    const isDark = document.documentElement.dataset.theme === "dark";
+    document.getElementById("sun-icon")?.classList.toggle("hidden", isDark);
+    document.getElementById("moon-icon")?.classList.toggle("hidden", !isDark);
+  }
 
-  menuBtn?.addEventListener("click", () => {
-    mobileMenu?.classList.toggle("hidden");
+  updateThemeIcon();
+
+  document.getElementById("theme-toggle")?.addEventListener("click", () => {
+    const next =
+      document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem("theme", next);
+    updateThemeIcon();
+  });
+
+  document.getElementById("menu-btn")?.addEventListener("click", () => {
+    document.getElementById("mobile-menu")?.classList.toggle("hidden");
   });
 </script>

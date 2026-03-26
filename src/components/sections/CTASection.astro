@@ -1,0 +1,54 @@
+---
+
+---
+
+<section class="bg-surface py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="bg-surface-container-low relative overflow-hidden p-12 md:p-16">
+      <div
+        class="pointer-events-none absolute inset-0 opacity-10"
+        style="background-image: radial-gradient(#1d2b3e 1px, transparent 1px); background-size: 32px 32px;"
+      >
+      </div>
+      <div class="relative z-10 max-w-2xl">
+        <span
+          class="font-label text-secondary text-sm font-bold tracking-widest uppercase"
+        >
+          Let's Work Together
+        </span>
+        <h2
+          class="text-primary mt-3 mb-6 text-4xl leading-tight font-black tracking-tight md:text-5xl"
+        >
+          Ready to modernize your build system?
+        </h2>
+        <p class="text-on-surface-variant mb-8 leading-relaxed">
+          Five years building developer productivity tooling at Gradle Inc.,
+          co-founder of TestLens, and a decade of open source work across the
+          JVM ecosystem. I bring that depth to your project — whether you're
+          migrating to Gradle, optimizing builds, or adopting NixOS for
+          reproducible infrastructure.
+        </p>
+        <div class="flex flex-wrap items-center gap-4">
+          <button
+            id="cta-contact-btn"
+            class="bg-secondary cursor-pointer px-10 py-4 text-sm font-bold tracking-widest text-white uppercase transition-all hover:opacity-90"
+          >
+            Let's talk
+          </button>
+          <a
+            href="/terms"
+            class="font-label text-primary border-primary hover:text-secondary hover:border-secondary border-b-2 pb-0.5 text-sm font-bold tracking-widest uppercase transition-all"
+          >
+            Review consulting terms
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById("cta-contact-btn")?.addEventListener("click", () => {
+    window.dispatchEvent(new CustomEvent("open-contact-modal"));
+  });
+</script>

@@ -1,8 +1,7 @@
 ---
 title: "Packaging kotlin-lsp for NixVim (Part 2)"
 description: "How a version bump exposed native library dependencies in kotlin-lsp and what it takes to package them on NixOS"
-pubDate: "2026-03-20"
-image: "kotlin-lsp-nixvim-pt2.png"
+topics: ["NixOS", "Kotlin", "Neovim"]
 ---
 
 In my [previous post](/blog/2025/11/15/kotlin-lsp-nixvim) I described how to package [kotlin-lsp](https://github.com/Kotlin/kotlin-lsp) for use with [NixVim](https://github.com/nix-community/nixvim).

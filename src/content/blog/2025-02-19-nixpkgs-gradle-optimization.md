@@ -1,8 +1,7 @@
 ---
 title: "Optimizing Gradle Build Support in nixpkgs"
 description: "This is another blog post that covers the intersection between Gradle and NixOS. This time we look at an optimization I made to the Gradle build support in nixpkgs."
-pubDate: "2025-02-19"
-image: "gradle-nixos-race.png"
+topics: ["NixOS", "Gradle"]
 ---
 
 I have [previously](/blog/2025/01/02/gradle-nix/) blogged about the Gradle build support in [nixpkgs](https://github.com/NixOS/nixpkgs), where we looked at it from the consumer side.

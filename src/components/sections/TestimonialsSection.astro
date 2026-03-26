@@ -1,0 +1,55 @@
+---
+import TestimonialsCarousel from "./Testimonials_Carousel.jsx";
+import { testimonials } from "../../config/data.json";
+
+type ImageModule = { src: string };
+const images = import.meta.glob("../../assets/*.{jpg,png}", {
+  eager: true,
+  import: "default",
+}) as Record<string, ImageModule>;
+
+const imageMap = Object.fromEntries(
+  Object.entries(images).map(([path, mod]) => {
+    const filename = path.split("/").at(-1)!;
+    return [filename, mod.src];
+  })
+);
+
+const processedTestimonials = testimonials.map(t => ({
+  ...t,
+  avatar: t.github
+    ? `https://github.com/${t.github}.png`
+    : t.image
+      ? imageMap[t.image]
+      : null,
+  socialLinks: Object.entries(t.links || {}).map(([platform, url]) => ({
+    url,
+    platform,
+  })),
+}));
+---
+
+<section class="bg-primary relative overflow-hidden py-20">
+  <div
+    class="pointer-events-none absolute inset-0 overflow-hidden opacity-5 select-none"
+  >
+    <div
+      class="absolute -top-16 -right-16 text-[18rem] leading-none font-black text-white"
+    >
+      "
+    </div>
+  </div>
+  <div class="relative mx-auto max-w-7xl px-6">
+    <div class="mb-12">
+      <span
+        class="font-label text-secondary-fixed text-sm font-bold tracking-widest uppercase"
+      >
+        Peer Review
+      </span>
+      <h2 class="text-on-primary mt-1 text-4xl font-black tracking-tight">
+        Technical Authority Recognized
+      </h2>
+    </div>
+    <TestimonialsCarousel testimonials={processedTestimonials} client:load />
+  </div>
+</section>

@@ -1,0 +1,57 @@
+---
+import { openSource } from "../../config/data.json";
+
+const cards = openSource.slice(0, 3);
+---
+
+<section class="bg-surface-container-low py-20">
+  <div class="mx-auto max-w-7xl px-6">
+    <div
+      class="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end"
+    >
+      <div class="space-y-2">
+        <span
+          class="font-label text-secondary text-sm font-bold tracking-widest uppercase"
+        >
+          Beyond Consulting
+        </span>
+        <h2 class="text-primary text-4xl font-black tracking-tight">
+          Open Source Contributions
+        </h2>
+      </div>
+      <p class="text-on-surface-variant max-w-sm font-mono text-sm">
+        I don't just consult on these tools — I help build and maintain them.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      {
+        cards.map(item => (
+          <div class="bg-surface-container-lowest group hover:bg-primary flex flex-col justify-between p-8 transition-colors duration-500">
+            <div>
+              <div class="mb-10 flex items-start justify-between">
+                <div class="bg-surface-container-low group-hover:bg-primary-container flex h-10 w-10 items-center justify-center rounded transition-colors">
+                  <span class="text-secondary group-hover:text-on-primary-container text-xl font-black">
+                    #
+                  </span>
+                </div>
+                <span class="font-label text-outline group-hover:text-on-primary-container text-xs tracking-widest uppercase opacity-60 transition-colors">
+                  {item.role}
+                </span>
+              </div>
+              <h3 class="text-on-surface group-hover:text-on-primary mb-3 text-xl font-bold transition-colors">
+                {item.org}
+              </h3>
+              <p class="text-on-surface-variant group-hover:text-on-primary-container text-sm leading-relaxed transition-colors">
+                {item.description}
+              </p>
+            </div>
+            <div class="text-outline group-hover:text-on-primary-container pt-8 font-mono text-[10px] font-bold tracking-widest transition-colors">
+              {item.label}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

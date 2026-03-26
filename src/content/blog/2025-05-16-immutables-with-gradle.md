@@ -1,8 +1,7 @@
 ---
 title: "Using `immutables.org` with Gradle the Right Way"
 description: "Learn how to correctly configure the immutables.org library in a Gradle project using Kotlin DSL. This post covers annotation processor basics, explains why minimal dependencies matter, and shows how to avoid common pitfalls like runtime pollution from unnecessary artifacts."
-pubDate: "2025-05-16"
-image: "immutables-gradle.png"
+topics: ["Gradle", "Java"]
 ---
 
 ## Introduction

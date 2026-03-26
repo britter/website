@@ -1,0 +1,110 @@
+---
+import { Image } from "astro:assets";
+import heroImage from "../../assets/benedikt_ritter.jpg";
+import { basic } from "../../config/data.json";
+---
+
+<section class="bg-surface pt-28 pb-16">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+      <!-- Left: Text -->
+      <div class="space-y-6 lg:col-span-7">
+        <div
+          class="bg-surface-container-high inline-flex items-center gap-2 rounded-full px-3 py-1"
+        >
+          <span class="bg-secondary h-2 w-2 animate-pulse rounded-full"></span>
+          <span
+            class="font-label text-on-surface-variant text-xs font-bold tracking-widest uppercase"
+          >
+            Available for consulting
+          </span>
+        </div>
+
+        <h1
+          class="text-primary text-5xl leading-[0.9] font-black tracking-tighter md:text-7xl"
+        >
+          Engineering Excellence through <span class="text-secondary"
+            >Open Source</span
+          > & Consulting.
+        </h1>
+
+        <p class="text-on-surface-variant max-w-xl text-lg leading-relaxed">
+          {basic.summary}
+        </p>
+
+        <div class="flex flex-wrap gap-4 pt-2">
+          <button
+            id="hero-contact-btn"
+            class="bg-secondary cursor-pointer px-8 py-4 text-sm font-bold tracking-widest text-white uppercase transition-all hover:opacity-90"
+          >
+            Schedule a Consultation
+          </button>
+          <a
+            href="/open-source"
+            class="border-primary text-primary hover:bg-primary border-2 px-8 py-4 text-sm font-bold tracking-widest uppercase transition-all hover:text-white"
+          >
+            View Open Source Work
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Mobile = plain photo, Desktop = photo + code overlay -->
+      <div class="overflow-hidden rounded-lg lg:col-span-5">
+        <!-- Mobile: plain photo -->
+        <Image
+          src={heroImage}
+          alt="Benedikt Ritter"
+          class="w-full grayscale md:hidden"
+        />
+
+        <!-- Desktop: photo with code overlaid -->
+        <div
+          class="relative hidden md:block"
+          style="background-color: #1d2b3e;"
+        >
+          <Image
+            src={heroImage}
+            alt="Benedikt Ritter"
+            class="absolute top-0 right-0 h-full w-auto grayscale"
+          />
+          <div
+            class="absolute inset-0"
+            style="background: linear-gradient(to right, rgba(29,43,62,0.95) 30%, rgba(29,43,62,0.4) 100%);"
+          >
+          </div>
+          <div class="relative z-10 p-8">
+            <div
+              class="absolute top-4 right-4 font-mono text-[10px] tracking-widest uppercase"
+              style="color: rgba(255,255,255,0.25);"
+            >
+              consulting.nix
+            </div>
+            <pre
+              class="overflow-x-auto font-mono text-sm leading-relaxed"
+              style="color: #9dadc6;"><span style="color: #6b9fef;"># Technical Profile</span>
+{`{ pkgs, ... }: {
+  expertise = {
+    provider =
+      "Benedikt Ritter";
+    stack = [
+      "Gradle" "NixOS"
+    ];
+    focus =
+      "builds"
+      + " + reproducibility";
+    status =
+      "accepting-clients";
+  };
+}`}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById("hero-contact-btn")?.addEventListener("click", () => {
+    window.dispatchEvent(new CustomEvent("open-contact-modal"));
+  });
+</script>

@@ -1,63 +1,181 @@
 ---
 import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-
 import Layout from "../../../../../layouts/Layout.astro";
-import { getBlogParams } from "../../../../../utils/params";
+import { getBlogParams, getPubDate } from "../../../../../utils/params";
+import TopicBadge from "../../../../../components/blog/TopicBadge.astro";
+import AuthorBio from "../../../../../components/blog/AuthorBio.astro";
 
 export const getStaticPaths = async () => {
   const blogs = await getCollection("blog");
-  const paths = blogs.map(blog => {
-    return {
-      params: getBlogParams(blog),
-      props: {
-        blog,
-      },
-    };
-  });
-
-  return paths;
+  return blogs.map(blog => ({
+    params: getBlogParams(blog),
+    props: { blog },
+  }));
 };
 
-type Props = {
-  blog: CollectionEntry<"blog">;
-};
+type Props = { blog: CollectionEntry<"blog"> };
 
 const { blog } = Astro.props;
 const { Content } = await render(blog);
-const blogParams = getBlogParams(blog);
+
+const wordCount = blog.body?.split(/\s+/).length ?? 0;
+const readingTime = Math.max(1, Math.round(wordCount / 200));
 ---
 
 <Layout
-  title={blog.data.title}
+  title={`${blog.data.title} — Reproducible Thoughts`}
   description={blog.data.description}
-  image={blogParams.image}
+  image={`/og/${blog.id.replace(/\.[^/.]+$/, "")}.png`}
   type="article"
 >
-  <article class="bg-background">
-    <div class="container mx-auto justify-center px-6 py-8 lg:flex">
-      <div id="markdown" class="prose prose-lg relative mb-5 overflow-visible">
-        <h1>{blog.data.title}</h1>
-        <time datetime={blog.data.pubDate.toLocaleDateString()} class="text-sm">
+  <!-- Dark journal header -->
+  <div
+    class="relative overflow-hidden pt-28 pb-16"
+    style="background-color: #1d2b3e;"
+  >
+    <div
+      class="pointer-events-none absolute inset-0 opacity-10"
+      style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 32px 32px;"
+    >
+    </div>
+    <div class="relative z-10 mx-auto max-w-3xl px-6">
+      <!-- Breadcrumb -->
+      <a
+        href="/blog"
+        class="font-label text-secondary inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase transition-opacity hover:opacity-70"
+      >
+        ← Reproducible Thoughts
+      </a>
+
+      <!-- Topics -->
+      {
+        blog.data.topics.length > 0 && (
+          <div class="mt-4 flex flex-wrap gap-2">
+            {blog.data.topics.map((t: string) => (
+              <TopicBadge topic={t} variant="pill-md" />
+            ))}
+          </div>
+        )
+      }
+
+      <!-- Title -->
+      <h1
+        class="mt-4 text-4xl leading-tight font-black tracking-tighter text-white md:text-5xl"
+      >
+        {blog.data.title}
+      </h1>
+
+      <!-- Meta -->
+      <div class="mt-4 flex items-center gap-4 font-mono text-sm text-white/50">
+        <time datetime={getPubDate(blog).toISOString()}>
           {
-            new Date(blog.data.pubDate).toLocaleDateString("en-US", {
+            getPubDate(blog).toLocaleDateString("en-US", {
               year: "numeric",
               month: "long",
               day: "numeric",
             })
           }
         </time>
-        <Content />
+        <span class="h-1 w-1 rounded-full bg-white/30"></span>
+        <span>{readingTime} min read</span>
       </div>
     </div>
-  </article>
+  </div>
 
-  <script>
-    import { toggleMarkdownTheme } from "../../../../../scripts/theme";
+  <!-- Article body -->
+  <div class="bg-surface pb-20">
+    <div class="mx-auto max-w-3xl px-6 pt-12">
+      <article class="space-y-8">
+        <!-- Content -->
+        <div id="markdown" class="prose prose-lg max-w-none">
+          <Content />
+        </div>
 
-    // initialized in Layout.astro
-    const theme = document.documentElement.dataset.theme;
+        <!-- Share footer -->
+        <div
+          class="flex items-center gap-2 pt-8"
+          style="border-top: 1px solid var(--color-surface-container-high);"
+        >
+          <span
+            class="font-label text-outline mr-1 text-xs tracking-widest uppercase"
+            >Share:</span
+          >
+          <a
+            id="share-mastodon"
+            href="https://mastodonshare.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
+            >Mastodon</a
+          >
+          <a
+            id="share-linkedin"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
+            >LinkedIn</a
+          >
+          <a
+            id="share-bluesky"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
+            >Bluesky</a
+          >
+          <a
+            id="share-x"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
+            >X</a
+          >
+          <button
+            id="share-copy"
+            class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
+            >Copy link</button
+          >
+        </div>
 
-    toggleMarkdownTheme(theme);
-  </script>
+        <!-- Author bio -->
+        <AuthorBio variant="post" />
+      </article>
+    </div>
+  </div>
 </Layout>
+
+<script>
+  const url = encodeURIComponent(window.location.href);
+  const text = encodeURIComponent(document.title);
+
+  const mastodon = document.getElementById(
+    "share-mastodon"
+  ) as HTMLAnchorElement;
+  if (mastodon)
+    mastodon.href = `https://mastodonshare.com/?text=${text}&url=${url}`;
+
+  const linkedin = document.getElementById(
+    "share-linkedin"
+  ) as HTMLAnchorElement;
+  if (linkedin)
+    linkedin.href = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+
+  const bluesky = document.getElementById("share-bluesky") as HTMLAnchorElement;
+  if (bluesky)
+    bluesky.href = `https://bsky.app/intent/compose?text=${text}%20${decodeURIComponent(url)}`;
+
+  const x = document.getElementById("share-x") as HTMLAnchorElement;
+  if (x) x.href = `https://x.com/intent/tweet?url=${url}&text=${text}`;
+
+  document.getElementById("share-copy")?.addEventListener("click", async () => {
+    await navigator.clipboard.writeText(window.location.href);
+    const btn = document.getElementById("share-copy");
+    if (btn) {
+      btn.textContent = "Copied!";
+      setTimeout(() => (btn.textContent = "Copy link"), 2000);
+    }
+  });
+</script>

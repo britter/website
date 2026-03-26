@@ -1,8 +1,7 @@
 ---
 title: "Declarative tmuxinator Projects with Home Manager"
 description: "How I wrote a custom Home Manager module to manage tmuxinator projects declaratively - and why I've decided to contribute it upstream."
-pubDate: "2026-03-23"
-image: "home-manager-tmuxinator.png"
+topics: ["NixOS", "Home Manager"]
 ---
 
 tmux is one of the most foundational tools in my workflow - so much so that it made the list in my [Advent of Donations](/blog/2025/12/01/advent-of-donations/) post last year.

@@ -1,8 +1,7 @@
 ---
 title: "Fixing Missing libudev Warnings from Gradle on NixOS"
 description: "Learn how to resolve Gradle's missing libudev warnings on NixOS, ensuring smooth builds and complete telemetry data."
-pubDate: "2025-01-16"
-image: "nixos-gradle-libudev.png"
+topics: ["NixOS", "Gradle"]
 ---
 
 In a [previous blog post](/blog/2025/01/02/gradle-nix), we explored how to build [Gradle](https://gradle.org) projects using [Nix](https://nixos.org), diving into the specifics of wrapping Gradle into the Nix ecosystem.

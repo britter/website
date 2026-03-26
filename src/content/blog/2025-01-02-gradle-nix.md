@@ -1,8 +1,7 @@
 ---
 title: "Wrapping Elephants in Snowflakes"
 description: "How to build a Gradle project using Nix - 2025 edition."
-pubDate: "2025-01-02"
-image: "https://images.unsplash.com/photo-1714846201575-4f06e069dc6f?q=80&w=640&auto=format&fit=crop"
+topics: ["Gradle", "NixOS"]
 ---
 
 [Gradle build tool](https://gradle.org) is known for its flexibility and powerful dependency management, and has become the cornerstone of many JVM-based projects.

@@ -28,7 +28,6 @@ const {
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="fediverse:creator" content="@britter@chaos.social" />
-    <!-- social preview -->
     <meta property="og:title" content={title} />
     <meta
       property="og:description"
@@ -37,7 +36,6 @@ const {
     <meta property="og:image" content={image} />
     <meta property="og:url" content={Astro.url} />
     <meta property="og:type" content={type} />
-
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link
@@ -47,26 +45,28 @@ const {
       href="/feed.xml"
     />
     <link rel="me" href="https://chaos.social/@britter" />
-
-    <!-- initialize theme -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <script is:inline>
-      const themeSaved = localStorage.getItem("theme");
-
-      if (themeSaved) {
-        document.documentElement.dataset.theme = themeSaved;
+      const saved = localStorage.getItem("theme");
+      if (saved) {
+        document.documentElement.dataset.theme = saved;
       } else {
-        const prefersDark = window.matchMedia(
+        document.documentElement.dataset.theme = window.matchMedia(
           "(prefers-color-scheme: dark)"
-        ).matches;
-
-        document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
+        ).matches
+          ? "dark"
+          : "light";
       }
-
       window
         .matchMedia("(prefers-color-scheme: dark)")
-        .addEventListener("change", event => {
+        .addEventListener("change", e => {
           if (!localStorage.getItem("theme")) {
-            document.documentElement.dataset.theme = event.matches
+            document.documentElement.dataset.theme = e.matches
               ? "dark"
               : "light";
           }
@@ -74,7 +74,7 @@ const {
     </script>
   </head>
   <body
-    class="bg-default text-default selection:bg-secondary flex h-full flex-col overflow-x-hidden text-base"
+    class="bg-surface text-on-surface flex h-full flex-col overflow-x-hidden"
   >
     <Header />
     <section class="flex-grow">

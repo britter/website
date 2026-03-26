@@ -1,0 +1,30 @@
+---
+/**
+ * variant:
+ *   pill-sm  — small pill (10px), used in post list items
+ *   pill-md  — larger pill (12px), used in post header/footer
+ *   inline   — no background, just coloured text, used in featured-post metadata row
+ */
+interface Props {
+  topic: string;
+  active?: boolean;
+  variant?: "pill-sm" | "pill-md" | "inline";
+}
+
+const { topic, active = false, variant = "pill-sm" } = Astro.props;
+
+const classes: Record<string, string> = {
+  "pill-sm": active
+    ? "bg-secondary text-white font-label px-2 py-0.5 text-[10px] font-bold uppercase"
+    : "bg-surface-container-high text-on-surface-variant hover:bg-secondary hover:text-white font-label px-2 py-0.5 text-[10px] font-bold uppercase transition-colors",
+  "pill-md": active
+    ? "bg-secondary text-white font-label px-3 py-1 text-xs font-bold tracking-wide uppercase"
+    : "bg-surface-container-high text-secondary hover:bg-secondary hover:text-white font-label px-3 py-1 text-xs font-bold tracking-wide uppercase transition-colors",
+  inline:
+    "text-secondary hover:underline font-label text-xs font-bold tracking-widest uppercase",
+};
+---
+
+<a href={`/blog/topic/${topic}`} class={classes[variant]}>
+  {topic}
+</a>

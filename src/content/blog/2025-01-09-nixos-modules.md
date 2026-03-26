@@ -1,8 +1,7 @@
 ---
 title: "Understanding NixOS Modules and Declaring Options"
 description: "In this blog post, we’ll explore the NixOS module system and how to declare options within it, a key skill for writing custom modules or contributing to NixOS."
-pubDate: "2025-01-09"
-image: "nixos-modules.png"
+topics: ["NixOS"]
 ---
 
 NixOS is a unique Linux distribution that uses a declarative approach to system configuration.

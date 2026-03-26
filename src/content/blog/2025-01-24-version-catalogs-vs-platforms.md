@@ -1,8 +1,7 @@
 ---
 title: "Choosing Between Gradle Version Catalogs and Dependency Platforms: A Guide for Application Developers"
 description: "In this blog post we'll break down the differences between Version Catalogs and Platforms."
-pubDate: "2025-01-24"
-image: "gradle-dependencies.png"
+topics: ["Gradle", "Dependency Management"]
 ---
 
 Managing dependencies effectively is a critical part of any application's development process.
