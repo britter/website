@@ -33,7 +33,7 @@ const {
       property="og:description"
       content={description ? description : title}
     />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={new URL(image, Astro.url).href} />
     <meta property="og:url" content={Astro.url} />
     <meta property="og:type" content={type} />
     <title>{title}</title>
