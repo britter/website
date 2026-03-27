@@ -22,6 +22,7 @@ const posts = allPosts
 <Layout
   title={`${topic} — Reproducible Thoughts`}
   description={`Blog posts about ${topic} by Benedikt Ritter.`}
+  image={`/og/topic/${topic}.png`}
 >
   <PageHeader badge="Topic" backLink={{ href: "/blog", label: "All posts" }}>
     <Fragment slot="title">{topic}</Fragment>
