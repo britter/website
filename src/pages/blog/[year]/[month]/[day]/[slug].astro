@@ -5,6 +5,7 @@ import Layout from "../../../../../layouts/Layout.astro";
 import { getBlogParams, getPubDate } from "../../../../../utils/params";
 import TopicBadge from "../../../../../components/blog/TopicBadge.astro";
 import AuthorBio from "../../../../../components/blog/AuthorBio.astro";
+import { blog as blogBranding } from "../../../../../config/data.json";
 
 export const getStaticPaths = async () => {
   const blogs = await getCollection("blog");
@@ -24,7 +25,7 @@ const readingTime = Math.max(1, Math.round(wordCount / 200));
 ---
 
 <Layout
-  title={`${blog.data.title} — Reproducible Thoughts`}
+  title={`${blog.data.title} — ${blogBranding.name}`}
   description={blog.data.description}
   image={`/og/${blog.id.replace(/\.[^/.]+$/, "")}.png`}
   type="article"
@@ -45,7 +46,7 @@ const readingTime = Math.max(1, Math.round(wordCount / 200));
         href="/blog"
         class="font-label text-secondary inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase transition-opacity hover:opacity-70"
       >
-        ← Reproducible Thoughts
+        ← {blogBranding.name}
       </a>
 
       <!-- Topics -->

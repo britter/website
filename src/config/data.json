@@ -1,4 +1,10 @@
 {
+  "blog": {
+    "name": "Reproducible Thoughts",
+    "label": "Technical Journal",
+    "description": "Notes on Gradle, NixOS, and developer productivity.",
+    "longDescription": "Notes from the intersection of Gradle, NixOS, and developer productivity — build systems, reproducible environments, and a decade of building software that actually works."
+  },
   "basic": {
     "name": "Benedikt Ritter",
     "job": "Developer Productivity Consultant",

@@ -1,6 +1,7 @@
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 import { getBlogParams, getPubDate } from "../utils/params";
+import { blog as blogData } from "../config/data.json";
 
 export async function GET(context) {
   const blog = await getCollection("blog");
@@ -8,9 +9,8 @@ export async function GET(context) {
     (a, b) => getPubDate(b).getTime() - getPubDate(a).getTime()
   );
   return rss({
-    title: "Reproducible Thoughts",
-    description:
-      "Notes from the intersection of Gradle, NixOS, and a decade of building software that actually works.",
+    title: blogData.name,
+    description: blogData.longDescription,
     site: context.site,
     items: sorted.map(post => ({
       title: post.data.title,
