@@ -4,6 +4,7 @@ import { getPubDate } from "../../../utils/params";
 import Layout from "../../../layouts/Layout.astro";
 import PageHeader from "../../../components/PageHeader.astro";
 import BlogPostCard from "../../../components/blog/BlogPostCard.astro";
+import { blog } from "../../../config/data.json";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -20,7 +21,7 @@ const posts = allPosts
 ---
 
 <Layout
-  title={`${topic} — Reproducible Thoughts`}
+  title={`${topic} — ${blog.name}`}
   description={`Blog posts about ${topic} by Benedikt Ritter.`}
   image={`/og/topic/${topic}.png`}
 >

@@ -1,6 +1,7 @@
 import type { APIRoute, GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import { ogBranding, renderOgTemplate } from "../../../utils/og";
+import { blog } from "../../../config/data.json";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getCollection("blog");
@@ -8,8 +9,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return topics.map(topic => ({ params: { topic } }));
 };
 
-export const GET: APIRoute = async ({ params }) => {
+export const GET: APIRoute = async ({ params, site }) => {
   const topic = params.topic as string;
+  const domain = site ? site.hostname : "britter.dev";
 
   const template: any = {
     type: "div",
@@ -25,7 +27,7 @@ export const GET: APIRoute = async ({ params }) => {
         fontFamily: "Inter",
       },
       children: [
-        ogBranding("Technical Journal"),
+        ogBranding(blog.label),
 
         // Middle: topic name
         {
@@ -78,7 +80,7 @@ export const GET: APIRoute = async ({ params }) => {
               color: "rgba(255,255,255,0.3)",
               letterSpacing: "0.05em",
             },
-            children: "britter.dev",
+            children: domain,
           },
         },
       ],

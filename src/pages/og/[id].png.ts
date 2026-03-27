@@ -2,6 +2,7 @@ import type { APIRoute, GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import { getPubDate } from "../../utils/params";
 import { ogBranding, renderOgTemplate } from "../../utils/og";
+import { blog, basic } from "../../config/data.json";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getCollection("blog");
@@ -38,7 +39,7 @@ export const GET: APIRoute = async ({ props }) => {
         fontFamily: "Inter",
       },
       children: [
-        ogBranding(),
+        ogBranding(blog.name),
 
         // Middle: title
         {
@@ -118,7 +119,7 @@ export const GET: APIRoute = async ({ props }) => {
                           fontWeight: 700,
                           color: "white",
                         },
-                        children: "Benedikt Ritter",
+                        children: basic.name,
                       },
                     },
                     {

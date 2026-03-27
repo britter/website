@@ -1,7 +1,10 @@
 import type { APIRoute } from "astro";
 import { ogBranding, renderOgTemplate } from "../../utils/og";
+import { blog } from "../../config/data.json";
 
-export const GET: APIRoute = async () => {
+export const GET: APIRoute = async ({ site }) => {
+  const domain = site ? site.hostname : "britter.dev";
+
   const template: any = {
     type: "div",
     props: {
@@ -16,9 +19,9 @@ export const GET: APIRoute = async () => {
         fontFamily: "Inter",
       },
       children: [
-        ogBranding("Technical Journal"),
+        ogBranding(blog.label),
 
-        // Middle: journal name
+        // Middle: journal name + subtitle
         {
           type: "div",
           props: {
@@ -39,7 +42,7 @@ export const GET: APIRoute = async () => {
                     color: "white",
                     lineHeight: 1.1,
                   },
-                  children: "Reproducible Thoughts",
+                  children: blog.name,
                 },
               },
               {
@@ -51,14 +54,14 @@ export const GET: APIRoute = async () => {
                     color: "rgba(255,255,255,0.5)",
                     letterSpacing: "0.05em",
                   },
-                  children: "A developer journal by Benedikt Ritter",
+                  children: blog.description,
                 },
               },
             ],
           },
         },
 
-        // Bottom: author
+        // Bottom: domain
         {
           type: "div",
           props: {
@@ -68,7 +71,7 @@ export const GET: APIRoute = async () => {
               color: "rgba(255,255,255,0.3)",
               letterSpacing: "0.05em",
             },
-            children: "britter.dev",
+            children: domain,
           },
         },
       ],

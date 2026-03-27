@@ -8,6 +8,7 @@ import PageHeader from "../../components/PageHeader.astro";
 import BlogPostCard from "../../components/blog/BlogPostCard.astro";
 import AuthorBio from "../../components/blog/AuthorBio.astro";
 import Pagination from "../../components/blog/Pagination.astro";
+import { blog, basic } from "../../config/data.json";
 
 export async function getStaticPaths({ paginate }: any) {
   const posts = await getCollection("blog");
@@ -36,14 +37,11 @@ const [featured, ...rest] = page.data;
 ---
 
 <Layout
-  title="Reproducible Thoughts — Benedikt Ritter"
-  description="Technical writing on Gradle, NixOS, Java, and developer productivity."
+  title={`${blog.name} — ${basic.name}`}
+  description={blog.description}
   image="/og/blog.png"
 >
-  <PageHeader
-    badge="Technical Journal"
-    description="Notes from the intersection of Gradle, NixOS, and a decade of building software that actually works — build systems, reproducible environments, and everything in between."
-  >
+  <PageHeader badge="Technical Journal" description={blog.longDescription}>
     <Fragment slot="title"
       >Reproducible <br /><span class="text-secondary">Thoughts.</span
       ></Fragment
