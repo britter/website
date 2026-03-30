@@ -6,11 +6,12 @@ import remarkCalloutDirectives from "@microflash/remark-callout-directives";
 import githubCalloutOptions from "@microflash/remark-callout-directives/config/github";
 import remarkDirective from "remark-directive";
 import mdx from "@astrojs/mdx";
+import mermaid from "astro-mermaid";
 
 import react from "@astrojs/react";
 
 export default defineConfig({
-  integrations: [icon(), react(), mdx()],
+  integrations: [mermaid(), icon(), react(), mdx()],
   vite: {
     plugins: [tailwindcss()],
   },
