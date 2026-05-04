@@ -34,6 +34,14 @@
       "details": "Independent consulting focused on developer productivity — helping engineering teams ship faster and with less friction. I specialize in Gradle build systems, NixOS reproducible environments, and the Java platform, drawing on five years building and selling developer productivity tooling at Gradle Inc. and a decade of open source work in the JVM ecosystem."
     },
     {
+      "title": "External Contractor",
+      "sub_title": "Chainguard Inc.",
+      "url": "https://chainguard.dev",
+      "years": "2025 - present",
+      "company": "Chainguard Inc. builds hardened, security-focused software supply chain tooling. Chainguard Libraries rebuilds over 100,000 open source packages from verified source code in a SLSA Level 3-compliant build system, providing tamper-proof, cryptographically signed artifacts for Java, Python, and JavaScript ecosystems.",
+      "details": "Working on the ecosystems rebuilder platform that powers Chainguard Libraries — a system that rebuilds Java, Python, and JavaScript open source packages from source and publishes them with SLSA provenance and SBOMs. My primary focus has been designing and building AI-powered agentic workflows using Claude Code that automatically diagnose and fix build failures across thousands of packages. This includes a multi-agent orchestration system for Java rebuilds with specialized skills for Maven, Gradle, Ant, and SBT error analysis, as well as automated configuration generation and fix workflows for Python and JavaScript packages. The agentic systems operate autonomously within GitHub Actions CI/CD pipelines, iteratively applying and validating fixes without human intervention."
+    },
+    {
       "title": "Lead Software Engineer",
       "sub_title": "Gradle Inc.",
       "url": "https://gradle.com",
@@ -73,6 +81,113 @@
     }
   ],
   "services": [
+    {
+      "slug": "nixos",
+      "image": "nixos-consulting.jpg",
+      "title": "NixOS Consulting",
+      "tagline": "Reproducible infrastructure from development to production.",
+      "description": "Declarative system configuration, reproducible dev environments, Nix packaging, and server management — I help teams adopt and master NixOS and the Nix ecosystem.",
+      "headlineMain": "NixOS",
+      "headlineAccent": "Consulting.",
+      "heroDescription": "NixOS and the Nix ecosystem offer a fundamentally better way to manage software and infrastructure — but the learning curve is steep. I help teams adopt Nix gradually and confidently, from development environments to production infrastructure.",
+      "intro": "As a nixpkgs maintainer, home-manager contributor, and co-founder of TestLens — a platform running entirely on NixOS — I bring both community depth and production experience to every engagement. I've helped teams set up reproducible dev environments, package software for nixpkgs, and manage infrastructure declaratively with NixOS.",
+      "offerings": [
+        {
+          "title": "Nix packaging",
+          "description": "Build, maintain, and optimize Nix packages for your projects, ensuring consistent and reproducible software builds across all environments."
+        },
+        {
+          "title": "NixOS module implementations",
+          "description": "Create or enhance NixOS modules to configure systems declaratively and efficiently, making your infrastructure easier to reason about and maintain."
+        },
+        {
+          "title": "Server management with Nix tooling",
+          "description": "Manage and deploy servers with Nix tooling for precise, repeatable configurations and reduced operational overhead."
+        },
+        {
+          "title": "Reproducible development environments",
+          "description": "Set up development shells tailored to your team's needs, ensuring every developer works in an identical, reproducible environment — no more 'works on my machine'."
+        },
+        {
+          "title": "home-manager configuration",
+          "description": "Declaratively manage user environments across machines using home-manager, ensuring consistent tooling and dotfiles for every developer on your team."
+        },
+        {
+          "title": "Training and adoption support",
+          "description": "Customized training sessions to help your team adopt and master NixOS and the Nix ecosystem, with content tailored to your specific use cases and challenges."
+        }
+      ]
+    },
+    {
+      "slug": "ai-agentic-workflows",
+      "title": "AI & Agentic Workflow Development",
+      "tagline": "Put AI to work on real engineering problems.",
+      "description": "Designing and building agentic workflows that operate autonomously — multi-agent orchestration, Claude Code skill engineering, and AI integration into CI/CD pipelines.",
+      "image": "ai-consulting.jpg",
+      "headlineMain": "AI & Agentic Workflow",
+      "headlineAccent": "Development.",
+      "heroDescription": "AI tools that merely assist are valuable. AI systems that act autonomously — diagnosing problems, generating fixes, validating results, and iterating — are transformative. I design and build agentic workflows that put Claude and other large language models to work on real engineering problems at scale.",
+      "intro": "I've built production agentic systems for Chainguard Inc. that automatically diagnose and fix build failures across tens of thousands of open source packages. These systems use multi-agent orchestration, specialized Claude Code skills for each build tool and error class, and iterative fix-validate loops that run entirely within GitHub Actions pipelines. The result: packages that previously required manual triage are fixed autonomously, at scale, without human intervention. I bring that same approach — decomposing large problems into focused agent tasks, building reliable iteration loops, and integrating agentic workflows into existing CI/CD infrastructure — to client engagements.",
+      "offerings": [
+        {
+          "title": "Agentic workflow design",
+          "description": "Design multi-step agent workflows that decompose complex engineering tasks into focused, reliable sub-tasks — reducing the scope of each agent action and improving overall correctness."
+        },
+        {
+          "title": "Claude Code skill engineering",
+          "description": "Build specialized Claude Code skills and sub-agents for domain-specific tasks, with schema-driven inputs, explicit guidance, and hard-stop detection for unsolvable cases."
+        },
+        {
+          "title": "CI/CD integration",
+          "description": "Integrate agentic workflows into GitHub Actions or other CI/CD pipelines so AI operates autonomously on each PR, build failure, or scheduled trigger — no human in the loop required."
+        },
+        {
+          "title": "Iterative fix-validate loops",
+          "description": "Build agent systems that test their own output, validate results against the actual system under test, and iterate with refined strategies — not just one-shot generation."
+        },
+        {
+          "title": "AI-powered diagnosis and triage",
+          "description": "Apply LLMs to analyze build logs, test failures, or error reports and classify them by root cause — enabling automated routing, prioritization, or autonomous remediation."
+        },
+        {
+          "title": "Training and adoption support",
+          "description": "Help your team get up to speed with Claude Code, prompt engineering, and agentic system design — from first experiments to production-grade workflows."
+        }
+      ]
+    },
+    {
+      "slug": "rust",
+      "title": "Rust Consulting",
+      "tagline": "Build reliable Rust projects from the start.",
+      "description": "Reproducible Rust development environments with Nix, Cargo project structure and build setup, CI/CD pipelines, and helping teams introduce Rust into their stack.",
+      "image": "rust-consulting.jpg",
+      "headlineMain": "Rust",
+      "headlineAccent": "Consulting.",
+      "heroDescription": "Getting started with Rust is straightforward. Getting the surrounding infrastructure right — reproducible environments, fast CI, well-structured Cargo workspaces — takes more work. I help teams set up Rust projects that are easy to build, test, and maintain from day one.",
+      "intro": "My background is in build systems, developer productivity, and reproducible environments — and all of that applies directly to Rust. I've built Rust projects in Nix-based environments, worked through the toolchain and packaging model in depth, and bring the same structured approach to Rust that I apply to Gradle and NixOS work. If you're introducing Rust to your stack and want the surrounding infrastructure done properly, I can help.",
+      "offerings": [
+        {
+          "title": "Reproducible Rust environments with Nix",
+          "description": "Set up Nix-based development environments for Rust projects that pin the toolchain, system dependencies, and development tools — eliminating 'works on my machine' problems across the team."
+        },
+        {
+          "title": "Cargo workspace structure",
+          "description": "Design well-structured Cargo workspaces for multi-crate projects — clear crate boundaries, shared dependency management, and a layout that scales as the codebase grows."
+        },
+        {
+          "title": "CI/CD setup for Rust",
+          "description": "Set up fast, reliable CI pipelines for Rust projects with caching, cross-compilation, and test coverage — built on GitHub Actions or your preferred CI platform."
+        },
+        {
+          "title": "Introducing Rust to your stack",
+          "description": "Practical guidance for teams adopting Rust alongside existing languages — where to start, how to structure the project, and how to build confidence incrementally."
+        },
+        {
+          "title": "Training and adoption support",
+          "description": "Hands-on sessions to help your team get productive with Rust tooling, the Cargo ecosystem, and development workflows specific to your project."
+        }
+      ]
+    },
     {
       "slug": "gradle",
       "title": "Gradle Build Tool Consulting",
@@ -117,43 +232,6 @@
           "description": "Customized training sessions to help your team understand and adopt Gradle effectively, with content tailored to your project's specific challenges."
         }
       ]
-    },
-    {
-      "slug": "nixos",
-      "image": "nixos-consulting.jpg",
-      "title": "NixOS Consulting",
-      "tagline": "Reproducible infrastructure from development to production.",
-      "description": "Declarative system configuration, reproducible dev environments, Nix packaging, and server management — I help teams adopt and master NixOS and the Nix ecosystem.",
-      "headlineMain": "NixOS",
-      "headlineAccent": "Consulting.",
-      "heroDescription": "NixOS and the Nix ecosystem offer a fundamentally better way to manage software and infrastructure — but the learning curve is steep. I help teams adopt Nix gradually and confidently, from development environments to production infrastructure.",
-      "intro": "As a nixpkgs maintainer, home-manager contributor, and co-founder of TestLens — a platform running entirely on NixOS — I bring both community depth and production experience to every engagement. I've helped teams set up reproducible dev environments, package software for nixpkgs, and manage infrastructure declaratively with NixOS.",
-      "offerings": [
-        {
-          "title": "Nix packaging",
-          "description": "Build, maintain, and optimize Nix packages for your projects, ensuring consistent and reproducible software builds across all environments."
-        },
-        {
-          "title": "NixOS module implementations",
-          "description": "Create or enhance NixOS modules to configure systems declaratively and efficiently, making your infrastructure easier to reason about and maintain."
-        },
-        {
-          "title": "Server management with Nix tooling",
-          "description": "Manage and deploy servers with Nix tooling for precise, repeatable configurations and reduced operational overhead."
-        },
-        {
-          "title": "Reproducible development environments",
-          "description": "Set up development shells tailored to your team's needs, ensuring every developer works in an identical, reproducible environment — no more 'works on my machine'."
-        },
-        {
-          "title": "home-manager configuration",
-          "description": "Declaratively manage user environments across machines using home-manager, ensuring consistent tooling and dotfiles for every developer on your team."
-        },
-        {
-          "title": "Training and adoption support",
-          "description": "Customized training sessions to help your team adopt and master NixOS and the Nix ecosystem, with content tailored to your specific use cases and challenges."
-        }
-      ]
     }
   ],
   "openSource": [
@@ -180,6 +258,14 @@
       "description": "Maintainer of the Gradle package in nixpkgs, the largest collection of Nix packages. Ensuring that Gradle is available, up-to-date, and correctly configured in the Nix ecosystem — enabling reproducible Java build environments for NixOS users and Nix developers.",
       "tags": ["Nix", "nixpkgs", "Gradle", "Reproducibility"],
       "label": "GITHUB.COM/NIXOS/NIXPKGS"
+    },
+    {
+      "role": "Author",
+      "org": "CrabDNS",
+      "url": "https://codeberg.org/britter/crabdns",
+      "description": "A DNS server built from scratch in Rust as part of the CodeCrafters DNS challenge — completed in four days. The implementation handles DNS packet parsing and generation, recursive resolution, and a range of record types including A, AAAA, and CNAME. The project includes a Nix flake for a reproducible development environment.",
+      "tags": ["Rust", "DNS", "Networking", "CodeCrafters"],
+      "label": "CODEBERG.ORG/BRITTER/CRABDNS"
     },
     {
       "role": "Maintainer",
