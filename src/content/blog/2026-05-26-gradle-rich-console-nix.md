@@ -63,7 +63,13 @@ Only auto-detection, which requires the `Terminals` service to query `isatty()`,
 
 `Terminals` on Linux comes from loading a second JNI library, `libnative-platform-curses.so`.
 Native-platform's `.so` files are packaged inside JARs that ship with the Gradle distribution, alongside all the regular Java code.
-On first use, the relevant ones are extracted to disk under `$GRADLE_USER_HOME/native/<NativeVersion.VERSION>/<platform>/<lib>` so the JVM can load them via `System.load()` without paying the unzip cost on every invocation.
+On first use, the relevant ones get extracted to disk under a path of the form:
+
+```
+$GRADLE_USER_HOME/native/<NativeVersion.VERSION>/<platform>/<lib>
+```
+
+This lets the JVM load them via `System.load()` without paying the unzip cost on every invocation.
 `NativeVersion.VERSION` is a string constant baked into native-platform at build time.
 
 Pulling that constant out of the bundled `native-platform-*.jar`:
