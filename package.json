@@ -41,7 +41,7 @@
     "@playwright/test": "1.61.0",
     "@tailwindcss/typography": "0.5.20",
     "@tailwindcss/vite": "4.3.1",
-    "@types/node": "25.9.3",
+    "@types/node": "25.9.4",
     "patch-package": "8.0.1",
     "prettier": "3.8.4",
     "prettier-plugin-astro": "0.14.1",
