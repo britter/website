@@ -47,8 +47,5 @@
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "0.8.0",
     "tailwindcss": "4.3.2"
-  },
-  "overrides": {
-    "vite": "^7.3.2"
   }
 }
