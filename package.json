@@ -28,7 +28,7 @@
     "astro": "^7.0.0",
     "astro-icon": "^1.1.1",
     "astro-mermaid": "^2.0.1",
-    "framer-motion": "^12.4.1",
+    "motion": "^12.4.1",
     "mermaid": "^11.13.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
