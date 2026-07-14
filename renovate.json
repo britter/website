@@ -2,6 +2,13 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:best-practices", ":automergeAll"],
   "prHourlyLimit": 1,
+  "packageRules": [
+    {
+      "description": "TS 7 (native compiler) is unsupported by Astro's language tooling; see withastro/astro#17268",
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "^6"
+    }
+  ],
   "lockFileMaintenance": {
     "enabled": true,
     "extends": ["schedule:weekly"]
