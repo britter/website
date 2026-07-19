@@ -40,12 +40,12 @@
   "devDependencies": {
     "@playwright/test": "1.61.1",
     "@tailwindcss/typography": "0.5.20",
-    "@tailwindcss/vite": "4.3.2",
+    "@tailwindcss/vite": "4.3.3",
     "@types/node": "25.9.5",
     "patch-package": "8.0.1",
     "prettier": "3.9.5",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "0.8.1",
-    "tailwindcss": "4.3.2"
+    "tailwindcss": "4.3.3"
   }
 }
