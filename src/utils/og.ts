@@ -63,13 +63,15 @@ export async function renderOgTemplate(template: any): Promise<Response> {
     fonts: [
       {
         name: "Inter",
-        data: fontBold.buffer as ArrayBuffer,
+        // Pass the Buffer directly: Buffer.buffer exposes Node's shared pool
+        // starting at offset 0, feeding satori foreign bytes.
+        data: fontBold,
         weight: 700,
         style: "normal",
       },
       {
         name: "Inter",
-        data: fontBlack.buffer as ArrayBuffer,
+        data: fontBlack,
         weight: 900,
         style: "normal",
       },
