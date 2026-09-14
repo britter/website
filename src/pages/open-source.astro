@@ -12,51 +12,50 @@ import { openSource, podcast } from "../config/data.json";
     badge="Open Source"
     description="Building and maintaining the tools and infrastructure that power modern software development."
   >
-    <Fragment slot="title"
-      >Contributing to<br /><span class="text-secondary">the Ecosystem.</span
-      ></Fragment
-    >
+    <Fragment slot="title">
+      Contributing to
+      <br />
+      <span class="text-secondary">the Ecosystem.</span>
+    </Fragment>
   </PageHeader>
 
   <main class="bg-surface pb-20">
     <div class="mx-auto max-w-7xl space-y-4 px-6">
-      {
-        openSource.map(item => (
-          <div class="bg-surface-container-low hover:bg-surface-container flex flex-col gap-8 p-8 transition-colors md:flex-row md:p-10">
-            <div class="shrink-0 space-y-2 md:w-48">
-              <span class="font-label text-secondary text-xs font-bold tracking-widest uppercase">
-                {item.role}
-              </span>
-              <h2 class="text-primary text-2xl font-black tracking-tight">
-                {item.org}
-              </h2>
-              <p class="text-outline font-mono text-[10px] tracking-widest">
-                {item.label}
-              </p>
-            </div>
-            <div class="flex-1 space-y-4">
-              <p class="text-on-surface-variant leading-relaxed">
-                {item.description}
-              </p>
-              <div class="flex flex-wrap gap-2">
-                {item.tags.map((tag: string) => (
-                  <span class="bg-surface-container-high text-on-surface-variant font-label px-2 py-0.5 text-[10px] font-bold tracking-wide uppercase">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-secondary font-label inline-flex items-center gap-2 text-sm font-bold uppercase transition-all hover:gap-3"
-              >
-                View on GitHub →
-              </a>
-            </div>
+      {openSource.map(item => (
+        <div class="bg-surface-container-low hover:bg-surface-container flex flex-col gap-8 p-8 transition-colors md:flex-row md:p-10">
+          <div class="shrink-0 space-y-2 md:w-48">
+            <span class="font-label text-secondary text-xs font-bold tracking-widest uppercase">
+              {item.role}
+            </span>
+            <h2 class="text-primary text-2xl font-black tracking-tight">
+              {item.org}
+            </h2>
+            <p class="text-outline font-mono text-[10px] tracking-widest">
+              {item.label}
+            </p>
           </div>
-        ))
-      }
+          <div class="flex-1 space-y-4">
+            <p class="text-on-surface-variant leading-relaxed">
+              {item.description}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {item.tags.map((tag: string) => (
+                <span class="bg-surface-container-high text-on-surface-variant font-label px-2 py-0.5 text-[10px] font-bold tracking-wide uppercase">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-secondary font-label inline-flex items-center gap-2 text-sm font-bold uppercase transition-all hover:gap-3"
+            >
+              View on GitHub →
+            </a>
+          </div>
+        </div>
+      ))}
     </div>
 
     <!-- Podcast section -->
@@ -65,15 +64,10 @@ import { openSource, podcast } from "../config/data.json";
         <div
           class="pointer-events-none absolute inset-0 opacity-10"
           style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 32px 32px;"
-        >
-        </div>
-        <div
-          class="relative z-10 grid grid-cols-1 items-center gap-8 md:grid-cols-2"
-        >
+        ></div>
+        <div class="relative z-10 grid grid-cols-1 items-center gap-8 md:grid-cols-2">
           <div class="space-y-4">
-            <span
-              class="font-label text-secondary-fixed text-sm font-bold tracking-widest uppercase"
-            >
+            <span class="font-label text-secondary-fixed text-sm font-bold tracking-widest uppercase">
               Beyond the Code
             </span>
             <h2 class="text-on-primary text-4xl font-black tracking-tight">

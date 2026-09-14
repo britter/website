@@ -10,9 +10,10 @@ import { basic, experiences, openSource } from "../config/data.json";
   description="Career history and background of Benedikt Ritter — from software engineering to developer productivity consulting."
 >
   <PageHeader badge="Vita" description={basic.summary}>
-    <Fragment slot="title"
-      >Career &<br /><span class="text-secondary">Background.</span></Fragment
-    >
+    <Fragment slot="title">
+      Career &<br />
+      <span class="text-secondary">Background.</span>
+    </Fragment>
   </PageHeader>
 
   <main class="bg-surface pb-20">
@@ -22,56 +23,53 @@ import { basic, experiences, openSource } from "../config/data.json";
         <div
           class="absolute top-2 bottom-2 left-0 w-px"
           style="background-color: var(--color-outline-variant);"
-        >
-        </div>
+        ></div>
 
         <div class="space-y-0">
-          {
-            experiences.map((item, i) => (
-              <div class="relative pl-10">
-                <div
-                  class="absolute top-2 left-0 h-2 w-2 -translate-x-1/2 rounded-full"
-                  style={`background-color: var(--color-${i === 0 ? "secondary" : "outline-variant"});`}
-                />
+          {experiences.map((item, i) => (
+            <div class="relative pl-10">
+              <div
+                class="absolute top-2 left-0 h-2 w-2 -translate-x-1/2 rounded-full"
+                style={`background-color: var(--color-${i === 0 ? "secondary" : "outline-variant"});`}
+              />
 
-                <div
-                  class="border-b pt-1 pb-10"
-                  style="border-color: var(--color-surface-container-high);"
-                >
-                  <div class="flex flex-col gap-1 md:flex-row md:items-baseline md:gap-6">
-                    <h3 class="text-primary text-2xl font-black tracking-tight">
-                      {item.title}
-                    </h3>
-                    {item.url ? (
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-on-surface-variant hover:text-secondary font-mono text-xs tracking-widest uppercase transition-colors"
-                      >
-                        {item.sub_title} ↗
-                      </a>
-                    ) : (
-                      <span class="text-on-surface-variant font-mono text-xs tracking-widest uppercase">
-                        {item.sub_title}
-                      </span>
-                    )}
-                  </div>
-                  <p class="text-secondary font-label mt-1 mb-4 text-xs font-bold tracking-widest uppercase">
-                    {item.years}
-                  </p>
-                  {item.company && (
-                    <p class="text-on-surface-variant/60 mb-4 max-w-3xl text-sm leading-relaxed italic">
-                      {item.company}
-                    </p>
+              <div
+                class="border-b pt-1 pb-10"
+                style="border-color: var(--color-surface-container-high);"
+              >
+                <div class="flex flex-col gap-1 md:flex-row md:items-baseline md:gap-6">
+                  <h3 class="text-primary text-2xl font-black tracking-tight">
+                    {item.title}
+                  </h3>
+                  {item.url ? (
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-on-surface-variant hover:text-secondary font-mono text-xs tracking-widest uppercase transition-colors"
+                    >
+                      {item.sub_title} ↗
+                    </a>
+                  ) : (
+                    <span class="text-on-surface-variant font-mono text-xs tracking-widest uppercase">
+                      {item.sub_title}
+                    </span>
                   )}
-                  <p class="text-on-surface-variant max-w-3xl leading-relaxed">
-                    {item.details}
-                  </p>
                 </div>
+                <p class="text-secondary font-label mt-1 mb-4 text-xs font-bold tracking-widest uppercase">
+                  {item.years}
+                </p>
+                {item.company && (
+                  <p class="text-on-surface-variant/60 mb-4 max-w-3xl text-sm leading-relaxed italic">
+                    {item.company}
+                  </p>
+                )}
+                <p class="text-on-surface-variant max-w-3xl leading-relaxed">
+                  {item.details}
+                </p>
               </div>
-            ))
-          }
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -81,9 +79,7 @@ import { basic, experiences, openSource } from "../config/data.json";
       <div class="bg-surface-container-low p-8 md:p-10">
         <div class="mb-6 flex items-end justify-between">
           <div>
-            <span
-              class="font-label text-secondary text-xs font-bold tracking-widest uppercase"
-            >
+            <span class="font-label text-secondary text-xs font-bold tracking-widest uppercase">
               Open Source
             </span>
             <h2 class="text-primary mt-1 text-2xl font-black tracking-tight">
@@ -98,23 +94,21 @@ import { basic, experiences, openSource } from "../config/data.json";
           </a>
         </div>
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {
-            openSource.map(item => (
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group bg-surface hover:bg-surface-container flex flex-col gap-1 p-4 transition-colors"
-              >
-                <span class="text-secondary font-label text-[10px] font-bold tracking-widest uppercase">
-                  {item.role}
-                </span>
-                <span class="text-on-surface group-hover:text-secondary font-bold transition-colors">
-                  {item.org}
-                </span>
-              </a>
-            ))
-          }
+          {openSource.map(item => (
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group bg-surface hover:bg-surface-container flex flex-col gap-1 p-4 transition-colors"
+            >
+              <span class="text-secondary font-label text-[10px] font-bold tracking-widest uppercase">
+                {item.role}
+              </span>
+              <span class="text-on-surface group-hover:text-secondary font-bold transition-colors">
+                {item.org}
+              </span>
+            </a>
+          ))}
         </div>
       </div>
     </div>
