@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import { unified } from "@astrojs/markdown-remark";
 
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
@@ -25,9 +26,11 @@ export default defineConfig({
   },
   site: "https://britter.dev",
   markdown: {
-    remarkPlugins: [
-      remarkDirective,
-      [remarkCalloutDirectives, githubCalloutOptions],
-    ],
+    processor: unified({
+      remarkPlugins: [
+        remarkDirective,
+        [remarkCalloutDirectives, githubCalloutOptions],
+      ],
+    }),
   },
 });
