@@ -42,10 +42,10 @@ const [featured, ...rest] = page.data;
   image="/og/blog.png"
 >
   <PageHeader badge="Technical Journal" description={blog.longDescription}>
-    <Fragment slot="title"
-      >Reproducible <br /><span class="text-secondary">Thoughts.</span
-      ></Fragment
-    >
+    <Fragment slot="title">
+      Reproducible <br />
+      <span class="text-secondary">Thoughts.</span>
+    </Fragment>
   </PageHeader>
 
   <main class="bg-surface pb-20">
@@ -57,13 +57,11 @@ const [featured, ...rest] = page.data;
       -->
       <div class="grid grid-cols-1 gap-x-12 gap-y-12 lg:grid-cols-12">
         <!-- Row 1 left: featured post -->
-        {
-          featured && (
-            <div class="lg:col-span-8">
-              <BlogPostCard post={featured} variant="featured" />
-            </div>
-          )
-        }
+        {featured && (
+          <div class="lg:col-span-8">
+            <BlogPostCard post={featured} variant="featured" />
+          </div>
+        )}
 
         <!-- Row 1 right: author bio -->
         <div class="lg:col-span-4 lg:self-start">
@@ -72,30 +70,28 @@ const [featured, ...rest] = page.data;
 
         <!-- Row 2 left: post list + pagination -->
         <div class="space-y-12 lg:col-span-8">
-          {rest.map(post => <BlogPostCard post={post} variant="list" />)}
+          {rest.map(post => (
+            <BlogPostCard post={post} variant="list" />
+          ))}
           <Pagination prev={page.url.prev} next={page.url.next} />
         </div>
 
         <!-- Row 2 right: topic cloud -->
         <div id="topic-cloud" class="space-y-4 lg:col-span-4 lg:self-start">
-          <h4
-            class="font-label text-outline text-[10px] font-bold tracking-widest uppercase"
-          >
+          <h4 class="font-label text-outline text-[10px] font-bold tracking-widest uppercase">
             Topics
           </h4>
           <div class="flex flex-wrap gap-2">
-            {
-              allTopics.map(([topic, count]) => (
-                <a
-                  href={`/blog/topic/${topic}`}
-                  class="bg-surface-container-lowest text-primary hover:bg-secondary px-3 py-1.5 font-mono text-xs transition-all hover:text-white"
-                  style="border: 1px solid var(--color-outline-variant); opacity: 0.6;"
-                >
-                  {topic}
-                  <span class="ml-1 text-[10px] opacity-70">{count}</span>
-                </a>
-              ))
-            }
+            {allTopics.map(([topic, count]) => (
+              <a
+                href={`/blog/topic/${topic}`}
+                class="bg-surface-container-lowest text-primary hover:bg-secondary px-3 py-1.5 font-mono text-xs transition-all hover:text-white"
+                style="border: 1px solid var(--color-outline-variant); opacity: 0.6;"
+              >
+                {topic}
+                <span class="ml-1 text-[10px] opacity-70">{count}</span>
+              </a>
+            ))}
           </div>
         </div>
       </div>

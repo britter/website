@@ -9,24 +9,22 @@ const currentYear = new Date().getFullYear();
     <div class="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
       <!-- Brand -->
       <div class="space-y-3">
-        <div
-          class="text-on-surface font-sans text-lg font-black tracking-tighter"
-        >
+        <div class="text-on-surface font-sans text-lg font-black tracking-tighter">
           Benedikt Ritter
         </div>
         <p
           id="footer-copyright"
           class="text-outline font-mono text-xs leading-relaxed tracking-wide"
         >
-          © {currentYear} Benedikt Ritter.<br />Built with Nix & Precision.
+          © {currentYear} Benedikt Ritter.
+          <br />
+          Built with Nix & Precision.
         </p>
       </div>
 
       <!-- Connect -->
       <div class="space-y-3">
-        <h5
-          class="font-label text-outline text-[10px] font-bold tracking-widest uppercase"
-        >
+        <h5 class="font-label text-outline text-[10px] font-bold tracking-widest uppercase">
           Connect
         </h5>
         <ul class="space-y-2">
@@ -73,34 +71,28 @@ const currentYear = new Date().getFullYear();
 
       <!-- Navigate -->
       <div class="space-y-3">
-        <h5
-          class="font-label text-outline text-[10px] font-bold tracking-widest uppercase"
-        >
+        <h5 class="font-label text-outline text-[10px] font-bold tracking-widest uppercase">
           Navigate
         </h5>
         <ul class="space-y-2">
-          {
-            navLinks.map(link => (
-              <li>
-                <a
-                  href={link.href}
-                  target={link.external ? "_blank" : undefined}
-                  rel={link.external ? "noopener noreferrer" : undefined}
-                  class="text-on-surface-variant hover:text-secondary font-mono text-xs transition-colors"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))
-          }
+          {navLinks.map(link => (
+            <li>
+              <a
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
+                class="text-on-surface-variant hover:text-secondary font-mono text-xs transition-colors"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
 
       <!-- Legal -->
       <div class="space-y-3">
-        <h5
-          class="font-label text-outline text-[10px] font-bold tracking-widest uppercase"
-        >
+        <h5 class="font-label text-outline text-[10px] font-bold tracking-widest uppercase">
           Legal
         </h5>
         <ul class="space-y-2">

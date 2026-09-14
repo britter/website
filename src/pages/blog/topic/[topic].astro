@@ -35,11 +35,9 @@ const posts = allPosts
   <main class="bg-surface pb-20">
     <div class="mx-auto max-w-7xl px-6">
       <div class="space-y-12 pt-12">
-        {
-          posts.map(post => (
-            <BlogPostCard post={post} variant="list" activeTopic={topic} />
-          ))
-        }
+        {posts.map(post => (
+          <BlogPostCard post={post} variant="list" activeTopic={topic} />
+        ))}
       </div>
     </div>
   </main>

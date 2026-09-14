@@ -38,8 +38,7 @@ const readingTime = Math.max(1, Math.round(wordCount / 200));
     <div
       class="pointer-events-none absolute inset-0 opacity-10"
       style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 32px 32px;"
-    >
-    </div>
+    ></div>
     <div class="relative z-10 mx-auto max-w-3xl px-6">
       <!-- Breadcrumb -->
       <a
@@ -50,33 +49,27 @@ const readingTime = Math.max(1, Math.round(wordCount / 200));
       </a>
 
       <!-- Topics -->
-      {
-        blog.data.topics.length > 0 && (
-          <div class="mt-4 flex flex-wrap gap-2">
-            {blog.data.topics.map((t: string) => (
-              <TopicBadge topic={t} variant="pill-md" />
-            ))}
-          </div>
-        )
-      }
+      {blog.data.topics.length > 0 && (
+        <div class="mt-4 flex flex-wrap gap-2">
+          {blog.data.topics.map((t: string) => (
+            <TopicBadge topic={t} variant="pill-md" />
+          ))}
+        </div>
+      )}
 
       <!-- Title -->
-      <h1
-        class="mt-4 text-4xl leading-tight font-black tracking-tighter text-white md:text-5xl"
-      >
+      <h1 class="mt-4 text-4xl leading-tight font-black tracking-tighter text-white md:text-5xl">
         {blog.data.title}
       </h1>
 
       <!-- Meta -->
       <div class="mt-4 flex items-center gap-4 font-mono text-sm text-white/50">
         <time datetime={getPubDate(blog).toISOString()}>
-          {
-            getPubDate(blog).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })
-          }
+          {getPubDate(blog).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
         </time>
         <span class="h-1 w-1 rounded-full bg-white/30"></span>
         <span>{readingTime} min read</span>
@@ -98,10 +91,9 @@ const readingTime = Math.max(1, Math.round(wordCount / 200));
           class="flex items-center gap-2 pt-8"
           style="border-top: 1px solid var(--color-surface-container-high);"
         >
-          <span
-            class="font-label text-outline mr-1 shrink-0 text-xs tracking-widest uppercase"
-            >Share:</span
-          >
+          <span class="font-label text-outline mr-1 shrink-0 text-xs tracking-widest uppercase">
+            Share:
+          </span>
           <div class="flex flex-wrap gap-2">
             <a
               id="share-mastodon"
@@ -109,37 +101,42 @@ const readingTime = Math.max(1, Math.round(wordCount / 200));
               target="_blank"
               rel="noopener noreferrer"
               class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
-              >Mastodon</a
             >
+              Mastodon
+            </a>
             <a
               id="share-linkedin"
               href="#"
               target="_blank"
               rel="noopener noreferrer"
               class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
-              >LinkedIn</a
             >
+              LinkedIn
+            </a>
             <a
               id="share-bluesky"
               href="#"
               target="_blank"
               rel="noopener noreferrer"
               class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
-              >Bluesky</a
             >
+              Bluesky
+            </a>
             <a
               id="share-x"
               href="#"
               target="_blank"
               rel="noopener noreferrer"
               class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
-              >X</a
             >
+              X
+            </a>
             <button
               id="share-copy"
               class="font-label text-on-surface-variant hover:text-secondary border-outline-variant border px-3 py-1.5 text-xs font-bold tracking-widest uppercase transition-colors"
-              >Copy link</button
             >
+              Copy link
+            </button>
           </div>
         </div>
 
