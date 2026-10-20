@@ -1,6 +1,6 @@
 ---
 title: "A Poor Man's Solution to Gradle's Rich Console Issue on NixOS"
-description: "The upstream fixes for Gradle's broken rich console auto-detection on Nix haven't materialized, so here's a patchelf one-liner in my dotfiles that fixes the native cache in place after every wrapper upgrade."
+description: "A follow-up to my post on Gradle's rich console on Nix: a small patchelf script in my nix configuration that repairs the native library cache whenever the Gradle wrapper breaks rich console."
 topics: ["Gradle", "NixOS", "Nix"]
 ---
 
