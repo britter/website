@@ -13,6 +13,16 @@ export function getPubDate(post: CollectionEntry<"blog">): Date {
   return new Date(`${pubYear}-${pubMonth}-${pubDay}T00:00:00`);
 }
 
+export function getUpdatedDate(post: CollectionEntry<"blog">): Date | null {
+  const updated = post.data.updated;
+  if (!updated) return null;
+  // `z.coerce.date()` parses a bare `YYYY-MM-DD` value as UTC midnight, while
+  // `getPubDate` produces local midnight. Recover the calendar date from the
+  // UTC value so the rendered day matches the frontmatter.
+  const iso = updated.toISOString().slice(0, 10);
+  return new Date(`${iso}T00:00:00`);
+}
+
 export function getBlogParams(post: CollectionEntry<"blog">) {
   const { pubYear, pubMonth, pubDay } = parseDateParts(post);
 
