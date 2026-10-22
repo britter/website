@@ -30,6 +30,7 @@
         };
         devShells.default = pkgs.mkShell {
           inherit (self.checks.${system}.pre-commit-check) shellHook;
+          ASTRO_TELEMETRY_DISABLED = "1";
           buildInputs =
             with pkgs;
             [
