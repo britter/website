@@ -43,8 +43,7 @@ const updatedDate = getUpdatedDate(blog);
     <div
       class="pointer-events-none absolute inset-0 opacity-10"
       style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 32px 32px;"
-    >
-    </div>
+    ></div>
     <div class="relative z-10 mx-auto max-w-3xl px-6">
       <!-- Breadcrumb -->
       <a
@@ -55,54 +54,46 @@ const updatedDate = getUpdatedDate(blog);
       </a>
 
       <!-- Topics -->
-      {
-        blog.data.topics.length > 0 && (
-          <div class="mt-4 flex flex-wrap gap-2">
-            {blog.data.topics.map((t: string) => (
-              <TopicBadge topic={t} variant="pill-md" />
-            ))}
-          </div>
-        )
-      }
+      {blog.data.topics.length > 0 && (
+        <div class="mt-4 flex flex-wrap gap-2">
+          {blog.data.topics.map((t: string) => (
+            <TopicBadge topic={t} variant="pill-md" />
+          ))}
+        </div>
+      )}
 
       <!-- Title -->
-      <h1
-        class="mt-4 text-4xl leading-tight font-black tracking-tighter text-white md:text-5xl"
-      >
+      <h1 class="mt-4 text-4xl leading-tight font-black tracking-tighter text-white md:text-5xl">
         {blog.data.title}
       </h1>
 
       <!-- Meta -->
       <div class="mt-4 flex items-center gap-4 font-mono text-sm text-white/50">
         <time datetime={getPubDate(blog).toISOString()}>
-          {
-            getPubDate(blog).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })
-          }
+          {getPubDate(blog).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
         </time>
         <span class="h-1 w-1 rounded-full bg-white/30"></span>
         <span>{readingTime} min read</span>
-        {
-          updatedDate && (
-            <>
-              <span class="h-1 w-1 rounded-full bg-white/30" />
-              <time
-                datetime={updatedDate.toISOString()}
-                class="text-white/70 italic"
-              >
-                Updated{" "}
-                {updatedDate.toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </time>
-            </>
-          )
-        }
+        {updatedDate && (
+          <>
+            <span class="h-1 w-1 rounded-full bg-white/30" />
+            <time
+              datetime={updatedDate.toISOString()}
+              class="text-white/70 italic"
+            >
+              Updated{" "}
+              {updatedDate.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </time>
+          </>
+        )}
       </div>
     </div>
   </div>
@@ -121,9 +112,7 @@ const updatedDate = getUpdatedDate(blog);
           class="flex items-center gap-2 pt-8"
           style="border-top: 1px solid var(--color-surface-container-high);"
         >
-          <span
-            class="font-label text-outline mr-1 shrink-0 text-xs tracking-widest uppercase"
-          >
+          <span class="font-label text-outline mr-1 shrink-0 text-xs tracking-widest uppercase">
             Share:
           </span>
           <div class="flex flex-wrap gap-2">
