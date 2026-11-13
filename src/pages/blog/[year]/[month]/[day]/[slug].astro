@@ -199,4 +199,78 @@ const updatedDate = getUpdatedDate(blog);
       setTimeout(() => (btn.textContent = "Copy link"), 2000);
     }
   });
+
+  // Heading anchor links: hovering a heading reveals a link icon; clicking it
+  // jumps to the section and copies the deep-link URL to the clipboard.
+  const linkIcon = `<svg class="anchor-link-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`;
+  const checkIcon = `<svg class="anchor-check" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>`;
+
+  for (const heading of document.querySelectorAll<HTMLElement>(
+    "#markdown :is(h1, h2, h3, h4, h5, h6)[id]"
+  )) {
+    const anchor = document.createElement("a");
+    anchor.href = `#${heading.id}`;
+    anchor.className = "anchor-link";
+    anchor.setAttribute(
+      "aria-label",
+      `Copy link to section “${heading.textContent?.trim()}”`
+    );
+    anchor.innerHTML = linkIcon + checkIcon;
+    anchor.addEventListener("click", () => {
+      navigator.clipboard.writeText(anchor.href).then(() => {
+        anchor.classList.add("copied");
+        setTimeout(() => anchor.classList.remove("copied"), 2000);
+      });
+    });
+    heading.prepend(anchor);
+  }
 </script>
+
+<style is:global>
+  /* Heading anchor links in the blog post body */
+  #markdown :is(h1, h2, h3, h4, h5, h6)[id] {
+    position: relative;
+    scroll-margin-top: 5rem;
+  }
+
+  #markdown .anchor-link {
+    position: absolute;
+    top: 50%;
+    left: -1.75rem;
+    display: inline-flex;
+    transform: translateY(-50%);
+    color: var(--color-outline);
+    opacity: 0;
+    transition:
+      opacity 150ms ease,
+      color 150ms ease;
+  }
+
+  #markdown :is(h1, h2, h3, h4, h5, h6)[id]:hover .anchor-link,
+  #markdown .anchor-link:focus-visible {
+    opacity: 1;
+  }
+
+  #markdown .anchor-link:hover {
+    color: var(--color-secondary);
+  }
+
+  #markdown .anchor-link .anchor-check {
+    display: none;
+  }
+
+  #markdown .anchor-link.copied .anchor-check {
+    display: block;
+  }
+
+  #markdown .anchor-link.copied .anchor-link-icon {
+    display: none;
+  }
+
+  /* Touch devices have no hover: hide the anchor to avoid invisible tap targets */
+  @media (hover: none) {
+    #markdown .anchor-link {
+      display: none;
+    }
+  }
+</style>

@@ -64,6 +64,15 @@ test.describe("RSS feed", () => {
   });
 });
 
+test.describe("Heading anchors", () => {
+  test("markdown headings have id attributes", async ({ request }) => {
+    const response = await request.get("/blog/2026/03/26/website-redesign");
+    const html = await response.text();
+    const headings = html.match(/<h[2-6] id="[^"]+"/g) ?? [];
+    expect(headings.length).toBeGreaterThan(0);
+  });
+});
+
 test.describe("Redirects", () => {
   test("/blogs redirects to /blog", async ({ request }) => {
     const response = await request.get("/blogs");
