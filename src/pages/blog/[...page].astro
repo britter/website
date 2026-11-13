@@ -33,7 +33,9 @@ for (const post of allPosts) {
 }
 const allTopics = Object.entries(topicCounts).sort((a, b) => b[1] - a[1]);
 
-const [featured, ...rest] = page.data;
+const isFirstPage = page.currentPage === 1;
+const featured = isFirstPage ? page.data[0] : undefined;
+const rest = isFirstPage ? page.data.slice(1) : page.data;
 ---
 
 <Layout
@@ -51,47 +53,39 @@ const [featured, ...rest] = page.data;
   <main class="bg-surface pb-20">
     <div class="mx-auto max-w-7xl px-6">
       <!--
-        Flat 12-col grid:
-          Row 1: featured post (8) + author bio (4)
-          Row 2: post listing (8) + topic cloud (4)
+        Two-column layout:
+          Left (8): featured post (first page only) + post list + pagination
+          Right (4): author bio + topic cloud
       -->
       <div class="grid grid-cols-1 gap-x-12 gap-y-12 lg:grid-cols-12">
-        <!-- Row 1 left: featured post -->
-        {featured && (
-          <div class="lg:col-span-8">
-            <BlogPostCard post={featured} variant="featured" />
-          </div>
-        )}
-
-        <!-- Row 1 right: author bio -->
-        <div class="lg:col-span-4 lg:self-start">
-          <AuthorBio variant="sidebar" />
-        </div>
-
-        <!-- Row 2 left: post list + pagination -->
+        <!-- Left: featured post (first page only) + post list + pagination -->
         <div class="space-y-12 lg:col-span-8">
+          {featured && <BlogPostCard post={featured} variant="featured" />}
           {rest.map(post => (
             <BlogPostCard post={post} variant="list" />
           ))}
           <Pagination prev={page.url.prev} next={page.url.next} />
         </div>
 
-        <!-- Row 2 right: topic cloud -->
-        <div id="topic-cloud" class="space-y-4 lg:col-span-4 lg:self-start">
-          <h4 class="font-label text-outline text-[10px] font-bold tracking-widest uppercase">
-            Topics
-          </h4>
-          <div class="flex flex-wrap gap-2">
-            {allTopics.map(([topic, count]) => (
-              <a
-                href={`/blog/topic/${topic}`}
-                class="bg-surface-container-lowest text-primary hover:bg-secondary px-3 py-1.5 font-mono text-xs transition-all hover:text-white"
-                style="border: 1px solid var(--color-outline-variant); opacity: 0.6;"
-              >
-                {topic}
-                <span class="ml-1 text-[10px] opacity-70">{count}</span>
-              </a>
-            ))}
+        <!-- Right: author bio + topic cloud -->
+        <div class="space-y-12 lg:col-span-4 lg:self-start">
+          <AuthorBio variant="sidebar" />
+          <div id="topic-cloud" class="space-y-4">
+            <h4 class="font-label text-outline text-[10px] font-bold tracking-widest uppercase">
+              Topics
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              {allTopics.map(([topic, count]) => (
+                <a
+                  href={`/blog/topic/${topic}`}
+                  class="bg-surface-container-lowest text-primary hover:bg-secondary px-3 py-1.5 font-mono text-xs transition-all hover:text-white"
+                  style="border: 1px solid var(--color-outline-variant); opacity: 0.6;"
+                >
+                  {topic}
+                  <span class="ml-1 text-[10px] opacity-70">{count}</span>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
