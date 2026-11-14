@@ -44,7 +44,7 @@
     "@tailwindcss/vite": "4.3.3",
     "@types/node": "26.6.6",
     "patch-package": "8.0.1",
-    "prettier": "3.9.10",
+    "prettier": "3.10.0",
     "prettier-plugin-astro": "1.1.2",
     "prettier-plugin-tailwindcss": "0.8.1",
     "tailwindcss": "4.3.3"
